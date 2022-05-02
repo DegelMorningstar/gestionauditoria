@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<carreras>
+    <carrera>
+        <nombre>ING. En administración</nombre>
+    </carrera>
+    <carrera>
+        <nombre>ING. Bioquímica</nombre>
+    </carrera>
+    <carrera>
+        <nombre>ING. Civil</nombre>
+    </carrera>
+    <carrera>
+        <nombre>ING. Electromecánica</nombre>
+    </carrera>
+    <carrera>
+        <nombre>ING. Gestión empresarial</nombre>
+    </carrera>
+    <carrera>
+        <nombre>ING. Industrial</nombre>
+    </carrera>
+    <carrera>
+        <nombre>ING. En sistemas computacionales</nombre>
+    </carrera>
+    <carrera>
+        <nombre>Licenciatura en turismo</nombre>
+    </carrera>
+    <carrera>
+        <nombre>ING. Química</nombre>
+    </carrera>
+</carreras>
