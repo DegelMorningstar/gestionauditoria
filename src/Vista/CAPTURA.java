@@ -453,6 +453,11 @@ public class CAPTURA extends javax.swing.JFrame {
         jPanel2.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 600, -1, -1));
 
         jLabel28.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/delete.png"))); // NOI18N
+        jLabel28.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel28MouseClicked(evt);
+            }
+        });
         jPanel2.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, -1, -1));
 
         jLabel29.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/delete.png"))); // NOI18N
@@ -464,18 +469,43 @@ public class CAPTURA extends javax.swing.JFrame {
         jPanel2.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, -1, -1));
 
         jLabel30.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/delete.png"))); // NOI18N
+        jLabel30.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel30MouseClicked(evt);
+            }
+        });
         jPanel2.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 280, -1, -1));
 
         jLabel31.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/delete.png"))); // NOI18N
+        jLabel31.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel31MouseClicked(evt);
+            }
+        });
         jPanel2.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, -1, -1));
 
         jLabel32.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/delete.png"))); // NOI18N
+        jLabel32.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel32MouseClicked(evt);
+            }
+        });
         jPanel2.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 480, -1, -1));
 
         jLabel33.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/delete.png"))); // NOI18N
+        jLabel33.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel33MouseClicked(evt);
+            }
+        });
         jPanel2.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 350, -1, -1));
 
         jLabel34.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/delete.png"))); // NOI18N
+        jLabel34.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel34MouseClicked(evt);
+            }
+        });
         jPanel2.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 420, -1, -1));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 900, 640));
@@ -747,27 +777,28 @@ public class CAPTURA extends javax.swing.JFrame {
         jPanel5.setBackground(new Color(248, 248, 255));
     }//GEN-LAST:event_jLabel4MouseExited
     private boolean deleteExcel(String name) {
-         File  file  = new File(ruta + "Periodos/" + carpeta +"/" + name);
-         System.out.println(ruta + "Periodos/" + carpeta +"/" + name);
-         if(file.delete()){
-             JOptionPane.showMessageDialog(null, "Eliminando, por favor espere...");
-             try {
-                 Thread.sleep(3000);
-             } catch (Exception e) {
-             }
-             new rojerusan.RSNotifyAnimated("Listo!", "El archivo fue eliminado con exito.", 4,
-                            RSNotifyAnimated.PositionNotify.BottomRight,
-                            RSNotifyAnimated.AnimationNotify.BottomUp,
-                            RSNotifyAnimated.TypeNotify.SUCCESS).setVisible(true);
+        File file = new File(ruta + "Periodos/" + carpeta + "/" + name);
+        System.out.println(ruta + "Periodos/" + carpeta + "/" + name);
+        if (file.delete()) {
+            JOptionPane.showMessageDialog(null, "Eliminando, por favor espere...");
+            try {
+                Thread.sleep(3000);
+            } catch (Exception e) {
+            }
+            new rojerusan.RSNotifyAnimated("Listo!", "El archivo fue eliminado con exito.", 4,
+                    RSNotifyAnimated.PositionNotify.BottomRight,
+                    RSNotifyAnimated.AnimationNotify.BottomUp,
+                    RSNotifyAnimated.TypeNotify.SUCCESS).setVisible(true);
             return true;
-         }else{
-             new rojerusan.RSNotifyAnimated("ERROR!", "El archivo no se pudo eliminar del sistema.", 4,
-                            RSNotifyAnimated.PositionNotify.BottomRight,
-                            RSNotifyAnimated.AnimationNotify.BottomUp,
-                            RSNotifyAnimated.TypeNotify.ERROR).setVisible(true);
-             return false;
-         }
+        } else {
+            new rojerusan.RSNotifyAnimated("ERROR!", "El archivo no se pudo eliminar del sistema.", 4,
+                    RSNotifyAnimated.PositionNotify.BottomRight,
+                    RSNotifyAnimated.AnimationNotify.BottomUp,
+                    RSNotifyAnimated.TypeNotify.ERROR).setVisible(true);
+            return false;
+        }
     }
+
     private boolean cargarExcel(String name) {
         JFileChooser jf = new JFileChooser();
         FileNameExtensionFilter filter = new FileNameExtensionFilter("Archivos Excel", "xlsx", "csv");
@@ -918,13 +949,95 @@ public class CAPTURA extends javax.swing.JFrame {
 
     private void jLabel29MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel29MouseClicked
         // TODO add your handling code here:
-        if (deleteExcel("centroDeInformacionExcel.xlsx")) {
-            if(prop.guardar("centroDeInformacionExcel", "no", periodo.getAbsolutePath())){
-                System.out.println("actualizado");
-                cargarCapturas();   
+        int resp = JOptionPane.showConfirmDialog(null, "¿Deseas eliminar el excel de Centro de Informacion?", "Archivos Excel", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        if (resp == 0) {
+            if (deleteExcel("centroDeInformacionExcel.xlsx")) {
+                if (prop.guardar("centroDeInformacionExcel", "no", periodo.getAbsolutePath())) {
+                    System.out.println("actualizado");
+                    cargarCapturas();
+                }
             }
         }
+
     }//GEN-LAST:event_jLabel29MouseClicked
+
+    private void jLabel28MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel28MouseClicked
+        // TODO add your handling code here:
+        int resp = JOptionPane.showConfirmDialog(null, "¿Deseas eliminar el excel de Coordinacion de Carreras?", "Archivos Excel", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        if (resp == 0) {
+            if (deleteExcel("coordinacionDeCarrerasExcel.xlsx")) {
+                if (prop.guardar("coordinacionDeCarrerasExcel", "no", periodo.getAbsolutePath())) {
+                    System.out.println("actualizado");
+                    cargarCapturas();
+                }
+            }
+        }
+    }//GEN-LAST:event_jLabel28MouseClicked
+
+    private void jLabel31MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel31MouseClicked
+        // TODO add your handling code here:
+        int resp = JOptionPane.showConfirmDialog(null, "¿Deseas eliminar el excel de Recursos Financieros?", "Archivos Excel", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        if (resp == 0) {
+            if (deleteExcel("recursosFinancierosExcel.xlsx")) {
+                if (prop.guardar("recursosFinancierosExcel", "no", periodo.getAbsolutePath())) {
+                    System.out.println("actualizado");
+                    cargarCapturas();
+                }
+            }
+        }
+    }//GEN-LAST:event_jLabel31MouseClicked
+
+    private void jLabel30MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel30MouseClicked
+        // TODO add your handling code here:
+        int resp = JOptionPane.showConfirmDialog(null, "¿Deseas eliminar el excel de Centro de Computo?", "Archivos Excel", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        if (resp == 0) {
+            if (deleteExcel("computoExcel.xlsx")) {
+                if (prop.guardar("computoExcel", "no", periodo.getAbsolutePath())) {
+                    System.out.println("actualizado");
+                    cargarCapturas();
+                }
+            }
+        }
+    }//GEN-LAST:event_jLabel30MouseClicked
+
+    private void jLabel33MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel33MouseClicked
+        // TODO add your handling code here:
+        int resp = JOptionPane.showConfirmDialog(null, "¿Deseas eliminar el excel de Servicio Social?", "Archivos Excel", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        if (resp == 0) {
+            if (deleteExcel("servicioSocialExcel.xlsx")) {
+                if (prop.guardar("servicioSocialExcel", "no", periodo.getAbsolutePath())) {
+                    System.out.println("actualizado");
+                    cargarCapturas();
+                }
+            }
+        }
+    }//GEN-LAST:event_jLabel33MouseClicked
+
+    private void jLabel34MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel34MouseClicked
+        // TODO add your handling code here:
+        int resp = JOptionPane.showConfirmDialog(null, "¿Deseas eliminar el excel de Servicios Escolares?", "Archivos Excel", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        if (resp == 0) {
+            if (deleteExcel("serviciosEscolaresExcel.xlsx")) {
+                if (prop.guardar("serviciosEscolaresExcel", "no", periodo.getAbsolutePath())) {
+                    System.out.println("actualizado");
+                    cargarCapturas();
+                }
+            }
+        }
+    }//GEN-LAST:event_jLabel34MouseClicked
+
+    private void jLabel32MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel32MouseClicked
+        // TODO add your handling code here:
+        int resp = JOptionPane.showConfirmDialog(null, "¿Deseas eliminar el excel de Residencia Profesional?", "Archivos Excel", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        if (resp == 0) {
+            if (deleteExcel("residenciasProfesionalesExcel.xlsx")) {
+                if (prop.guardar("residenciasProfesionalesExcel", "no", periodo.getAbsolutePath())) {
+                    System.out.println("actualizado");
+                    cargarCapturas();
+                }
+            }
+        }
+    }//GEN-LAST:event_jLabel32MouseClicked
 
     /**
      * @param args the command line arguments
