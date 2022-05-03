@@ -12,6 +12,7 @@ import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import rojerusan.RSNotifyAnimated;
 
 public class CAPTURA extends javax.swing.JFrame {
 
@@ -455,6 +456,11 @@ public class CAPTURA extends javax.swing.JFrame {
         jPanel2.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, -1, -1));
 
         jLabel29.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/delete.png"))); // NOI18N
+        jLabel29.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel29MouseClicked(evt);
+            }
+        });
         jPanel2.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, -1, -1));
 
         jLabel30.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/delete.png"))); // NOI18N
@@ -502,6 +508,7 @@ public class CAPTURA extends javax.swing.JFrame {
     }
 
     private void cargarCapturas() {
+        System.out.println("cargando capturas");
         boolean banderaReporte = true;
         String activo, iniciado, procesoTerminado;
         if (periodo.exists()) {
@@ -511,6 +518,7 @@ public class CAPTURA extends javax.swing.JFrame {
                 iniciado = prop.acceder("centroDeInformacionExcel", periodo.getAbsolutePath());
                 if (iniciado.equalsIgnoreCase("si")) {
                     jLabel2.setVisible(false);
+                    jLabel29.setVisible(true);
                     jPanel4.setVisible(true);
                     jLabel21.setVisible(true);
                     procesoTerminado = prop.acceder("centroDeInformacionExcelTerminado", periodo.getAbsolutePath());
@@ -521,12 +529,16 @@ public class CAPTURA extends javax.swing.JFrame {
 
                     }
                 } else {
-
+                    jLabel2.setVisible(true);
+                    jLabel29.setVisible(false);
+                    jPanel4.setVisible(false);
+                    jLabel21.setVisible(false);
                     banderaReporte = false;
 
                 }
             } else {
                 jLabel2.setVisible(false);
+                jLabel29.setVisible(false);
             }
 
             //
@@ -534,8 +546,9 @@ public class CAPTURA extends javax.swing.JFrame {
             if (activo.equals("si")) {
                 jCheckBox1.setSelected(true);
                 iniciado = prop.acceder("coordinacionDeCarrerasExcel", periodo.getAbsolutePath());
-                if (iniciado.equalsIgnoreCase("si")) {                    
+                if (iniciado.equalsIgnoreCase("si")) {
                     jLabel1.setVisible(false);
+                    jLabel28.setVisible(true);
                     jPanel3.setVisible(true);
                     jLabel20.setVisible(true);
                     procesoTerminado = prop.acceder("coordinacionDeCarrerasExcelTerminado", periodo.getAbsolutePath());
@@ -545,10 +558,15 @@ public class CAPTURA extends javax.swing.JFrame {
                         banderaReporte = false;
                     }
                 } else {
+                    jLabel1.setVisible(true);
+                    jLabel28.setVisible(false);
+                    jPanel3.setVisible(false);
+                    jLabel20.setVisible(false);
                     banderaReporte = false;
                 }
-            }else{
+            } else {
                 jLabel1.setVisible(false);
+                jLabel28.setVisible(false);
             }
             //
             activo = prop.acceder("recursosFinancierosActivo", periodo.getAbsolutePath());
@@ -557,6 +575,7 @@ public class CAPTURA extends javax.swing.JFrame {
                 iniciado = prop.acceder("recursosFinancierosExcel", periodo.getAbsolutePath());
                 if (iniciado.equalsIgnoreCase("si")) {
                     jLabel6.setVisible(false);
+                    jLabel31.setVisible(true);
                     jPanel8.setVisible(true);
                     jLabel23.setVisible(true);
                     procesoTerminado = prop.acceder("recursosFinancierosExcelTerminado", periodo.getAbsolutePath());
@@ -566,10 +585,15 @@ public class CAPTURA extends javax.swing.JFrame {
                         banderaReporte = false;
                     }
                 } else {
+                    jLabel6.setVisible(true);
+                    jLabel31.setVisible(false);
+                    jPanel8.setVisible(false);
+                    jLabel23.setVisible(false);
                     banderaReporte = false;
                 }
-            }else{
+            } else {
                 jLabel6.setVisible(false);
+                jLabel31.setVisible(false);
             }
             //
             activo = prop.acceder("computoActivo", periodo.getAbsolutePath());
@@ -578,6 +602,7 @@ public class CAPTURA extends javax.swing.JFrame {
                 iniciado = prop.acceder("computoExcel", periodo.getAbsolutePath());
                 if (iniciado.equalsIgnoreCase("si")) {
                     jLabel3.setVisible(false);
+                    jLabel30.setVisible(true);
                     jPanel7.setVisible(true);
                     jLabel22.setVisible(true);
                     procesoTerminado = prop.acceder("computoExcelTerminado", periodo.getAbsolutePath());
@@ -587,10 +612,15 @@ public class CAPTURA extends javax.swing.JFrame {
                         banderaReporte = false;
                     }
                 } else {
+                    jLabel3.setVisible(true);
+                    jLabel30.setVisible(false);
+                    jPanel7.setVisible(false);
+                    jLabel22.setVisible(false);
                     banderaReporte = false;
                 }
-            }else{
+            } else {
                 jLabel3.setVisible(false);
+                jLabel30.setVisible(false);
             }
             //
             activo = prop.acceder("servicioSocialActivo", periodo.getAbsolutePath());
@@ -599,6 +629,7 @@ public class CAPTURA extends javax.swing.JFrame {
                 iniciado = prop.acceder("servicioSocialExcel", periodo.getAbsolutePath());
                 if (iniciado.equalsIgnoreCase("si")) {
                     jLabel10.setEnabled(false);
+                    jLabel33.setVisible(true);
                     jPanel11.setVisible(true);
                     jLabel26.setVisible(true);
                     procesoTerminado = prop.acceder("servicioSocialExcelTerminado", periodo.getAbsolutePath());
@@ -608,18 +639,24 @@ public class CAPTURA extends javax.swing.JFrame {
                         banderaReporte = false;
                     }
                 } else {
+                    jLabel10.setEnabled(true);
+                    jLabel33.setVisible(false);
+                    jPanel11.setVisible(false);
+                    jLabel26.setVisible(false);
                     banderaReporte = false;
                 }
-            }else{
+            } else {
                 jLabel10.setVisible(false);
+                jLabel33.setVisible(false);
             }
             //
             activo = prop.acceder("serviciosEscolaresActivo", periodo.getAbsolutePath());
             if (activo.equals("si")) {
                 jCheckBox9.setSelected(true);
                 iniciado = prop.acceder("serviciosEscolaresExcel", periodo.getAbsolutePath());
-                if (iniciado.equalsIgnoreCase("si")) {                    
+                if (iniciado.equalsIgnoreCase("si")) {
                     jLabel9.setEnabled(false);
+                    jLabel34.setVisible(true);
                     jPanel9.setVisible(true);
                     jLabel24.setVisible(true);
                     procesoTerminado = prop.acceder("serviciosEscolaresExcelTerminado", periodo.getAbsolutePath());
@@ -629,10 +666,15 @@ public class CAPTURA extends javax.swing.JFrame {
                         banderaReporte = false;
                     }
                 } else {
+                    jLabel9.setEnabled(true);
+                    jLabel34.setVisible(false);
+                    jPanel9.setVisible(false);
+                    jLabel24.setVisible(false);
                     banderaReporte = false;
                 }
-            }else{
+            } else {
                 jLabel9.setVisible(false);
+                jLabel34.setVisible(false);
             }
             //
             activo = prop.acceder("residenciaProfesionalActivo", periodo.getAbsolutePath());
@@ -640,7 +682,8 @@ public class CAPTURA extends javax.swing.JFrame {
                 jCheckBox8.setSelected(true);
                 iniciado = prop.acceder("residenciasProfesionalesExcel", periodo.getAbsolutePath());
                 if (iniciado.equalsIgnoreCase("si")) {
-                    jLabel8.setEnabled(false);
+                    jLabel8.setVisible(false);
+                    jLabel32.setVisible(true);
                     jPanel10.setVisible(true);
                     jLabel25.setVisible(true);
                     procesoTerminado = prop.acceder("residenciasProfesionalesExcelTerminado", periodo.getAbsolutePath());
@@ -650,10 +693,15 @@ public class CAPTURA extends javax.swing.JFrame {
                         banderaReporte = false;
                     }
                 } else {
+                    jLabel8.setVisible(true);
+                    jLabel32.setVisible(false);
+                    jPanel10.setVisible(false);
+                    jLabel25.setVisible(false);
                     banderaReporte = false;
                 }
-            }else{
+            } else {
                 jLabel8.setVisible(false);
+                jLabel32.setVisible(false);
             }
             //
             if (banderaReporte) {
@@ -698,7 +746,28 @@ public class CAPTURA extends javax.swing.JFrame {
         // TODO add your handling code here:
         jPanel5.setBackground(new Color(248, 248, 255));
     }//GEN-LAST:event_jLabel4MouseExited
-
+    private boolean deleteExcel(String name) {
+         File  file  = new File(ruta + "Periodos/" + carpeta +"/" + name);
+         System.out.println(ruta + "Periodos/" + carpeta +"/" + name);
+         if(file.delete()){
+             JOptionPane.showMessageDialog(null, "Eliminando, por favor espere...");
+             try {
+                 Thread.sleep(3000);
+             } catch (Exception e) {
+             }
+             new rojerusan.RSNotifyAnimated("Listo!", "El archivo fue eliminado con exito.", 4,
+                            RSNotifyAnimated.PositionNotify.BottomRight,
+                            RSNotifyAnimated.AnimationNotify.BottomUp,
+                            RSNotifyAnimated.TypeNotify.SUCCESS).setVisible(true);
+            return true;
+         }else{
+             new rojerusan.RSNotifyAnimated("ERROR!", "El archivo no se pudo eliminar del sistema.", 4,
+                            RSNotifyAnimated.PositionNotify.BottomRight,
+                            RSNotifyAnimated.AnimationNotify.BottomUp,
+                            RSNotifyAnimated.TypeNotify.ERROR).setVisible(true);
+             return false;
+         }
+    }
     private boolean cargarExcel(String name) {
         JFileChooser jf = new JFileChooser();
         FileNameExtensionFilter filter = new FileNameExtensionFilter("Archivos Excel", "xlsx", "csv");
@@ -709,7 +778,6 @@ public class CAPTURA extends javax.swing.JFrame {
         if (archivo != null) {
             if (result != JFileChooser.CANCEL_OPTION) {
                 try {
-                    //String Dest2 = System.getProperty("user.dir") + "/src/Documentos/Periodos/" + carpeta + "/" + archivo.getName();
                     String Dest2 = System.getProperty("user.dir") + "/src/Documentos/Periodos/" + carpeta + "/" + name;
                     System.out.println(Dest2);
                     Path Destino = Paths.get(Dest2);
@@ -718,9 +786,16 @@ public class CAPTURA extends javax.swing.JFrame {
                     Path origen = Paths.get(orig);
 
                     Files.copy(origen, Destino, REPLACE_EXISTING);
-                    JOptionPane.showMessageDialog(null, "El archivo fue añadido con exito");
+                    new rojerusan.RSNotifyAnimated("Listo!", "El archivo fue añadido con exito.", 4,
+                            RSNotifyAnimated.PositionNotify.BottomRight,
+                            RSNotifyAnimated.AnimationNotify.BottomUp,
+                            RSNotifyAnimated.TypeNotify.SUCCESS).setVisible(true);
                     return true;
                 } catch (IOException e) {
+                    new rojerusan.RSNotifyAnimated("ERROR!", "El archivo no se pudo agregar al sistema.", 4,
+                            RSNotifyAnimated.PositionNotify.BottomRight,
+                            RSNotifyAnimated.AnimationNotify.BottomUp,
+                            RSNotifyAnimated.TypeNotify.ERROR).setVisible(true);
                     System.out.println(e);
                     return false;
                 }
@@ -729,8 +804,6 @@ public class CAPTURA extends javax.swing.JFrame {
         return false;
     }
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
-        // TODO add your handling code here:
-        //comprueba si ya hay un excel en la carpeta, sino muestra mensaje
         if (cargarExcel("centroDeInformacionExcel.xlsx")) {
             prop.guardar("centroDeInformacionExcel", "si", periodo.getAbsolutePath());
             cargarCapturas();
@@ -831,14 +904,27 @@ public class CAPTURA extends javax.swing.JFrame {
 
     private void jLabel19MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel19MouseClicked
         // TODO add your handling code here:
-        OpcServicio obj = new OpcServicio();
+        MENU obj = new MENU();
         obj.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jLabel19MouseClicked
 
     private void jLabel27MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel27MouseClicked
         // TODO add your handling code here:
+        OpcServicio obj = new OpcServicio();
+        obj.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jLabel27MouseClicked
+
+    private void jLabel29MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel29MouseClicked
+        // TODO add your handling code here:
+        if (deleteExcel("centroDeInformacionExcel.xlsx")) {
+            if(prop.guardar("centroDeInformacionExcel", "no", periodo.getAbsolutePath())){
+                System.out.println("actualizado");
+                cargarCapturas();   
+            }
+        }
+    }//GEN-LAST:event_jLabel29MouseClicked
 
     /**
      * @param args the command line arguments

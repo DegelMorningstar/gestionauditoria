@@ -5,10 +5,12 @@
  */
 package Vista;
 
+import controlador.Propiedades;
 import java.awt.Color;
 import java.io.IOException;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import rojerusan.RSNotifyAnimated;
 
 /**
  *
@@ -19,12 +21,16 @@ public class MENU extends javax.swing.JFrame {
     /**
      * Creates new form MENU
      */
-    int xmouse,ymouse;
+    int xmouse, ymouse;
+    Propiedades prop = new Propiedades();
+    String ruta = "src/Documentos/config.properties";
+
     public MENU() {
         initComponents();
         this.setLocationRelativeTo(null);
         ImageIcon iconoT = new ImageIcon("src/Archivos/favicon.png");
         this.setIconImage(iconoT.getImage());
+        setAlet();
     }
 
     /**
@@ -379,6 +385,22 @@ public class MENU extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void setAlet() {
+        String actual = prop.acceder("actual", ruta);
+        if (actual.equals("no")) {
+            System.out.println("no");
+            new rojerusan.RSNotifyAnimated("Bienvenido(a)", "Actualmente no hay ningun periodo activo.", 7, 
+                    RSNotifyAnimated.PositionNotify.BottomRight,
+                    RSNotifyAnimated.AnimationNotify.BottomUp,
+                    RSNotifyAnimated.TypeNotify.SUCCESS).setVisible(true);
+        } else {
+            System.out.println("si");
+            new rojerusan.RSNotifyAnimated("Bienvenido(a)", "Actualmente hay un periodo activo.", 7, 
+                    RSNotifyAnimated.PositionNotify.BottomRight,
+                    RSNotifyAnimated.AnimationNotify.BottomUp,
+                    RSNotifyAnimated.TypeNotify.INFORMATION).setVisible(true);
+        }
+    }
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
         // TODO add your handling code here:
         this.setExtendedState(ICONIFIED);
@@ -400,42 +422,42 @@ public class MENU extends javax.swing.JFrame {
 
     private void jLabel9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseClicked
         // TODO add your handling code here:
-        REPORTES obj= new REPORTES();
+        REPORTES obj = new REPORTES();
         obj.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jLabel9MouseClicked
 
     private void jLabel13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel13MouseClicked
         // TODO add your handling code here:
-        REPORTES obj= new REPORTES();
+        REPORTES obj = new REPORTES();
         obj.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jLabel13MouseClicked
 
     private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
         // TODO add your handling code here:
-        AJUSTES obj= new AJUSTES();
+        AJUSTES obj = new AJUSTES();
         obj.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jLabel8MouseClicked
 
     private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
         // TODO add your handling code here:
-        PERIODO obj= new PERIODO();
+        PERIODO obj = new PERIODO();
         obj.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jLabel7MouseClicked
 
     private void jLabel10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseClicked
         // TODO add your handling code here:
-        PERIODO obj= new PERIODO();
+        PERIODO obj = new PERIODO();
         obj.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jLabel10MouseClicked
 
     private void jLabel11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel11MouseClicked
         // TODO add your handling code here:
-        AJUSTES obj= new AJUSTES();
+        AJUSTES obj = new AJUSTES();
         obj.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jLabel11MouseClicked
@@ -461,7 +483,7 @@ public class MENU extends javax.swing.JFrame {
 
     private void jLabel4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseExited
         // TODO add your handling code here:
-        jPanel5.setBackground(new Color(248,248,255));
+        jPanel5.setBackground(new Color(248, 248, 255));
     }//GEN-LAST:event_jLabel4MouseExited
 
     private void jLabel5MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseEntered
@@ -471,7 +493,7 @@ public class MENU extends javax.swing.JFrame {
 
     private void jLabel5MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseExited
         // TODO add your handling code here:
-        jPanel6.setBackground(new Color(248,248,255));
+        jPanel6.setBackground(new Color(248, 248, 255));
     }//GEN-LAST:event_jLabel5MouseExited
 
     private void jPanel4MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MousePressed
@@ -482,50 +504,50 @@ public class MENU extends javax.swing.JFrame {
 
     private void jPanel4MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseDragged
         // TODO add your handling code here:
-        int x=evt.getXOnScreen();
-        int y=evt.getYOnScreen();
-        this.setLocation(x-xmouse,y-ymouse);
+        int x = evt.getXOnScreen();
+        int y = evt.getYOnScreen();
+        this.setLocation(x - xmouse, y - ymouse);
     }//GEN-LAST:event_jPanel4MouseDragged
 
     private void jLabel7MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseEntered
         // TODO add your handling code here:
-        
-        jLabel7.setForeground(new Color(103,123,134 ));
+
+        jLabel7.setForeground(new Color(103, 123, 134));
     }//GEN-LAST:event_jLabel7MouseEntered
 
     private void jLabel7MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseExited
         // TODO add your handling code here:
-        jLabel7.setForeground(new Color(248, 248, 255 ));
+        jLabel7.setForeground(new Color(248, 248, 255));
     }//GEN-LAST:event_jLabel7MouseExited
 
     private void jLabel8MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseEntered
         // TODO add your handling code here:
-        jLabel8.setForeground(new Color(103,123,134));
+        jLabel8.setForeground(new Color(103, 123, 134));
     }//GEN-LAST:event_jLabel8MouseEntered
 
     private void jLabel8MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseExited
         // TODO add your handling code here:
-        jLabel8.setForeground(new Color(248, 248, 255 ));
+        jLabel8.setForeground(new Color(248, 248, 255));
     }//GEN-LAST:event_jLabel8MouseExited
 
     private void jLabel6MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseEntered
         // TODO add your handling code here:
-        jLabel6.setForeground(new Color(103,123,134 ));
+        jLabel6.setForeground(new Color(103, 123, 134));
     }//GEN-LAST:event_jLabel6MouseEntered
 
     private void jLabel6MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseExited
         // TODO add your handling code here:
-        jLabel6.setForeground(new Color(248, 248, 255 ));
+        jLabel6.setForeground(new Color(248, 248, 255));
     }//GEN-LAST:event_jLabel6MouseExited
 
     private void jLabel9MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseEntered
         // TODO add your handling code here:
-        jLabel9.setForeground(new Color(103,123,134));
+        jLabel9.setForeground(new Color(103, 123, 134));
     }//GEN-LAST:event_jLabel9MouseEntered
 
     private void jLabel9MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseExited
         // TODO add your handling code here:
-        jLabel9.setForeground(new Color(248, 248, 255 ));
+        jLabel9.setForeground(new Color(248, 248, 255));
     }//GEN-LAST:event_jLabel9MouseExited
 
     /**
