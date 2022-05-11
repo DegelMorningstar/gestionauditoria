@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<preguntas>
+    <pregunta>
+        <numero>1</numero>
+        <preg>Me informa oportunamente sobre el horario de atención.</preg>
+    </pregunta>
+    <pregunta>
+        <numero>2</numero>
+        <preg>La información con la que cuenta me apoya en las asignaturas que curso.</preg>
+    </pregunta>
+    <pregunta>
+        <numero>3</numero>
+        <preg>Siempre encuentro por lo menos un ejemplar disponible de la bibliografía señalada en las asignaturas que curso.</preg>
+    </pregunta>
+    <pregunta>
+        <numero>4</numero>
+        <preg>La bibliografía de la que se dispone es actualizada.</preg>
+    </pregunta>
+    <pregunta>
+        <numero>5</numero>
+        <preg>Se me proporciona atención adecuada en caso de buscar determinado libro.</preg>
+    </pregunta>
+    <pregunta>
+        <numero>6</numero>
+        <preg>Me orientan adecuadamente para encontrar en caso de carencia, libros equivalentes al requerido.</preg>
+    </pregunta>
+    <pregunta>
+        <numero>7</numero>
+        <preg>Tienen disposición para atender cuando solicito su apoyo.</preg>
+    </pregunta>
+    <pregunta>
+        <numero>8</numero>
+        <preg>Me atienden en forma amable cuando solicito su apoyo.</preg>
+    </pregunta>
+    <pregunta>
+        <numero>9</numero>
+        <preg>Mantienen una relación atenta conmigo durante mi estancia.</preg>
+    </pregunta>
+</preguntas>

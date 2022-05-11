@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<preguntas>
+    <pregunta>
+        <numero>1</numero>
+        <preg>Me informa oportunamente sobre el horario de atención</preg>
+    </pregunta>
+    <pregunta>
+        <numero>2</numero>
+        <preg>Hay computadoras suficientes para realizar las prácticas de mis asignaturas</preg>
+    </pregunta>
+    <pregunta>
+        <numero>3</numero>
+        <preg>Me proporciona áreas específicas con servicios de internet para realizar tareas académicas</preg>
+    </pregunta>
+    <pregunta>
+        <numero>4</numero>
+        <preg>Me proporciona atención adecuada en el servico de internet</preg>
+    </pregunta>
+    <pregunta>
+        <numero>5</numero>
+        <preg>El laboratorio cuenta con el software requerido en mis asignaturas</preg>
+    </pregunta>
+    <pregunta>
+        <numero>6</numero>
+        <preg>Cuando se presentan fallas en el equipo, me ayudan a resolverlas</preg>
+    </pregunta>
+    <pregunta>
+        <numero>7</numero>
+        <preg>Cuando requiero un servicio, el personal me atiende de manera oportuna</preg>
+    </pregunta>
+    <pregunta>
+        <numero>8</numero>
+        <preg>El personal que me atiende en el laboratio es amable</preg>
+    </pregunta>
+    <pregunta>
+        <numero>9</numero>
+        <preg>La relación con el personal del laboratorio es respetuosa</preg>
+    </pregunta>
+</preguntas>

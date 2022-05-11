@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<preguntas>
+    <pregunta>
+        <numero>1</numero>
+        <preg>Me informa oportunamente sobre el horario de atención.</preg>
+    </pregunta>
+    <pregunta>
+        <numero>2</numero>
+        <preg>Me proporciona una lista actualizada de los costos de os diferentes trámites.</preg>
+    </pregunta>
+    <pregunta>
+        <numero>3</numero>
+        <preg>El tiempo de espera para pagar en la caja es aceptable.</preg>
+    </pregunta>
+    <pregunta>
+        <numero>4</numero>
+        <preg>El personal de Recursos Finacieros atiende las peticiones que le hago.</preg>
+    </pregunta>
+    <pregunta>
+        <numero>5</numero>
+        <preg>El personal de Recursos Finacieros siempre me cobra el concepto correcto.</preg>
+    </pregunta>
+    <pregunta>
+        <numero>6</numero>
+        <preg>Me proporcionan asesoría adecuada cuando desconozco qué o cuánto pagar.</preg>
+    </pregunta>
+    <pregunta>
+        <numero>7</numero>
+        <preg>Me atienden en forma oportuna cuando solicito su servicio.</preg>
+    </pregunta>
+    <pregunta>
+        <numero>8</numero>
+        <preg>Me atienden en forma amable cuando solicito su servicio.</preg>
+    </pregunta>
+    <pregunta>
+        <numero>9</numero>
+        <preg>Mantienen una relación atenta conmigo durante todo el tiempo en que otorga el servicio.</preg>
+    </pregunta>
+</preguntas>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<preguntas>
+    <pregunta>
+        <numero>1</numero>
+        <preg>Me informa oportunamente sobre el horario de atención.</preg>
+    </pregunta>
+    <pregunta>
+        <numero>2</numero>
+        <preg>La oficina de Servicio Social me ofrece un catálogo de instituciones donde pueda realizarlo.</preg>
+    </pregunta>
+    <pregunta>
+        <numero>3</numero>
+        <preg>La oficina de Servicio Social me gestiona apoyos para desarrollar mis actividades.</preg>
+    </pregunta>
+    <pregunta>
+        <numero>4</numero>
+        <preg>Me proporcionan atención adecuada cuando realizo mis trámites.</preg>
+    </pregunta>
+    <pregunta>
+        <numero>5</numero>
+        <preg>Me apoyan adecuadamente en la búsqueda, en caso de no tener en donde hacerlo.</preg>
+    </pregunta>
+    <pregunta>
+        <numero>6</numero>
+        <preg>Me proporcionan asesoría para desarrollar en forma adecuada el Servicio Social.</preg>
+    </pregunta>
+    <pregunta>
+        <numero>7</numero>
+        <preg>Me atienden en forma inmediata al solicitar información.</preg>
+    </pregunta>
+    <pregunta>
+        <numero>8</numero>
+        <preg>Me atienden en forma amable al solicitar información al Servicio Social.</preg>
+    </pregunta>
+    <pregunta>
+        <numero>9</numero>
+        <preg>Mantiene una relación atenta conmigo durante toda mi estancia en su oficina.</preg>
+    </pregunta>
+</preguntas>

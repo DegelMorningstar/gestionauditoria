@@ -429,7 +429,7 @@ public class LOGIN extends javax.swing.JFrame {
                 try {
                     UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
                 } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
-                    Logger.getLogger(AJUSTES.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(LOGIN.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 
 

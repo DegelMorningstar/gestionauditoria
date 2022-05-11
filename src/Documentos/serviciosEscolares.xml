@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<preguntas>
+    <pregunta>
+        <numero>1</numero>
+        <preg>El Departamento de Servicios Escolares tiene un horario adecuado de atención.</preg>
+    </pregunta>
+    <pregunta>
+        <numero>2</numero>
+        <preg>El tiempo de respuesta a mis solicitudes es rápido.</preg>
+    </pregunta>
+    <pregunta>
+        <numero>3</numero>
+        <preg>El tiempo de espera para ser atendido en ventanilla es adecuado.</preg>
+    </pregunta>
+    <pregunta>
+        <numero>4</numero>
+        <preg>Me proporciona atención adecuada en el servicio.</preg>
+    </pregunta>
+    <pregunta>
+        <numero>5</numero>
+        <preg>Me proporciona información adecuada en caso de que se solicite.</preg>
+    </pregunta>
+    <pregunta>
+        <numero>6</numero>
+        <preg>Me orientan adecuadamente cuando se lo solicito.</preg>
+    </pregunta>
+    <pregunta>
+        <numero>7</numero>
+        <preg>Me atienden en forma oportuna cuando solicito un servicio.</preg>
+    </pregunta>
+    <pregunta>
+        <numero>8</numero>
+        <preg>Me atienden en forma amable cuando solicito su apoyo.</preg>
+    </pregunta>
+    <pregunta>
+        <numero>9</numero>
+        <preg>Mantienen una relación atenta conmigo durante toda mi estancia en el departamento.</preg>
+    </pregunta>
+</preguntas>

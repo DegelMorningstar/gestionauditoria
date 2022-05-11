@@ -96,6 +96,13 @@ public class CAPTURA extends javax.swing.JFrame {
         jLabel32 = new javax.swing.JLabel();
         jLabel33 = new javax.swing.JLabel();
         jLabel34 = new javax.swing.JLabel();
+        jLabel35 = new javax.swing.JLabel();
+        jLabel36 = new javax.swing.JLabel();
+        jLabel37 = new javax.swing.JLabel();
+        jLabel38 = new javax.swing.JLabel();
+        jLabel39 = new javax.swing.JLabel();
+        jLabel40 = new javax.swing.JLabel();
+        jLabel41 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -308,25 +315,25 @@ public class CAPTURA extends javax.swing.JFrame {
         jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 600, -1, -1));
 
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/listo.png"))); // NOI18N
-        jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 210, -1, -1));
+        jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 210, -1, -1));
 
         jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/listo.png"))); // NOI18N
-        jPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 140, -1, -1));
+        jPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 140, -1, -1));
 
         jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/listo.png"))); // NOI18N
-        jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 80, -1, -1));
+        jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 80, -1, -1));
 
         jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/listo.png"))); // NOI18N
-        jPanel2.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 280, -1, -1));
+        jPanel2.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 280, -1, -1));
 
         jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/listo.png"))); // NOI18N
-        jPanel2.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 350, -1, -1));
+        jPanel2.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 350, -1, -1));
 
         jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/listo.png"))); // NOI18N
-        jPanel2.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 480, -1, -1));
+        jPanel2.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 480, -1, -1));
 
         jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/listo.png"))); // NOI18N
-        jPanel2.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 420, -1, -1));
+        jPanel2.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 420, -1, -1));
 
         jLabel19.setForeground(new java.awt.Color(0, 0, 0));
         jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/home.png"))); // NOI18N
@@ -508,6 +515,62 @@ public class CAPTURA extends javax.swing.JFrame {
         });
         jPanel2.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 420, -1, -1));
 
+        jLabel35.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/edit.png"))); // NOI18N
+        jLabel35.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel35MouseClicked(evt);
+            }
+        });
+        jPanel2.add(jLabel35, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 220, -1, -1));
+
+        jLabel36.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/edit.png"))); // NOI18N
+        jLabel36.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel36MouseClicked(evt);
+            }
+        });
+        jPanel2.add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 150, -1, -1));
+
+        jLabel37.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/edit.png"))); // NOI18N
+        jLabel37.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel37MouseClicked(evt);
+            }
+        });
+        jPanel2.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 90, -1, -1));
+
+        jLabel38.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/edit.png"))); // NOI18N
+        jLabel38.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel38MouseClicked(evt);
+            }
+        });
+        jPanel2.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 290, -1, -1));
+
+        jLabel39.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/edit.png"))); // NOI18N
+        jLabel39.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel39MouseClicked(evt);
+            }
+        });
+        jPanel2.add(jLabel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 360, -1, -1));
+
+        jLabel40.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/edit.png"))); // NOI18N
+        jLabel40.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel40MouseClicked(evt);
+            }
+        });
+        jPanel2.add(jLabel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 490, -1, -1));
+
+        jLabel41.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/edit.png"))); // NOI18N
+        jLabel41.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel41MouseClicked(evt);
+            }
+        });
+        jPanel2.add(jLabel41, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 430, -1, -1));
+
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 900, 640));
 
         pack();
@@ -551,6 +614,7 @@ public class CAPTURA extends javax.swing.JFrame {
                     jLabel29.setVisible(true);
                     jPanel4.setVisible(true);
                     jLabel21.setVisible(true);
+                    jLabel37.setVisible(false);
                     procesoTerminado = prop.acceder("centroDeInformacionExcelTerminado", periodo.getAbsolutePath());
                     if (procesoTerminado.equals("si")) {
                         jLabel14.setVisible(true);
@@ -563,12 +627,14 @@ public class CAPTURA extends javax.swing.JFrame {
                     jLabel29.setVisible(false);
                     jPanel4.setVisible(false);
                     jLabel21.setVisible(false);
+                    jLabel37.setVisible(true);
                     banderaReporte = false;
 
                 }
             } else {
                 jLabel2.setVisible(false);
                 jLabel29.setVisible(false);
+                jLabel37.setVisible(false);
             }
 
             //
@@ -581,6 +647,7 @@ public class CAPTURA extends javax.swing.JFrame {
                     jLabel28.setVisible(true);
                     jPanel3.setVisible(true);
                     jLabel20.setVisible(true);
+                    jLabel36.setVisible(false);
                     procesoTerminado = prop.acceder("coordinacionDeCarrerasExcelTerminado", periodo.getAbsolutePath());
                     if (procesoTerminado.equals("si")) {
                         jLabel13.setVisible(true);
@@ -592,11 +659,13 @@ public class CAPTURA extends javax.swing.JFrame {
                     jLabel28.setVisible(false);
                     jPanel3.setVisible(false);
                     jLabel20.setVisible(false);
+                    jLabel36.setVisible(true);
                     banderaReporte = false;
                 }
             } else {
                 jLabel1.setVisible(false);
                 jLabel28.setVisible(false);
+                jLabel36.setVisible(false);
             }
             //
             activo = prop.acceder("recursosFinancierosActivo", periodo.getAbsolutePath());
@@ -608,6 +677,7 @@ public class CAPTURA extends javax.swing.JFrame {
                     jLabel31.setVisible(true);
                     jPanel8.setVisible(true);
                     jLabel23.setVisible(true);
+                    jLabel35.setVisible(false);
                     procesoTerminado = prop.acceder("recursosFinancierosExcelTerminado", periodo.getAbsolutePath());
                     if (procesoTerminado.equals("si")) {
                         jLabel12.setVisible(true);
@@ -619,11 +689,13 @@ public class CAPTURA extends javax.swing.JFrame {
                     jLabel31.setVisible(false);
                     jPanel8.setVisible(false);
                     jLabel23.setVisible(false);
+                    jLabel35.setVisible(true);
                     banderaReporte = false;
                 }
             } else {
                 jLabel6.setVisible(false);
                 jLabel31.setVisible(false);
+                jLabel35.setVisible(false);
             }
             //
             activo = prop.acceder("computoActivo", periodo.getAbsolutePath());
@@ -635,6 +707,7 @@ public class CAPTURA extends javax.swing.JFrame {
                     jLabel30.setVisible(true);
                     jPanel7.setVisible(true);
                     jLabel22.setVisible(true);
+                    jLabel38.setVisible(false);
                     procesoTerminado = prop.acceder("computoExcelTerminado", periodo.getAbsolutePath());
                     if (procesoTerminado.equals("si")) {
                         jLabel15.setVisible(true);
@@ -646,11 +719,13 @@ public class CAPTURA extends javax.swing.JFrame {
                     jLabel30.setVisible(false);
                     jPanel7.setVisible(false);
                     jLabel22.setVisible(false);
+                    jLabel38.setVisible(true);
                     banderaReporte = false;
                 }
             } else {
                 jLabel3.setVisible(false);
                 jLabel30.setVisible(false);
+                jLabel38.setVisible(false);
             }
             //
             activo = prop.acceder("servicioSocialActivo", periodo.getAbsolutePath());
@@ -662,6 +737,7 @@ public class CAPTURA extends javax.swing.JFrame {
                     jLabel33.setVisible(true);
                     jPanel11.setVisible(true);
                     jLabel26.setVisible(true);
+                    jLabel39.setVisible(false);
                     procesoTerminado = prop.acceder("servicioSocialExcelTerminado", periodo.getAbsolutePath());
                     if (procesoTerminado.equals("si")) {
                         jLabel16.setVisible(true);
@@ -673,11 +749,13 @@ public class CAPTURA extends javax.swing.JFrame {
                     jLabel33.setVisible(false);
                     jPanel11.setVisible(false);
                     jLabel26.setVisible(false);
+                    jLabel39.setVisible(true);
                     banderaReporte = false;
                 }
             } else {
                 jLabel10.setVisible(false);
                 jLabel33.setVisible(false);
+                jLabel39.setVisible(false);
             }
             //
             activo = prop.acceder("serviciosEscolaresActivo", periodo.getAbsolutePath());
@@ -689,6 +767,7 @@ public class CAPTURA extends javax.swing.JFrame {
                     jLabel34.setVisible(true);
                     jPanel9.setVisible(true);
                     jLabel24.setVisible(true);
+                    jLabel41.setVisible(false);
                     procesoTerminado = prop.acceder("serviciosEscolaresExcelTerminado", periodo.getAbsolutePath());
                     if (procesoTerminado.equals("si")) {
                         jLabel18.setVisible(true);
@@ -700,11 +779,13 @@ public class CAPTURA extends javax.swing.JFrame {
                     jLabel34.setVisible(false);
                     jPanel9.setVisible(false);
                     jLabel24.setVisible(false);
+                    jLabel41.setVisible(true);
                     banderaReporte = false;
                 }
             } else {
                 jLabel9.setVisible(false);
                 jLabel34.setVisible(false);
+                jLabel41.setVisible(false);
             }
             //
             activo = prop.acceder("residenciaProfesionalActivo", periodo.getAbsolutePath());
@@ -716,6 +797,7 @@ public class CAPTURA extends javax.swing.JFrame {
                     jLabel32.setVisible(true);
                     jPanel10.setVisible(true);
                     jLabel25.setVisible(true);
+                    jLabel40.setVisible(false);
                     procesoTerminado = prop.acceder("residenciasProfesionalesExcelTerminado", periodo.getAbsolutePath());
                     if (procesoTerminado.equals("si")) {
                         jLabel17.setVisible(true);
@@ -727,11 +809,13 @@ public class CAPTURA extends javax.swing.JFrame {
                     jLabel32.setVisible(false);
                     jPanel10.setVisible(false);
                     jLabel25.setVisible(false);
+                    jLabel40.setVisible(true);
                     banderaReporte = false;
                 }
             } else {
                 jLabel8.setVisible(false);
                 jLabel32.setVisible(false);
+                jLabel40.setVisible(false);
             }
             //
             if (banderaReporte) {
@@ -889,48 +973,48 @@ public class CAPTURA extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jLabel8MouseClicked
 
-    private void showAnswers(String excel, String title) {
+    private void showAnswers(String excel, String title, String clave) {
         String path = "src/Documentos/Periodos/" + carpeta;
         File localizacion = new File(path);
         String p = localizacion.getAbsolutePath() + "\\" + excel;
         System.out.println(p);
-        verRespuestas obj = new verRespuestas(p, title);
+        verRespuestas obj = new verRespuestas(p, title, clave);
         obj.setVisible(true);
         this.dispose();
     }
     private void jLabel21MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel21MouseClicked
         //centro de informacion
-        showAnswers("centroDeInformacionExcel.xlsx", "CENTRO DE INFORMACION");
+        showAnswers("centroDeInformacionExcel.xlsx", "CENTRO DE INFORMACION", "Centro");
     }//GEN-LAST:event_jLabel21MouseClicked
 
     private void jLabel20MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel20MouseClicked
         //coordinacion de carreras
-        showAnswers("coordinacionDeCarrerasExcel.xlsx", "COORDINACION DE CARRERAS");
+        showAnswers("coordinacionDeCarrerasExcel.xlsx", "COORDINACION DE CARRERAS","Coordinacion");
     }//GEN-LAST:event_jLabel20MouseClicked
 
     private void jLabel23MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel23MouseClicked
         //recursos financieros
-        showAnswers("recursosFinancierosExcel.xlsx", "RECURSOS FINANCIEROS");
+        showAnswers("recursosFinancierosExcel.xlsx", "RECURSOS FINANCIEROS","Financieros");
     }//GEN-LAST:event_jLabel23MouseClicked
 
     private void jLabel22MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel22MouseClicked
         // de computo
-        showAnswers("computoExcel.xlsx", "DE COMPUTO");
+        showAnswers("computoExcel.xlsx", "DE COMPUTO","Computo");
     }//GEN-LAST:event_jLabel22MouseClicked
 
     private void jLabel26MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel26MouseClicked
         //servicio social
-        showAnswers("servicioSocialExcel.xlsx", "SERVICIO SOCIAL");
+        showAnswers("servicioSocialExcel.xlsx", "SERVICIO SOCIAL","Social");
     }//GEN-LAST:event_jLabel26MouseClicked
 
     private void jLabel24MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel24MouseClicked
         // servicios escolares
-        showAnswers("serviciosEscolaresExcel.xlsx", "SERVICIOS ESCOLARES");
+        showAnswers("serviciosEscolaresExcel.xlsx", "SERVICIOS ESCOLARES","Escolares");
     }//GEN-LAST:event_jLabel24MouseClicked
 
     private void jLabel25MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel25MouseClicked
         // residencia
-        showAnswers("residenciasProfesionalesExcel.xlsx", "RESIDENCIAS PROFESIONALES");
+        showAnswers("residenciasProfesionalesExcel.xlsx", "RESIDENCIAS PROFESIONALES","Residencias");
     }//GEN-LAST:event_jLabel25MouseClicked
 
     private void jLabel19MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel19MouseClicked
@@ -1039,6 +1123,46 @@ public class CAPTURA extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jLabel32MouseClicked
 
+    private void editPreguntas(String area){
+        opcPregunta obj = new opcPregunta(area);
+        obj.setVisible(true);
+        this.dispose();
+    }
+    private void jLabel37MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel37MouseClicked
+        // TODO add your handling code here:
+        editPreguntas("Centro");
+    }//GEN-LAST:event_jLabel37MouseClicked
+
+    private void jLabel36MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel36MouseClicked
+        // TODO add your handling code here:
+        editPreguntas("Coordinacion");
+    }//GEN-LAST:event_jLabel36MouseClicked
+
+    private void jLabel35MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel35MouseClicked
+        // TODO add your handling code here:
+        editPreguntas("Financieros");
+    }//GEN-LAST:event_jLabel35MouseClicked
+
+    private void jLabel38MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel38MouseClicked
+        // TODO add your handling code here:
+        editPreguntas("Computo");
+    }//GEN-LAST:event_jLabel38MouseClicked
+
+    private void jLabel39MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel39MouseClicked
+        // TODO add your handling code here:
+        editPreguntas("Social");
+    }//GEN-LAST:event_jLabel39MouseClicked
+
+    private void jLabel41MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel41MouseClicked
+        // TODO add your handling code here:
+        editPreguntas("Escolares");
+    }//GEN-LAST:event_jLabel41MouseClicked
+
+    private void jLabel40MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel40MouseClicked
+        // TODO add your handling code here:
+        editPreguntas("Residencias");
+    }//GEN-LAST:event_jLabel40MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -1110,7 +1234,14 @@ public class CAPTURA extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel34;
+    private javax.swing.JLabel jLabel35;
+    private javax.swing.JLabel jLabel36;
+    private javax.swing.JLabel jLabel37;
+    private javax.swing.JLabel jLabel38;
+    private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel40;
+    private javax.swing.JLabel jLabel41;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;

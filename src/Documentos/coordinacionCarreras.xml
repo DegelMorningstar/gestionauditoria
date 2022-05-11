@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<preguntas>
+    <pregunta>
+        <numero>1</numero>
+        <preg>Da a concocer adecuadamente el horario de atención.</preg>
+    </pregunta>
+    <pregunta>
+        <numero>2</numero>
+        <preg>Me proporciona información necesaria para el manejo de mi retícula de carrera</preg>
+    </pregunta>
+    <pregunta>
+        <numero>3</numero>
+        <preg>Me da orientación adecuada cuando requiero realizar trámites en la institución.</preg>
+    </pregunta>
+    <pregunta>
+        <numero>4</numero>
+        <preg>Me orienta acerca de desarrollo del plan de estudios de la carrera.</preg>
+    </pregunta>
+    <pregunta>
+        <numero>5</numero>
+        <preg>Me da información necesaria para realizar las Residencias Profesionales.</preg>
+    </pregunta>
+    <pregunta>
+        <numero>6</numero>
+        <preg>Me proporciona información sobre el proceso para la reinscripción de estudiantes.</preg>
+    </pregunta>
+    <pregunta>
+        <numero>7</numero>
+        <preg>Me orienten para resolver situaciones de tipo académico.</preg>
+    </pregunta>
+    <pregunta>
+        <numero>8</numero>
+        <preg>Me dan la orientación necesaria para la realización de trámites de titulación.</preg>
+    </pregunta>
+    <pregunta>
+        <numero>9</numero>
+        <preg>Me proporciona información sobre el calendario escolar.</preg>
+    </pregunta>
+</preguntas>

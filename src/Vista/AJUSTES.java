@@ -15,6 +15,7 @@ import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import rojerusan.RSNotifyAnimated;
 
 public class AJUSTES extends javax.swing.JFrame {
 
@@ -768,7 +769,10 @@ public class AJUSTES extends javax.swing.JFrame {
                 }
 
                 if (mensaje) {
-                    JOptionPane.showMessageDialog(null, "Se ha guardado con exito los valores.", "Ajustes Generales del Documento.", JOptionPane.INFORMATION_MESSAGE);
+                    new rojerusan.RSNotifyAnimated("Ajustes Generales del Documento", "Se han guardado con exito los valores.", 7, 
+                    RSNotifyAnimated.PositionNotify.BottomRight,
+                    RSNotifyAnimated.AnimationNotify.BottomUp,
+                    RSNotifyAnimated.TypeNotify.SUCCESS).setVisible(true);
                 } else {
                     JOptionPane.showMessageDialog(null, "ERROR: No se han guardado los cambios.", "Ajustes Generales del Documento.", JOptionPane.ERROR_MESSAGE);
                 }
@@ -824,6 +828,10 @@ public class AJUSTES extends javax.swing.JFrame {
                 Icon icono = new ImageIcon(imagen.getImage().getScaledInstance(logo.getWidth(), logo.getHeight(), logo.getWidth()));
                 logo.setIcon(icono);
                 nuevaImagen = true;
+                new rojerusan.RSNotifyAnimated("Ajustes Generales del Documento", "Se ha actualizado el logotipo.", 7, 
+                    RSNotifyAnimated.PositionNotify.BottomRight,
+                    RSNotifyAnimated.AnimationNotify.BottomUp,
+                    RSNotifyAnimated.TypeNotify.SUCCESS).setVisible(true);
             }
 
         }

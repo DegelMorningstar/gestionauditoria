@@ -3,6 +3,7 @@ package Vista;
 import Modelo.Carrera;
 import controlador.LectorExcel;
 import controlador.Propiedades;
+import controlador.RandomValues;
 import controlador.XmlActions;
 import java.io.File;
 import java.util.ArrayList;
@@ -18,19 +19,23 @@ public class verRespuestas extends javax.swing.JFrame {
     LectorExcel Lector = new LectorExcel();
     List cellData = new ArrayList();
     private String area;
+    private String clave;
 
     List<Carrera> carreras = new ArrayList();
     int tam = 0;
     String rutaCarreras = "src/Documentos/carreras.xml";
     String rutaMuestra = "src/Documentos/muestra.properties";
     String ruta = "src/documentos/";
+    File periodo;
 
     XmlActions xml = new XmlActions();
     Propiedades prop = new Propiedades();
 
-    public verRespuestas(String name, String area) {
+    public verRespuestas(String name, String area, String clave) {
         initComponents();
         this.area = area;
+        this.clave = clave;
+
         this.setLocationRelativeTo(null);
         this.setTitle(area);
         jLabel1.setText(area);
@@ -45,6 +50,8 @@ public class verRespuestas extends javax.swing.JFrame {
         llenarCarreras();
 
         carpeta = prop.acceder("archivoActual", ruta + "config.properties");
+
+        System.out.println(clave);
     }
 
     @SuppressWarnings("unchecked")
@@ -185,29 +192,50 @@ public class verRespuestas extends javax.swing.JFrame {
 
     private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
         if (banderafiltrado) {
-            String muestra = prop.acceder("muestra" + jComboBox1.getSelectedItem().toString().trim(), rutaMuestra);
-            if (muestra != null) {
-                float rows = jTable1.getRowCount();
-                float m = Float.parseFloat(muestra);
-                if(rows>=m){
-                    JOptionPane.showMessageDialog(null, "La muestra cumple los requisitos, deseas continuar?");
-                }else{
-                    JOptionPane.showMessageDialog(null, "La muestra de la carrera " + jComboBox1.getSelectedItem().toString().trim() + " no cumple con los requisitos\n "
-                            + "La muestra es: " + m +"\n"
-                                    + "Actualmente la carrera tiene: "+ rows+"\n"
-                                            + "Es necesario capturar "+(m-rows)+" encuestas");
+            String rutaPeriodoCarrera = ruta + "/Periodos/" + carpeta + "/" + jComboBox1.getSelectedItem().toString() + "/PeriodoCarrera.properties";
+            String iniciado = prop.acceder("iniciado" + clave, rutaPeriodoCarrera);
+            if (iniciado.equals("no")) {
+                String muestra = prop.acceder("muestra" + jComboBox1.getSelectedItem().toString().trim(), rutaMuestra);
+                if (muestra != null) {
+                    float rows = jTable1.getRowCount();
+                    float m = Float.parseFloat(muestra);
+                    if (rows >= m) {
+                        int resp = JOptionPane.showConfirmDialog(null, "La muestra cumple con los requisitos\n¿Deseas aplicar la muestra?", jComboBox1.getSelectedItem().toString(), JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+                        if (resp == 0) {
+                            if (prop.guardar("iniciado" + clave, "si", rutaPeriodoCarrera)) {
+                                guardarRespuestas(m);
+                            }
+                        }
+                    } else {
+                        JOptionPane.showMessageDialog(null, "La muestra de la carrera " + jComboBox1.getSelectedItem().toString().trim() + " no cumple con los requisitos\n "
+                                + "La muestra es: " + m + "\n"
+                                + "Actualmente la carrera tiene: " + rows + "\n"
+                                + "Es necesario capturar " + (m - rows) + " encuestas");
+                    }
+                    JOptionPane.showMessageDialog(null, "La muestra de la carrera " + jComboBox1.getSelectedItem().toString().trim() + " es: " + muestra);
+
+                } else {
+                    JOptionPane.showMessageDialog(null, "Aun no has registrado la muestra para esta carrera, por favor ve a la generacion de muestra.");
                 }
-                JOptionPane.showMessageDialog(null, "La muestra de la carrera " + jComboBox1.getSelectedItem().toString().trim() + " es: " + muestra);
-                
             } else {
-                JOptionPane.showMessageDialog(null, "Aun no has registrado la muestra para esta carrera, por favor ve a la generacion de muestra.");
+                JOptionPane.showMessageDialog(null, "Ya has registrado la muestra para esta carrera.");
             }
+
         } else {
-            JOptionPane.showMessageDialog(null, "Es necesario seleccionar una carrera para conocer la muestra.");
+            JOptionPane.showMessageDialog(null, "Es necesario seleccionar y filtrar una carrera para conocer la muestra.");
         }
 
 
     }//GEN-LAST:event_jButton4MouseClicked
+    private void guardarRespuestas(float m) {
+        int limit = jTable1.getRowCount();
+        int aux = 0;
+        RandomValues obj = new RandomValues();
+        ArrayList<Integer> index = new ArrayList<>();
+        index = obj.getRandomList(limit);
+        //while(aux<m){  
+        //}
+    }
     private void llenarCarreras() {
         jComboBox1.removeAll();
         for (int i = 0; i < tam; i++) {
@@ -286,7 +314,7 @@ public class verRespuestas extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new verRespuestas("", "").setVisible(true);
+                new verRespuestas("", "", "").setVisible(true);
             }
         });
     }
@@ -305,4 +333,6 @@ public class verRespuestas extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
+
+    
 }

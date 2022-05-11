@@ -151,6 +151,11 @@ public class OpcCarrera extends javax.swing.JFrame {
         jButton3.setBackground(new java.awt.Color(56, 103, 214));
         jButton3.setForeground(new java.awt.Color(248, 248, 255));
         jButton3.setText("ELIMINAR");
+        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton3MouseClicked(evt);
+            }
+        });
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -284,6 +289,10 @@ public class OpcCarrera extends javax.swing.JFrame {
             System.out.println("se guardo");
         }
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton3MouseClicked
 
     /**
      * @param args the command line arguments

@@ -9,10 +9,6 @@ import Modelo.Carrera;
 import controlador.Propiedades;
 import controlador.XmlActions;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.nio.channels.FileChannel;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -141,25 +137,21 @@ public class OpcMuestra extends javax.swing.JFrame {
         });
         jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 220, -1, -1));
 
-        jButton3.setBackground(new java.awt.Color(0, 53, 153));
-        jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setText("GUARDAR MUESTRA");
+        jButton3.setText("Salir");
         jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton3MouseClicked(evt);
             }
         });
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(433, 466, 301, -1));
+        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 420, 230, 50));
 
-        jButton4.setBackground(new java.awt.Color(0, 53, 153));
-        jButton4.setForeground(new java.awt.Color(255, 255, 255));
-        jButton4.setText("SALIR");
+        jButton4.setText("guardar");
         jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton4MouseClicked(evt);
             }
         });
-        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(88, 466, 301, -1));
+        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 420, 250, 50));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -216,6 +208,13 @@ public class OpcMuestra extends javax.swing.JFrame {
 
     private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
         // TODO add your handling code here:
+        MUESTRA obj = new MUESTRA();
+        obj.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton3MouseClicked
+
+    private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
+        // TODO add your handling code here:
         if (flag && !jTextField1.getText().toString().equalsIgnoreCase("")) {
             if (!jTextField2.getText().toString().equalsIgnoreCase("")
                     && !jTextField3.getText().toString().equalsIgnoreCase("")
@@ -242,13 +241,6 @@ public class OpcMuestra extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(null, "No puedes dejar el total de alumnos en blanco.");
         }
-    }//GEN-LAST:event_jButton3MouseClicked
-
-    private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
-        // TODO add your handling code here:
-        MUESTRA obj = new MUESTRA();
-        obj.setVisible(true);
-        this.dispose();
     }//GEN-LAST:event_jButton4MouseClicked
 
     /**
