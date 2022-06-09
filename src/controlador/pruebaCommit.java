@@ -5,10 +5,16 @@
  */
 package controlador;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Yael_
  */
 public class pruebaCommit {
     
+
+    public static void main(String[] args) {
+        JOptionPane.showMessageDialog(null, "Hoa Mundo kkkkkkkkkkk");
+    }
 }
