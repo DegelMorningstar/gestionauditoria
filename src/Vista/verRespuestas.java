@@ -1,31 +1,43 @@
 package Vista;
 
 import Modelo.Carrera;
+import Modelo.Encuesta;
+import Modelo.Pregunta;
+import Modelo.Respuesta;
 import controlador.LectorExcel;
 import controlador.Propiedades;
 import controlador.RandomValues;
 import controlador.XmlActions;
+import java.awt.event.ItemEvent;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.scene.control.TextField;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import rojerusan.RSNotifyAnimated;
 
 public class verRespuestas extends javax.swing.JFrame {
 
-    boolean banderafiltrado = false;
-    String carpeta = "";
+    private boolean banderafiltrado = false;
+    private String carpeta = "";
+    private String area, clave, archivo, comentarios = "";
 
     LectorExcel Lector = new LectorExcel();
     List cellData = new ArrayList();
-    private String area;
-    private String clave;
 
     List<Carrera> carreras = new ArrayList();
-    int tam = 0;
+    List<Pregunta> preguntas = new ArrayList();
+    List<Encuesta> encuestas = new ArrayList();
+
+    int tam = 0, tamPreguntas = 0;
+    String rutaXml = "src/Documentos/";
+    //String rutaDocs = "src/gestionauditoria/archivos/documentos/";
     String rutaCarreras = "src/Documentos/carreras.xml";
     String rutaMuestra = "src/Documentos/muestra.properties";
-    String ruta = "src/documentos/";
+    String ruta = "src/Documentos/";
     File periodo;
 
     XmlActions xml = new XmlActions();
@@ -35,6 +47,7 @@ public class verRespuestas extends javax.swing.JFrame {
         initComponents();
         this.area = area;
         this.clave = clave;
+        this.archivo = prop.acceder("archivo" + clave, ruta + "ajustesAreas.properties");
 
         this.setLocationRelativeTo(null);
         this.setTitle(area);
@@ -52,6 +65,7 @@ public class verRespuestas extends javax.swing.JFrame {
         carpeta = prop.acceder("archivoActual", ruta + "config.properties");
 
         System.out.println(clave);
+
     }
 
     @SuppressWarnings("unchecked")
@@ -67,7 +81,6 @@ public class verRespuestas extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
 
@@ -102,6 +115,11 @@ public class verRespuestas extends javax.swing.JFrame {
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 950, 430));
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecciona una carrera" }));
+        jComboBox1.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jComboBox1ItemStateChanged(evt);
+            }
+        });
         jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 550, 440, 40));
 
         jButton1.setText("COMENTARIOS");
@@ -121,14 +139,6 @@ public class verRespuestas extends javax.swing.JFrame {
         });
         jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 550, 280, 40));
 
-        jButton5.setText("FILTRAR");
-        jButton5.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton5MouseClicked(evt);
-            }
-        });
-        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 550, 180, 40));
-
         jButton6.setText("REGRESAR");
         jButton6.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -137,13 +147,13 @@ public class verRespuestas extends javax.swing.JFrame {
         });
         jPanel1.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 20, -1, -1));
 
-        jButton7.setText("LIMPIAR TABLA");
+        jButton7.setText("VER TODAS LAS CARRERAS");
         jButton7.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton7MouseClicked(evt);
             }
         });
-        jPanel1.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 20, -1, -1));
+        jPanel1.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 20, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -159,28 +169,13 @@ public class verRespuestas extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseClicked
-        // TODO add your handling code here:
-        if (!banderafiltrado) {
-            String carrera = jComboBox1.getSelectedItem().toString();
-            if (!carrera.equalsIgnoreCase("Selecciona una carrera")) {
-                banderafiltrado = true;
-                filtrar(carrera);
-            } else {
-                JOptionPane.showMessageDialog(null, "Aun no seleccionas ninguna carrera");
-            }
-        } else {
-            JOptionPane.showMessageDialog(null, "Para filtrar una carrera nueva necesitas limpiar la tabla primero");
-        }
-
-    }//GEN-LAST:event_jButton5MouseClicked
-
     private void jButton7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton7MouseClicked
         // TODO add your handling code here:
         DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
         modelo.setRowCount(0);
         llenarTabla();
         banderafiltrado = false;
+        jComboBox1.setSelectedItem(null);
     }//GEN-LAST:event_jButton7MouseClicked
 
     private void jButton6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MouseClicked
@@ -192,28 +187,29 @@ public class verRespuestas extends javax.swing.JFrame {
 
     private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
         if (banderafiltrado) {
-            String rutaPeriodoCarrera = ruta + "/Periodos/" + carpeta + "/" + jComboBox1.getSelectedItem().toString() + "/PeriodoCarrera.properties";
+            String carrera = jComboBox1.getSelectedItem().toString().trim();
+            String rutaPeriodoCarrera = ruta + "/Periodos/" + carpeta + "/" + carrera + "/PeriodoCarrera.properties";
             String iniciado = prop.acceder("iniciado" + clave, rutaPeriodoCarrera);
             if (iniciado.equals("no")) {
-                String muestra = prop.acceder("muestra" + jComboBox1.getSelectedItem().toString().trim(), rutaMuestra);
+                String muestra = prop.acceder("muestra" + carrera, rutaMuestra);
                 if (muestra != null) {
                     float rows = jTable1.getRowCount();
                     float m = Float.parseFloat(muestra);
                     if (rows >= m) {
-                        int resp = JOptionPane.showConfirmDialog(null, "La muestra cumple con los requisitos\n¿Deseas aplicar la muestra?", jComboBox1.getSelectedItem().toString(), JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+                        int resp = JOptionPane.showConfirmDialog(null, "La muestra cumple con los requisitos\n¿Deseas aplicar la muestra?", carrera, JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
                         if (resp == 0) {
-                            if (prop.guardar("iniciado" + clave, "si", rutaPeriodoCarrera)) {
-                                guardarRespuestas(m);
+                            if (guardarRespuestas(carrera, m)) {
+                                if (prop.guardar("iniciado" + clave, "si", rutaPeriodoCarrera)) {
+                                    JOptionPane.showMessageDialog(null, "La muestra de la carrera " + carrera + " es: " + muestra);
+                                }
                             }
                         }
                     } else {
-                        JOptionPane.showMessageDialog(null, "La muestra de la carrera " + jComboBox1.getSelectedItem().toString().trim() + " no cumple con los requisitos\n "
+                        JOptionPane.showMessageDialog(null, "La muestra de la carrera " + carrera + " no cumple con los requisitos\n "
                                 + "La muestra es: " + m + "\n"
                                 + "Actualmente la carrera tiene: " + rows + "\n"
                                 + "Es necesario capturar " + (m - rows) + " encuestas");
                     }
-                    JOptionPane.showMessageDialog(null, "La muestra de la carrera " + jComboBox1.getSelectedItem().toString().trim() + " es: " + muestra);
-
                 } else {
                     JOptionPane.showMessageDialog(null, "Aun no has registrado la muestra para esta carrera, por favor ve a la generacion de muestra.");
                 }
@@ -222,20 +218,90 @@ public class verRespuestas extends javax.swing.JFrame {
             }
 
         } else {
-            JOptionPane.showMessageDialog(null, "Es necesario seleccionar y filtrar una carrera para conocer la muestra.");
+            JOptionPane.showMessageDialog(null, "Es necesario seleccionar una carrera para conocer la muestra.");
         }
 
 
     }//GEN-LAST:event_jButton4MouseClicked
-    private void guardarRespuestas(float m) {
-        int limit = jTable1.getRowCount();
-        int aux = 0;
-        RandomValues obj = new RandomValues();
-        ArrayList<Integer> index = new ArrayList<>();
-        index = obj.getRandomList(limit);
-        //while(aux<m){  
-        //}
+
+    private void jComboBox1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox1ItemStateChanged
+
+        String item = (String) evt.getItem();
+        if (evt.getStateChange() == ItemEvent.SELECTED) {
+            if (!banderafiltrado) {
+                if (!item.equalsIgnoreCase("Selecciona una carrera")) {
+                    banderafiltrado = true;
+                    filtrar(item);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Aun no seleccionas ninguna carrera");
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Para filtrar una carrera nueva necesitas limpiar la tabla primero");
+            }
+        }
+        if (evt.getStateChange() == ItemEvent.DESELECTED) {
+            DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
+            modelo.setRowCount(0);
+            llenarTabla();
+            banderafiltrado = false;
+        }
+    }//GEN-LAST:event_jComboBox1ItemStateChanged
+    private boolean guardarRespuestas(String carrera, Float muestra) {
+        rutaXml = ruta + "Periodos/" + carpeta + "/" + carrera.trim() + "/" + archivo + "Encuestas.xml";
+        System.out.println("rutaXML: " + rutaXml);
+
+        String rutaPreguntas = ruta + archivo + ".xml";
+        preguntas = xml.loadPreguntasDataFromFile(new File(rutaPreguntas));
+        tamPreguntas = preguntas.size();
+
+        if (persistirRespuestas(muestra)) {
+            if (xml.saveEncuestasDataToFile(new File(rutaXml), encuestas)) {
+                new rojerusan.RSNotifyAnimated("COMPLETADO", "Se han guardado las respuestas correspondientes a " + carrera, 7,
+                        RSNotifyAnimated.PositionNotify.BottomRight,
+                        RSNotifyAnimated.AnimationNotify.BottomUp,
+                        RSNotifyAnimated.TypeNotify.SUCCESS).setVisible(true);
+                return true;
+            } else {
+                new rojerusan.RSNotifyAnimated("ERROR!", "Ocurrio un error al almacenar las respuestas de " + carrera, 7,
+                        RSNotifyAnimated.PositionNotify.BottomRight,
+                        RSNotifyAnimated.AnimationNotify.BottomUp,
+                        RSNotifyAnimated.TypeNotify.ERROR).setVisible(true);
+                return false;
+            }
+        }
+        return false;
     }
+
+    private boolean persistirRespuestas(Float muestra) {
+        RandomValues random = new RandomValues();
+        int limite = Math.round(muestra);
+        String aux;
+        int renglon, columna;
+        ArrayList<Integer> index = random.getRandomList(jTable1.getRowCount(), limite);
+        System.out.println("posiciones: " + index);
+        int pregunta = 1;
+        for (int i = 0; i < index.size(); i++) {
+            Encuesta enc = new Encuesta();
+            for (int j = 0; j < tamPreguntas; j++) {
+                renglon = index.get(i);
+                columna = 3 + j;
+                aux = (String) jTable1.getValueAt(renglon, columna);
+                System.out.println("value of: " + renglon + " " + columna + " is " + aux);
+                enc.addRespuesta(new Respuesta(String.valueOf(j), aux));
+            }
+            comentarios = (pregunta + i) + ".-" + jTable1.getValueAt(index.get(i), 12);
+            enc.setComentario(comentarios);
+            System.out.println(comentarios);
+            if (enc != null) {
+                encuestas.add(enc);
+            }
+            System.out.println("valores " + enc.toString());
+
+        }
+
+        return true;
+    }
+
     private void llenarCarreras() {
         jComboBox1.removeAll();
         for (int i = 0; i < tam; i++) {
@@ -324,7 +390,6 @@ public class verRespuestas extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JComboBox<String> jComboBox1;
@@ -334,5 +399,4 @@ public class verRespuestas extends javax.swing.JFrame {
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 
-    
 }

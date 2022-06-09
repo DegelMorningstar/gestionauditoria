@@ -14,19 +14,19 @@ import java.util.Stack;
  */
 public class RandomValues {
 
-    public ArrayList<Integer> getRandomList(int limit) {
+    public ArrayList<Integer> getRandomList(int limit, int muestra) {
         ArrayList<Integer> index = new ArrayList<>();
         int pos;
-        Stack< Integer> pCartas = new Stack< Integer>();
-        for (int i = 0; i < limit; i++) {
+        Stack< Integer> pRandom = new Stack< Integer>();
+        for (int i = 0; i < muestra; i++) {
             pos = (int) Math.floor(Math.random() * limit);
-            while (pCartas.contains(pos)) {
+            while (pRandom.contains(pos)) {
                 pos = (int) Math.floor(Math.random() * limit);
             }
-            pCartas.push(pos);
+            pRandom.push(pos);
         }
-        while (!pCartas.isEmpty()) {
-            index.add(pCartas.pop());
+        while (!pRandom.isEmpty()) {
+            index.add(pRandom.pop());
         }
         return index;
     }

@@ -39,5 +39,12 @@ public class Encuesta {
     public Respuesta getRespuesta(int index){
         return respuestas.get(index);
     }
+
+    @Override
+    public String toString() {
+        return "Encuesta{" + "respuestas=" + respuestas + ", comentario=" + comentario + '}';
+    }
+    
+    
     
 }

@@ -733,7 +733,7 @@ public class CAPTURA extends javax.swing.JFrame {
                 jCheckBox10.setSelected(true);
                 iniciado = prop.acceder("servicioSocialExcel", periodo.getAbsolutePath());
                 if (iniciado.equalsIgnoreCase("si")) {
-                    jLabel10.setEnabled(false);
+                    jLabel10.setVisible(false);
                     jLabel33.setVisible(true);
                     jPanel11.setVisible(true);
                     jLabel26.setVisible(true);
@@ -745,7 +745,7 @@ public class CAPTURA extends javax.swing.JFrame {
                         banderaReporte = false;
                     }
                 } else {
-                    jLabel10.setEnabled(true);
+                    jLabel10.setVisible(true);
                     jLabel33.setVisible(false);
                     jPanel11.setVisible(false);
                     jLabel26.setVisible(false);
@@ -763,7 +763,7 @@ public class CAPTURA extends javax.swing.JFrame {
                 jCheckBox9.setSelected(true);
                 iniciado = prop.acceder("serviciosEscolaresExcel", periodo.getAbsolutePath());
                 if (iniciado.equalsIgnoreCase("si")) {
-                    jLabel9.setEnabled(false);
+                    jLabel9.setVisible(false);
                     jLabel34.setVisible(true);
                     jPanel9.setVisible(true);
                     jLabel24.setVisible(true);
@@ -775,7 +775,7 @@ public class CAPTURA extends javax.swing.JFrame {
                         banderaReporte = false;
                     }
                 } else {
-                    jLabel9.setEnabled(true);
+                    jLabel9.setVisible(true);
                     jLabel34.setVisible(false);
                     jPanel9.setVisible(false);
                     jLabel24.setVisible(false);
