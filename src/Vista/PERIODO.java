@@ -4,6 +4,7 @@ import Modelo.Carrera;
 import Modelo.FormatoFechas;
 import controlador.Propiedades;
 import controlador.XmlActions;
+import java.awt.Color;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -404,6 +405,15 @@ public class PERIODO extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jLabel8MouseClicked
 
+    private void jLabel8MouseExited(java.awt.event.MouseEvent evt) {                                    
+        // TODO add your handling code here:
+        jLabel8.setBackground(new Color(248, 248, 255));
+    }
+    private void jLabel8MouseEntered(java.awt.event.MouseEvent evt) {                                     
+        // TODO add your handling code here:
+        jLabel8.setBackground(Color.red);
+    }
+    
     private void jLabel9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseClicked
         // TODO add your handling code here:
         REPORTES obj = new REPORTES();
