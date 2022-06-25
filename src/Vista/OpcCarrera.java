@@ -131,7 +131,6 @@ public class OpcCarrera extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTable1);
 
         jButton1.setBackground(new java.awt.Color(56, 103, 214));
-        jButton1.setForeground(new java.awt.Color(248, 248, 255));
         jButton1.setText("AGREGAR");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -140,7 +139,6 @@ public class OpcCarrera extends javax.swing.JFrame {
         });
 
         jButton2.setBackground(new java.awt.Color(56, 103, 214));
-        jButton2.setForeground(new java.awt.Color(248, 248, 255));
         jButton2.setText("EDITAR");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -149,7 +147,6 @@ public class OpcCarrera extends javax.swing.JFrame {
         });
 
         jButton3.setBackground(new java.awt.Color(56, 103, 214));
-        jButton3.setForeground(new java.awt.Color(248, 248, 255));
         jButton3.setText("ELIMINAR");
         jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -163,7 +160,6 @@ public class OpcCarrera extends javax.swing.JFrame {
         });
 
         jButton4.setBackground(new java.awt.Color(56, 103, 214));
-        jButton4.setForeground(new java.awt.Color(248, 248, 255));
         jButton4.setText("GUARDAR");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
