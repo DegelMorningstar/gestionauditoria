@@ -1110,6 +1110,222 @@ public class PERIODO extends javax.swing.JFrame {
 
     private void jLabel19MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel19MouseClicked
         // TODO add your handling code here:
+        Date fecha1 = null;
+        Date fecha2 = null;
+        if (chooserFecha1.getDatoFecha() == null) {
+            JOptionPane.showMessageDialog(this, "Selecciona una fecha de inicio", "ERROR", JOptionPane.ERROR_MESSAGE);
+        } else if (chooserFecha2.getDatoFecha() == null) {
+            JOptionPane.showMessageDialog(this, "Selecciona una fecha de fin", "ERROR", JOptionPane.ERROR_MESSAGE);
+        } else {
+            fecha1 = chooserFecha1.getDatoFecha();
+            fecha2 = chooserFecha2.getDatoFecha();
+        }
+        //guardado
+        if (fecha1 != null && fecha2 != null) {
+            System.out.println("PASO");
+            Date inicio = fecha1;
+            Date fin = fecha2;
+            System.out.println(inicio);
+            System.out.println(fin);
+            if (inicio.before(fin)) {
+                if (FormatoFechas.compruebaPeriodo(inicio, fin)) {
+                    //Confirmacion.
+                    //MEJORAR EL DIALOGO DE CONFIRMACION
+                    String r = JOptionPane.showInputDialog("¿Quieres generar el periodo de captura de " + FormatoFechas.dateFormatToString(inicio) + " al " + FormatoFechas.dateFormatToString(fin) + "?");
+                    //if (alert.showAndWait().get() == ButtonType.OK) {
+                    if (r.equals("s")) {
+
+                        String nombreCarpeta = FormatoFechas.dateFormatToString(inicio) + "_" + FormatoFechas.dateFormatToString(fin);
+                        File folder = new File("src/Documentos/Periodos/", nombreCarpeta);
+                        if (folder.exists()) {
+                            nombreCarpeta += "(1)";
+                            folder = new File("src/Documentos/Periodos/", nombreCarpeta);
+                            folder.mkdir();
+                        } else {
+                            folder.mkdir();
+                        }
+                        //UNA VEZ CREADA LA CARPETA PADRE, CREAMOS CARPETA POR CARRERA EXISTENTE
+                        String auxiliarNombre = nombreCarpeta;
+                        nombreCarpeta = "src/Documentos/Periodos/" + nombreCarpeta;
+                        for (int i = 0; i < tam; i++) {
+                            System.out.println("el tamaño de las carreras son: " + carreras.get(i).getNombre());
+                            String nombreCarrera = carreras.get(i).getNombre();
+                            File Cfolder = new File(nombreCarpeta + "/", nombreCarrera);
+                            if (Cfolder.exists()) {
+                                nombreCarrera += "(1)";
+                                Cfolder = new File(nombreCarpeta + "/", nombreCarrera);
+                                Cfolder.mkdir();
+                            } else {
+                                Cfolder.mkdir();
+                            }
+                        }
+
+                        File informacionPeriodo = new File(nombreCarpeta, "Periodo.properties");
+                        System.out.println(nombreCarpeta);
+
+                        try {
+
+                            if (informacionPeriodo.createNewFile()) {
+
+                                prop.guardar("nombreCarpeta", auxiliarNombre, informacionPeriodo.getAbsolutePath());
+                                prop.guardar("fechaInicio", FormatoFechas.dateFormatToString(inicio), informacionPeriodo.getAbsolutePath());
+                                prop.guardar("fechaFin", FormatoFechas.dateFormatToString(fin), informacionPeriodo.getAbsolutePath());
+                                
+                                prop.guardar("centroDeInformacionExcel", "no", informacionPeriodo.getAbsolutePath());
+                                prop.guardar("centroDeInformacionExcelTerminado", "no", informacionPeriodo.getAbsolutePath());
+                                prop.guardar("centroInformacionActivo", "si", informacionPeriodo.getAbsolutePath());
+                                
+                                prop.guardar("coordinacionDeCarrerasExcel", "no", informacionPeriodo.getAbsolutePath());
+                                prop.guardar("coordinacionDeCarrerasExcelTerminado", "no", informacionPeriodo.getAbsolutePath());
+                                prop.guardar("coordinacionCarrerasActivo", "si", informacionPeriodo.getAbsolutePath());
+                                
+                                prop.guardar("recursosFinancierosExcel", "no", informacionPeriodo.getAbsolutePath());
+                                prop.guardar("recursosFinancierosExcelTerminado", "no", informacionPeriodo.getAbsolutePath());
+                                prop.guardar("recursosFinancierosActivo", "si", informacionPeriodo.getAbsolutePath());
+                                
+                                prop.guardar("computoExcel", "no", informacionPeriodo.getAbsolutePath());
+                                prop.guardar("computoExcelTerminado", "no", informacionPeriodo.getAbsolutePath());
+                                prop.guardar("computoActivo", "si", informacionPeriodo.getAbsolutePath());
+                                
+                                prop.guardar("servicioSocialExcel", "no", informacionPeriodo.getAbsolutePath());
+                                prop.guardar("servicioSocialExcelTerminado", "no", informacionPeriodo.getAbsolutePath());
+                                prop.guardar("servicioSocialActivo", "si", informacionPeriodo.getAbsolutePath());
+                                
+                                prop.guardar("serviciosEscolaresExcel", "no", informacionPeriodo.getAbsolutePath());
+                                prop.guardar("serviciosEscolaresExcelTerminado", "no", informacionPeriodo.getAbsolutePath());
+                                prop.guardar("serviciosEscolaresActivo", "si", informacionPeriodo.getAbsolutePath());
+                                
+                                prop.guardar("residenciasProfesionalesExcel", "no", informacionPeriodo.getAbsolutePath());
+                                prop.guardar("residenciasProfesionalesExcelTerminado", "no", informacionPeriodo.getAbsolutePath());
+                                prop.guardar("residenciaProfesionalActivo", "si", informacionPeriodo.getAbsolutePath());
+                                //CREAMOS LOS PROPIETIES PARA CADA CARRERA, PRACTICAMENTE SON FLAGS QUE INDICAN SI YA ESTAN LLENADAS LAS ENCUESTAS
+                                File informacionCarrera = null;
+                                for (int i = 0; i < tam; i++) {
+                                    String aux = nombreCarpeta + "/" + carreras.get(i).getNombre();
+                                    System.out.println(aux);
+                                    
+                                    informacionCarrera = new File(aux, "PeriodoCarrera.properties");
+                                    informacionCarrera.createNewFile();
+                                    //llenamos los propieties
+                                    prop.guardar("iniciadoCentro", "no", informacionCarrera.getAbsolutePath());
+                                    prop.guardar("encuestasLlenadasCentro", "0", informacionCarrera.getAbsolutePath());
+                                    prop.guardar("recomendacionesCapturadasCentro", "no", informacionCarrera.getAbsolutePath());
+                                    prop.guardar("procesosTerminadosCentro", "no", informacionCarrera.getAbsolutePath());
+                                    prop.guardar("comparacionCentro", "sincomparacion", informacionCarrera.getAbsolutePath());
+                                    prop.guardar("activoCentro", "si", informacionCarrera.getAbsolutePath());
+                                    
+                                    prop.guardar("iniciadoCoordinacion", "no", informacionCarrera.getAbsolutePath());
+                                    prop.guardar("encuestasLlenadasCoordinacion", "0", informacionCarrera.getAbsolutePath());
+                                    prop.guardar("recomendacionesCapturadasCoordinacion", "no", informacionCarrera.getAbsolutePath());
+                                    prop.guardar("procesosTerminadosCoordinacion", "no", informacionCarrera.getAbsolutePath());
+                                    prop.guardar("comparacionCoordinacion", "sincomparacion", informacionCarrera.getAbsolutePath());
+                                    prop.guardar("activoCoordinacion", "si", informacionCarrera.getAbsolutePath());
+                                    
+                                    prop.guardar("iniciadoFinancieros", "no", informacionCarrera.getAbsolutePath());
+                                    prop.guardar("encuestasLlenadasFinancieros", "0", informacionCarrera.getAbsolutePath());
+                                    prop.guardar("recomendacionesCapturadasFinancieros", "no", informacionCarrera.getAbsolutePath());
+                                    prop.guardar("procesosTerminadosFinancieros", "no", informacionCarrera.getAbsolutePath());
+                                    prop.guardar("comparacionFinancieros", "sincomparacion", informacionCarrera.getAbsolutePath());
+                                    prop.guardar("activoFinancieros", "si", informacionCarrera.getAbsolutePath());
+                                    
+                                    prop.guardar("iniciadoComputo", "no", informacionCarrera.getAbsolutePath());
+                                    prop.guardar("encuestasLlenadasComputo", "0", informacionCarrera.getAbsolutePath());
+                                    prop.guardar("recomendacionesCapturadasComputo", "no", informacionCarrera.getAbsolutePath());
+                                    prop.guardar("procesosTerminadosComputo", "no", informacionCarrera.getAbsolutePath());
+                                    prop.guardar("comparacionComputo", "sincomparacion", informacionCarrera.getAbsolutePath());
+                                    prop.guardar("activoComputo", "si", informacionCarrera.getAbsolutePath());
+                                    
+                                    prop.guardar("iniciadoSocial", "no", informacionCarrera.getAbsolutePath());
+                                    prop.guardar("encuestasLlenadasSocial", "0", informacionCarrera.getAbsolutePath());
+                                    prop.guardar("recomendacionesCapturadasSocial", "no", informacionCarrera.getAbsolutePath());
+                                    prop.guardar("procesosTerminadosSocial", "no", informacionCarrera.getAbsolutePath());
+                                    prop.guardar("comparacionSocial", "sincomparacion", informacionCarrera.getAbsolutePath());
+                                    prop.guardar("activoSocial", "si", informacionCarrera.getAbsolutePath());
+                                    
+                                    prop.guardar("iniciadoEscolares", "no", informacionCarrera.getAbsolutePath());
+                                    prop.guardar("encuestasLlenadasEscolares", "0", informacionCarrera.getAbsolutePath());
+                                    prop.guardar("recomendacionesCapturadasEscolares", "no", informacionCarrera.getAbsolutePath());
+                                    prop.guardar("procesosTerminadosEscolares", "no", informacionCarrera.getAbsolutePath());
+                                    prop.guardar("comparacionEscolares", "sincomparacion", informacionCarrera.getAbsolutePath());
+                                    prop.guardar("activoEscolares", "si", informacionCarrera.getAbsolutePath());
+                                    
+                                    prop.guardar("iniciadoResidencias", "no", informacionCarrera.getAbsolutePath());
+                                    prop.guardar("encuestasLlenadasResidencias", "0", informacionCarrera.getAbsolutePath());
+                                    prop.guardar("recomendacionesCapturadasResidencias", "no", informacionCarrera.getAbsolutePath());
+                                    prop.guardar("procesosTerminadosResidencias", "no", informacionCarrera.getAbsolutePath());
+                                    prop.guardar("comparacionResidencias", "sincomparacion", informacionCarrera.getAbsolutePath());
+                                    prop.guardar("activoResidencias", "si", informacionCarrera.getAbsolutePath());
+                                }
+
+                                //guardar configuracion de que se inicio un nuevo registro de encuestas
+                                prop.guardar("actual", "si", ruta);
+                                prop.guardar("archivoAnterior", prop.acceder("archivoActual", ruta), ruta);
+                                prop.guardar("archivoActual", auxiliarNombre, ruta);
+                                //encuestas, generar cada una en las carpetas de carrera para almacenar los resultados de encuestas
+
+                                File encuestasCentro = null;
+                                File encuestasCoordinacion = null;
+                                File encuestasFinancieros = null;
+                                File encuestasComputo = null;
+                                File encuestasSocial = null;
+                                File encuestasEscolares = null;
+                                File encuestasResidencias = null;
+                                int i = 0;
+                                do {
+                                    String aux = nombreCarpeta + "/" + carreras.get(i).getNombre();
+                                    System.out.println(aux);
+                                    encuestasCentro = new File(aux, "centroInformacionEncuestas.xml");
+                                    encuestasCentro.createNewFile();
+                                    encuestasCoordinacion = new File(aux, "coordinacionCarrerasEncuestas.xml");
+                                    encuestasCoordinacion.createNewFile();
+                                    encuestasFinancieros = new File(aux, "recursosFinancierosEncuestas.xml");
+                                    encuestasFinancieros.createNewFile();
+                                    encuestasComputo = new File(aux, "centroComputoEncuestas.xml");
+                                    encuestasComputo.createNewFile();
+                                    encuestasSocial = new File(aux, "servicioSocialEncuestas.xml");
+                                    encuestasSocial.createNewFile();
+                                    encuestasEscolares = new File(aux, "serviciosEscolaresEncuestas.xml");
+                                    encuestasEscolares.createNewFile();
+                                    encuestasResidencias = new File(aux, "residenciasProfesionalesEncuestas.xml");
+                                    encuestasResidencias.createNewFile();
+                                    i++;
+                                } while (i < tam);
+                                //si se crea
+                                if (encuestasCentro.exists() && encuestasComputo.exists()
+                                        && encuestasCoordinacion.exists() && encuestasEscolares.exists()
+                                        && encuestasFinancieros.exists() && encuestasResidencias.exists()
+                                        && encuestasSocial.exists()) {
+                                    //SI SE CREAN TODOS LOS ARCHIVOS ABRE INTERFAZ DE CAPTURA.
+                                    CAPTURA obj = new CAPTURA();
+                                    obj.setVisible(true);
+                                    this.dispose();
+                                    System.out.println("se crearon con exito, archivos y ahora deberia mostrar capturaForm");
+                                } else {
+                                    //no se crearon los archivos
+                                    funcionEliminarCarpeta(new File(nombreCarpeta));
+                                    System.out.println("no se crearon los archivos");
+                                }
+                            } else {
+                                //no se creo el periodo
+                                System.out.println("no se creo el peridoo");
+                            }
+                        } catch (IOException ex) {
+                            System.out.println("No se creo archivo");
+                        }
+                    }
+                } else {
+                    //el periodo excede el rango
+                    System.out.println("El periodo de fechas es mayor a 6 meses y no es posible.");
+                }
+            } else {
+                //La fecha FIN es mayor a la fecha INICIO
+                System.out.println("Las fechas estan invertidas");
+            }
+
+        } else {
+            //no seleccionaste fechhas
+            System.out.println("No se han seleccionado fechas");
+        }
     }//GEN-LAST:event_jLabel19MouseClicked
 
     private void jLabel19MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel19MouseEntered
