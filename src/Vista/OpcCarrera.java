@@ -29,6 +29,8 @@ public class OpcCarrera extends javax.swing.JFrame {
     /**
      * Creates new form OpcCarrera
      */
+    //variables moer ventana
+    int xmouse, ymouse;
     int cont = 0;
     List<Carrera> carreras = new ArrayList();
     int tam = 0;
@@ -86,6 +88,16 @@ public class OpcCarrera extends javax.swing.JFrame {
         jLabel1.setText("ADMINISTRACION DE CARRERAS");
 
         jPanel2.setBackground(new java.awt.Color(0, 53, 153));
+        jPanel2.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                jPanel2MouseDragged(evt);
+            }
+        });
+        jPanel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jPanel2MousePressed(evt);
+            }
+        });
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/BtnAtras.png"))); // NOI18N
         jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -531,6 +543,19 @@ public class OpcCarrera extends javax.swing.JFrame {
         // TODO add your handling code here:
         jPanel8.setBackground(new Color(27,57,106));
     }//GEN-LAST:event_jLabel9MouseExited
+
+    private void jPanel2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MousePressed
+        // TODO add your handling code here:
+         xmouse = evt.getX();
+        ymouse = evt.getY();
+    }//GEN-LAST:event_jPanel2MousePressed
+
+    private void jPanel2MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseDragged
+        // TODO add your handling code here:
+        int x = evt.getXOnScreen();
+        int y = evt.getYOnScreen();
+        this.setLocation(x - xmouse, y - ymouse);
+    }//GEN-LAST:event_jPanel2MouseDragged
 
     /**
      * @param args the command line arguments

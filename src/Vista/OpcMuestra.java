@@ -24,6 +24,8 @@ public class OpcMuestra extends javax.swing.JFrame {
     /**
      * Creates new form OpcMuestra
      */
+    //variables moer ventana
+    int xmouse, ymouse;
     //muestra
     double n;  //resultado n
     double Encuestas;  //resultado n
@@ -91,6 +93,16 @@ public class OpcMuestra extends javax.swing.JFrame {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel2.setBackground(new java.awt.Color(0, 53, 153));
+        jPanel2.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                jPanel2MouseDragged(evt);
+            }
+        });
+        jPanel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jPanel2MousePressed(evt);
+            }
+        });
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/BtnAtras.png"))); // NOI18N
         jLabel6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -326,12 +338,12 @@ public class OpcMuestra extends javax.swing.JFrame {
                 int resp = JOptionPane.showConfirmDialog(null, "¿Deseas guardar los cambios?", "Ajustes Generales del Documento", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
                 if (resp == 0) {
                     boolean mensaje = false;
-                    mensaje = prop.guardar("alumnos"+jComboBox1.getSelectedItem().toString().trim(), jTextField1.getText().trim(), ruta);
-                    mensaje = prop.guardar("base"+jComboBox1.getSelectedItem().toString().trim(), jTextField2.getText().trim(), ruta);
-                    mensaje = prop.guardar("muestra"+jComboBox1.getSelectedItem().toString().trim(), jTextField3.getText().trim(), ruta);
+                    mensaje = prop.guardar("alumnos" + jComboBox1.getSelectedItem().toString().trim(), jTextField1.getText().trim(), ruta);
+                    mensaje = prop.guardar("base" + jComboBox1.getSelectedItem().toString().trim(), jTextField2.getText().trim(), ruta);
+                    mensaje = prop.guardar("muestra" + jComboBox1.getSelectedItem().toString().trim(), jTextField3.getText().trim(), ruta);
                     if (mensaje) {
                         JOptionPane.showMessageDialog(null, "Se ha guardado con exito!.", "Generacion de Muestra.", JOptionPane.INFORMATION_MESSAGE);
-                        flag=false;
+                        flag = false;
                         setEmptyInterface();
                     } else {
                         JOptionPane.showMessageDialog(null, "ERROR: No se han guardado los cambios.", "Generacion de Muestra.", JOptionPane.ERROR_MESSAGE);
@@ -363,12 +375,12 @@ public class OpcMuestra extends javax.swing.JFrame {
                 int resp = JOptionPane.showConfirmDialog(null, "¿Deseas guardar los cambios?", "Ajustes Generales del Documento", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
                 if (resp == 0) {
                     boolean mensaje = false;
-                    mensaje = prop.guardar("alumnos"+jComboBox1.getSelectedItem().toString().trim(), jTextField1.getText().trim(), ruta);
-                    mensaje = prop.guardar("base"+jComboBox1.getSelectedItem().toString().trim(), jTextField2.getText().trim(), ruta);
-                    mensaje = prop.guardar("muestra"+jComboBox1.getSelectedItem().toString().trim(), jTextField3.getText().trim(), ruta);
+                    mensaje = prop.guardar("alumnos" + jComboBox1.getSelectedItem().toString().trim(), jTextField1.getText().trim(), ruta);
+                    mensaje = prop.guardar("base" + jComboBox1.getSelectedItem().toString().trim(), jTextField2.getText().trim(), ruta);
+                    mensaje = prop.guardar("muestra" + jComboBox1.getSelectedItem().toString().trim(), jTextField3.getText().trim(), ruta);
                     if (mensaje) {
                         JOptionPane.showMessageDialog(null, "Se ha guardado con exito!.", "Generacion de Muestra.", JOptionPane.INFORMATION_MESSAGE);
-                        flag=false;
+                        flag = false;
                         setEmptyInterface();
                     } else {
                         JOptionPane.showMessageDialog(null, "ERROR: No se han guardado los cambios.", "Generacion de Muestra.", JOptionPane.ERROR_MESSAGE);
@@ -386,22 +398,22 @@ public class OpcMuestra extends javax.swing.JFrame {
 
     private void jLabel9MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseEntered
         // TODO add your handling code here:
-        jPanel4.setBackground(new Color(67,80,80));
+        jPanel4.setBackground(new Color(67, 80, 80));
     }//GEN-LAST:event_jLabel9MouseEntered
 
     private void jLabel9MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseExited
         // TODO add your handling code here:
-        jPanel4.setBackground(new Color(27,57,106));
+        jPanel4.setBackground(new Color(27, 57, 106));
     }//GEN-LAST:event_jLabel9MouseExited
 
     private void jLabel10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseClicked
         // TODO add your handling code here:
-         String aux = jComboBox1.getSelectedItem().toString();
+        String aux = jComboBox1.getSelectedItem().toString();
         if (!aux.equalsIgnoreCase("Carreras del ITZ")) {
             showInterface();
-            jTextField1.setText(prop.acceder("alumnos"+jComboBox1.getSelectedItem().toString().trim(), ruta));
-            jTextField2.setText(prop.acceder("base"+jComboBox1.getSelectedItem().toString().trim(), ruta));
-            jTextField3.setText(prop.acceder("muestra"+jComboBox1.getSelectedItem().toString().trim(), ruta));
+            jTextField1.setText(prop.acceder("alumnos" + jComboBox1.getSelectedItem().toString().trim(), ruta));
+            jTextField2.setText(prop.acceder("base" + jComboBox1.getSelectedItem().toString().trim(), ruta));
+            jTextField3.setText(prop.acceder("muestra" + jComboBox1.getSelectedItem().toString().trim(), ruta));
         } else {
             JOptionPane.showMessageDialog(null, "Aun no has seleccionado una carrera");
         }
@@ -409,12 +421,12 @@ public class OpcMuestra extends javax.swing.JFrame {
 
     private void jLabel10MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseEntered
         // TODO add your handling code here:
-        jPanel5.setBackground(new Color(67,80,80));
+        jPanel5.setBackground(new Color(67, 80, 80));
     }//GEN-LAST:event_jLabel10MouseEntered
 
     private void jLabel10MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseExited
         // TODO add your handling code here:
-        jPanel5.setBackground(new Color(27,57,106));
+        jPanel5.setBackground(new Color(27, 57, 106));
     }//GEN-LAST:event_jLabel10MouseExited
 
     private void jLabel11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel11MouseClicked
@@ -427,13 +439,29 @@ public class OpcMuestra extends javax.swing.JFrame {
 
     private void jLabel11MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel11MouseEntered
         // TODO add your handling code here:
-        jPanel6.setBackground(new Color(67,80,80));
+        jPanel6.setBackground(new Color(67, 80, 80));
     }//GEN-LAST:event_jLabel11MouseEntered
 
     private void jLabel11MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel11MouseExited
         // TODO add your handling code here:
-        jPanel6.setBackground(new Color(27,57,106));
+        jPanel6.setBackground(new Color(27, 57, 106));
     }//GEN-LAST:event_jLabel11MouseExited
+
+    //mueven la ventana
+    private void jPanel2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MousePressed
+        // TODO add your handling code here:
+        xmouse = evt.getX();
+        ymouse = evt.getY();
+
+    }//GEN-LAST:event_jPanel2MousePressed
+
+    private void jPanel2MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseDragged
+        // TODO add your handling code here:
+        int x = evt.getXOnScreen();
+        int y = evt.getYOnScreen();
+        this.setLocation(x - xmouse, y - ymouse);
+
+    }//GEN-LAST:event_jPanel2MouseDragged
 
     /**
      * @param args the command line arguments
@@ -449,7 +477,7 @@ public class OpcMuestra extends javax.swing.JFrame {
     private void setEmptyInterface() {
         jLabel5.setVisible(false);
         jTextField1.setVisible(false);
-        
+
         jLabel3.setVisible(false);
         jTextField2.setVisible(false);
         jLabel4.setVisible(false);
@@ -469,7 +497,7 @@ public class OpcMuestra extends javax.swing.JFrame {
         jTextField3.setVisible(true);
         jTextField3.setEnabled(false);
         //nuevos btn
-         jPanel6.setVisible(true);
+        jPanel6.setVisible(true);
     }
 
     private void llenarCarreras() {
