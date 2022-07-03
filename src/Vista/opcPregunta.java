@@ -13,6 +13,7 @@ import java.awt.Font;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -40,6 +41,8 @@ public class opcPregunta extends javax.swing.JFrame {
     String rutaXml = "src/Documentos/";
 
     public opcPregunta(String area) {
+        ImageIcon iconoT = new ImageIcon("src/Archivos/favicon.png");
+        this.setIconImage(iconoT.getImage());
         initComponents();
         this.setLocationRelativeTo(null);
         this.setTitle("Configuracion de la encuesta");

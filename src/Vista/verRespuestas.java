@@ -16,6 +16,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.scene.control.TextField;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import rojerusan.RSNotifyAnimated;
@@ -48,6 +49,8 @@ public class verRespuestas extends javax.swing.JFrame {
     Propiedades prop = new Propiedades();
 
     public verRespuestas(String name, String area, String clave) {
+        ImageIcon iconoT = new ImageIcon("src/Archivos/favicon.png");
+        this.setIconImage(iconoT.getImage());
         initComponents();
         this.area = area;
         this.clave = clave;

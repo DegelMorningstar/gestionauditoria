@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -43,6 +44,8 @@ public class opcRecomendaciones extends javax.swing.JFrame {
     private double valorParcial;
     
     public opcRecomendaciones(String area, String tituloPantalla, String carrera) {
+        ImageIcon iconoT = new ImageIcon("src/Archivos/favicon.png");
+        this.setIconImage(iconoT.getImage());
         initComponents();
         this.carrera=carrera;
         this.area = area;

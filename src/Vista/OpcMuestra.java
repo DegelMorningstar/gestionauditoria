@@ -12,6 +12,7 @@ import java.awt.Color;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -44,6 +45,8 @@ public class OpcMuestra extends javax.swing.JFrame {
     XmlActions xml = new XmlActions();
 
     public OpcMuestra() {
+        ImageIcon iconoT = new ImageIcon("src/Archivos/favicon.png");
+        this.setIconImage(iconoT.getImage());
         initComponents();
         this.setLocationRelativeTo(null);
         setEmptyInterface();

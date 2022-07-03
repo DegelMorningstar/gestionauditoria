@@ -20,6 +20,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
@@ -38,6 +39,8 @@ public class MUESTRA extends javax.swing.JFrame {
     int tam = 0;
 
     public MUESTRA() {
+        ImageIcon iconoT = new ImageIcon("src/Archivos/favicon.png");
+        this.setIconImage(iconoT.getImage());
         initComponents();
         setLocationRelativeTo(null);
         XmlActions xml = new XmlActions();

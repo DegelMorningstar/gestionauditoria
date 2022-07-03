@@ -1099,7 +1099,29 @@ public class PERIODO extends javax.swing.JFrame {
         String finalPeriodo = prop.acceder("fechaFin", rutaCarpeta + "/Periodo.properties");
         System.out.println(inicioPeriodo);
         System.out.println(finalPeriodo);
-        //CONFIRMACION DE ELIMINACION
+        //wea nueva eliminar
+        int resp = JOptionPane.showConfirmDialog(null, "¿Esta seguro de eliminar el periodo?", "Aviso", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        if (resp == 0) {
+            String password = JOptionPane.showInputDialog("ingrese su contraseña pa confirmar");
+            if (!password.equals("")) {
+                //System.out.println("si se elimina: " + result.get());
+                System.out.println(prop.acceder("acceso", ruta));
+                if (prop.acceder("acceso", ruta).equals(password)) {
+                    prop.guardar("actual", "no", ruta);
+                    prop.guardar("archivoActual", prop.acceder("archivoAnterior", ruta), ruta);
+                    funcionEliminarCarpeta(new File(rutaCarpeta));
+                    System.out.println("se elimino equisde");
+                    ordenInterfaz();
+                } else {
+                    System.out.println("contraseña incorrecta");
+                }
+
+            } else {
+                System.out.println("no hay nada");
+            }
+        }
+        
+        /*
         String r = JOptionPane.showInputDialog("estas seguro de eliminar el periodo?");
         if (r.equals("s")) {
             //introduce contraseña para eliminar
@@ -1120,7 +1142,7 @@ public class PERIODO extends javax.swing.JFrame {
             } else {
                 System.out.println("no hay nada");
             }
-        }
+        }*/
     }//GEN-LAST:event_jLabel18MouseClicked
 
     private void jLabel18MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel18MouseEntered

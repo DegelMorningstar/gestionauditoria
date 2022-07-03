@@ -9,6 +9,7 @@ import controlador.Propiedades;
 import controlador.XmlActions;
 import java.awt.Color;
 import java.io.File;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
@@ -29,6 +30,8 @@ public class OpcServicio extends javax.swing.JFrame {
     File periodo;
     XmlActions xml = new XmlActions();
     public OpcServicio() {
+        ImageIcon iconoT = new ImageIcon("src/Archivos/favicon.png");
+        this.setIconImage(iconoT.getImage());
         initComponents();
         this.setLocationRelativeTo(null);
         carpeta = prop.acceder("archivoActual", ruta + "config.properties");
