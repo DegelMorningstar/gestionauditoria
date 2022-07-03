@@ -198,9 +198,9 @@ public class CAPTURA extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(316, Short.MAX_VALUE)
+                .addContainerGap(270, Short.MAX_VALUE)
                 .addComponent(jLabel7)
-                .addGap(146, 146, 146)
+                .addGap(192, 192, 192)
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -359,6 +359,7 @@ public class CAPTURA extends javax.swing.JFrame {
         jPanel2.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 600, -1, -1));
 
         jPanel3.setBackground(new java.awt.Color(0, 53, 153));
+        jPanel3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel3.setLayout(new java.awt.GridBagLayout());
 
         jLabel20.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
@@ -368,20 +369,34 @@ public class CAPTURA extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel20MouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel20MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel20MouseExited(evt);
+            }
         });
         jPanel3.add(jLabel20, new java.awt.GridBagConstraints());
 
         jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 140, 260, 40));
 
         jPanel4.setBackground(new java.awt.Color(0, 53, 153));
+        jPanel4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel4.setLayout(new java.awt.GridBagLayout());
 
         jLabel21.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
         jLabel21.setForeground(new java.awt.Color(255, 255, 255));
         jLabel21.setText("VER RESPUESTAS");
+        jLabel21.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jLabel21.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel21MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel21MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel21MouseExited(evt);
             }
         });
         jPanel4.add(jLabel21, new java.awt.GridBagConstraints());
@@ -389,6 +404,7 @@ public class CAPTURA extends javax.swing.JFrame {
         jPanel2.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 80, 260, 40));
 
         jPanel7.setBackground(new java.awt.Color(0, 53, 153));
+        jPanel7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel7.setLayout(new java.awt.GridBagLayout());
 
         jLabel22.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
@@ -398,12 +414,19 @@ public class CAPTURA extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel22MouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel22MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel22MouseExited(evt);
+            }
         });
         jPanel7.add(jLabel22, new java.awt.GridBagConstraints());
 
         jPanel2.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 280, 260, 40));
 
         jPanel8.setBackground(new java.awt.Color(0, 53, 153));
+        jPanel8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel8.setLayout(new java.awt.GridBagLayout());
 
         jLabel23.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
@@ -413,12 +436,19 @@ public class CAPTURA extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel23MouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel23MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel23MouseExited(evt);
+            }
         });
         jPanel8.add(jLabel23, new java.awt.GridBagConstraints());
 
         jPanel2.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 210, 260, 40));
 
         jPanel9.setBackground(new java.awt.Color(0, 53, 153));
+        jPanel9.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel9.setLayout(new java.awt.GridBagLayout());
 
         jLabel24.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
@@ -428,12 +458,19 @@ public class CAPTURA extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel24MouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel24MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel24MouseExited(evt);
+            }
         });
         jPanel9.add(jLabel24, new java.awt.GridBagConstraints());
 
         jPanel2.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 420, 260, 40));
 
         jPanel10.setBackground(new java.awt.Color(0, 53, 153));
+        jPanel10.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel10.setLayout(new java.awt.GridBagLayout());
 
         jLabel25.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
@@ -443,12 +480,19 @@ public class CAPTURA extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel25MouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel25MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel25MouseExited(evt);
+            }
         });
         jPanel10.add(jLabel25, new java.awt.GridBagConstraints());
 
         jPanel2.add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 480, 260, 40));
 
         jPanel11.setBackground(new java.awt.Color(0, 53, 153));
+        jPanel11.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel11.setLayout(new java.awt.GridBagLayout());
 
         jLabel26.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
@@ -457,6 +501,12 @@ public class CAPTURA extends javax.swing.JFrame {
         jLabel26.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel26MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel26MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel26MouseExited(evt);
             }
         });
         jPanel11.add(jLabel26, new java.awt.GridBagConstraints());
@@ -1190,6 +1240,76 @@ public class CAPTURA extends javax.swing.JFrame {
         this.setLocation(x - xmouse, y - ymouse);
 
     }//GEN-LAST:event_jPanel1MouseDragged
+
+    private void jLabel21MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel21MouseEntered
+        // TODO add your handling code here:
+        jPanel4.setBackground(new Color(67,80,80));
+    }//GEN-LAST:event_jLabel21MouseEntered
+
+    private void jLabel21MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel21MouseExited
+        // TODO add your handling code here:
+        jPanel4.setBackground(new Color(27,57,106));
+    }//GEN-LAST:event_jLabel21MouseExited
+
+    private void jLabel20MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel20MouseEntered
+        // TODO add your handling code here:
+        jPanel3.setBackground(new Color(67,80,80));
+    }//GEN-LAST:event_jLabel20MouseEntered
+
+    private void jLabel20MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel20MouseExited
+        // TODO add your handling code here:
+        jPanel3.setBackground(new Color(27,57,106));
+    }//GEN-LAST:event_jLabel20MouseExited
+
+    private void jLabel23MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel23MouseEntered
+        // TODO add your handling code here:
+        jPanel8.setBackground(new Color(67,80,80));
+    }//GEN-LAST:event_jLabel23MouseEntered
+
+    private void jLabel23MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel23MouseExited
+        // TODO add your handling code here:
+        jPanel8.setBackground(new Color(27,57,106));
+    }//GEN-LAST:event_jLabel23MouseExited
+
+    private void jLabel22MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel22MouseEntered
+        // TODO add your handling code here:
+        jPanel7.setBackground(new Color(67,80,80));
+    }//GEN-LAST:event_jLabel22MouseEntered
+
+    private void jLabel22MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel22MouseExited
+        // TODO add your handling code here:
+        jPanel7.setBackground(new Color(27,57,106));
+    }//GEN-LAST:event_jLabel22MouseExited
+
+    private void jLabel26MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel26MouseEntered
+        // TODO add your handling code here:
+        jPanel11.setBackground(new Color(67,80,80));
+    }//GEN-LAST:event_jLabel26MouseEntered
+
+    private void jLabel26MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel26MouseExited
+        // TODO add your handling code here:
+        jPanel11.setBackground(new Color(27,57,106));
+    }//GEN-LAST:event_jLabel26MouseExited
+
+    private void jLabel24MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel24MouseEntered
+        // TODO add your handling code here:
+        jPanel9.setBackground(new Color(67,80,80));
+    }//GEN-LAST:event_jLabel24MouseEntered
+
+    private void jLabel24MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel24MouseExited
+        // TODO add your handling code here:
+        jPanel9.setBackground(new Color(27,57,106));
+    }//GEN-LAST:event_jLabel24MouseExited
+
+    private void jLabel25MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel25MouseEntered
+        // TODO add your handling code here:
+        jPanel10.setBackground(new Color(67,80,80));
+    }//GEN-LAST:event_jLabel25MouseEntered
+
+    private void jLabel25MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel25MouseExited
+        // TODO add your handling code here:
+        jPanel10.setBackground(new Color(27,57,106));
+    }//GEN-LAST:event_jLabel25MouseExited
 
     /**
      * @param args the command line arguments
