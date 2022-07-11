@@ -83,11 +83,6 @@ public class verRespuestas extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jComboBox1 = new javax.swing.JComboBox<>();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
         jPanel8 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         jPanel9 = new javax.swing.JPanel();
@@ -137,31 +132,6 @@ public class verRespuestas extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 460, 440, 40));
-
-        jButton1.setText("COMENTARIOS");
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 590, 110, 100));
-
-        jButton2.setText("AGREGAR RECOMENDACIOENS");
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 590, 120, 100));
-
-        jButton3.setText("GUARDAR");
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 590, 100, 50));
-
-        jButton4.setText("APLICAR MUESTRA");
-        jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton4MouseClicked(evt);
-            }
-        });
-        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 600, 130, 80));
-
-        jButton7.setText("VER TODAS LAS CARRERAS");
-        jButton7.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton7MouseClicked(evt);
-            }
-        });
-        jPanel1.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 600, 100, 100));
 
         jPanel8.setBackground(new java.awt.Color(27, 57, 106));
         jPanel8.setPreferredSize(new java.awt.Dimension(120, 50));
@@ -414,60 +384,11 @@ public class verRespuestas extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 619, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 619, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButton7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton7MouseClicked
-        // TODO add your handling code here:
-        DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
-        modelo.setRowCount(0);
-        llenarTabla();
-        banderafiltrado = false;
-        jComboBox1.setSelectedItem(null);
-    }//GEN-LAST:event_jButton7MouseClicked
-
-    private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
-        if (banderafiltrado) {
-            String carrera = jComboBox1.getSelectedItem().toString().trim();
-            String rutaPeriodoCarrera = ruta + "/Periodos/" + carpeta + "/" + carrera + "/PeriodoCarrera.properties";
-            String iniciado = prop.acceder("iniciado" + clave, rutaPeriodoCarrera);
-            if (iniciado.equals("no")) {
-                String muestra = prop.acceder("muestra" + carrera, rutaMuestra);
-                if (muestra != null) {
-                    float rows = jTable1.getRowCount();
-                    float m = Float.parseFloat(muestra);
-                    if (rows >= m) {
-                        int resp = JOptionPane.showConfirmDialog(null, "La muestra cumple con los requisitos\n¿Deseas aplicar la muestra?", carrera, JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-                        if (resp == 0) {
-                            if (guardarRespuestas(carrera, m)) {
-                                if (prop.guardar("iniciado" + clave, "si", rutaPeriodoCarrera)) {
-                                    JOptionPane.showMessageDialog(null, "La muestra de la carrera " + carrera + " es: " + muestra);
-                                }
-                            }
-                        }
-                    } else {
-                        JOptionPane.showMessageDialog(null, "La muestra de la carrera " + carrera + " no cumple con los requisitos\n "
-                                + "La muestra es: " + m + "\n"
-                                + "Actualmente la carrera tiene: " + rows + "\n"
-                                + "Es necesario capturar " + (m - rows) + " encuestas");
-                    }
-                } else {
-                    JOptionPane.showMessageDialog(null, "Aun no has registrado la muestra para esta carrera, por favor ve a la generacion de muestra.");
-                }
-            } else {
-                JOptionPane.showMessageDialog(null, "Ya has registrado la muestra para esta carrera.");
-            }
-
-        } else {
-            JOptionPane.showMessageDialog(null, "Es necesario seleccionar una carrera para conocer la muestra.");
-        }
-
-
-    }//GEN-LAST:event_jButton4MouseClicked
 
     private void jComboBox1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox1ItemStateChanged
 
@@ -767,11 +688,6 @@ public class verRespuestas extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton7;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
