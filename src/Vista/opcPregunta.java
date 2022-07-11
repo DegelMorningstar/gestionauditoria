@@ -366,7 +366,7 @@ public class opcPregunta extends javax.swing.JFrame {
             existeResponsable2 = true;
         }
         rutaXml += prop.acceder("archivo" + area, ruta) + ".xml";
-        List<Pregunta> preguntas = new ArrayList();
+        List<Pregunta> preguntas = new ArrayList();  //Checar el objeto Pregunta
         preguntas = xml.loadPreguntasDataFromFile(new File(rutaXml));
         if (preguntas.isEmpty()) {
             JOptionPane.showMessageDialog(null, "No fue posible cargar las preguntas");

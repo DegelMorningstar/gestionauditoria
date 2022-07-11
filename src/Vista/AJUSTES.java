@@ -644,7 +644,6 @@ public class AJUSTES extends javax.swing.JFrame {
             ImageIcon imagen = new ImageIcon(file.getAbsolutePath());
             Icon icono = new ImageIcon(imagen.getImage().getScaledInstance(logo.getWidth(), logo.getHeight(), logo.getWidth()));
             logo.setIcon(icono);
-
         }
     }
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
