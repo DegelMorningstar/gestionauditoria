@@ -117,10 +117,14 @@ public class opcRecomendaciones extends javax.swing.JFrame {
         
         promedio = promedio/resultados.size();
         
+        
+        //DATOS A ENVIAR
+        
         System.out.println("Promedio General: " + promedio);
         System.out.println(comentarios);
         jTextArea3.setText(comentarios);
         datos = FXCollections.observableArrayList(resultados);
+        
         //tablaResultados.setItems(datos);
     }
 
@@ -296,6 +300,7 @@ public class opcRecomendaciones extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
     /**
      * @param args the command line arguments
      */
