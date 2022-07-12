@@ -15,6 +15,7 @@ import javax.swing.JOptionPane;
  * @author Yael_
  */
 public class REPORTES extends javax.swing.JFrame {
+    int xmouse, ymouse;
 
     /**
      * Creates new form REPORTES
@@ -55,6 +56,7 @@ public class REPORTES extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -140,7 +142,7 @@ public class REPORTES extends javax.swing.JFrame {
 
         jLabel9.setBackground(new java.awt.Color(248, 248, 255));
         jLabel9.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(248, 248, 255));
+        jLabel9.setForeground(new java.awt.Color(103, 123, 134));
         jLabel9.setText("REPORTES FINALES");
         jLabel9.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
@@ -337,7 +339,7 @@ public class REPORTES extends javax.swing.JFrame {
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                .addContainerGap(11, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel5)
                 .addContainerGap())
         );
@@ -388,6 +390,30 @@ public class REPORTES extends javax.swing.JFrame {
         );
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 0, 520, 600));
+
+        jPanel4.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                jPanel4MouseDragged(evt);
+            }
+        });
+        jPanel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jPanel4MousePressed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 800, Short.MAX_VALUE)
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 70, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 70));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -534,6 +560,21 @@ public class REPORTES extends javax.swing.JFrame {
         jLabel6.setForeground(new Color(248,248,255));
     }//GEN-LAST:event_jLabel6MouseExited
 
+    private void jPanel4MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MousePressed
+        // TODO add your handling code here:
+        xmouse = evt.getX();
+        ymouse = evt.getY();
+
+    }//GEN-LAST:event_jPanel4MousePressed
+
+    private void jPanel4MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseDragged
+        // TODO add your handling code here:
+        int x = evt.getXOnScreen();
+        int y = evt.getYOnScreen();
+        this.setLocation(x - xmouse, y - ymouse);
+
+    }//GEN-LAST:event_jPanel4MouseDragged
+
     /**
      * @param args the command line arguments
      */
@@ -588,6 +629,7 @@ public class REPORTES extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     // End of variables declaration//GEN-END:variables

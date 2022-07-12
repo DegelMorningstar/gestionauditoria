@@ -8,10 +8,12 @@ package Vista;
 import Modelo.Pregunta;
 import controlador.Propiedades;
 import controlador.XmlActions;
+import java.awt.Color;
 import java.awt.Font;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -28,6 +30,8 @@ public class opcPregunta extends javax.swing.JFrame {
      * Creates new form opcPregunta
      */
     String area;
+    //variables moer ventana
+    int xmouse, ymouse;
 
     Propiedades prop = new Propiedades();
     String ruta = "src/Documentos/ajustesAreas.properties";
@@ -37,6 +41,8 @@ public class opcPregunta extends javax.swing.JFrame {
     String rutaXml = "src/Documentos/";
 
     public opcPregunta(String area) {
+        ImageIcon iconoT = new ImageIcon("src/Archivos/favicon.png");
+        this.setIconImage(iconoT.getImage());
         initComponents();
         this.setLocationRelativeTo(null);
         this.setTitle("Configuracion de la encuesta");
@@ -53,11 +59,15 @@ public class opcPregunta extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel3 = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        jPanel8 = new javax.swing.JPanel();
+        jLabel9 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jLabel1 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jTextField2 = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
@@ -67,17 +77,96 @@ public class opcPregunta extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         jTextField3 = new javax.swing.JTextField();
         jButton5 = new javax.swing.JButton();
+        jPanel9 = new javax.swing.JPanel();
+        jLabel10 = new javax.swing.JLabel();
+        jPanel11 = new javax.swing.JPanel();
+        jLabel12 = new javax.swing.JLabel();
+        jPanel12 = new javax.swing.JPanel();
+        jLabel13 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
+        setPreferredSize(new java.awt.Dimension(1130, 680));
 
-        jPanel1.setBackground(new java.awt.Color(248, 248, 255));
-
-        jButton1.setText("REGRESAR");
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton1MouseClicked(evt);
+        jPanel3.setBackground(new java.awt.Color(0, 53, 153));
+        jPanel3.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                jPanel3MouseDragged(evt);
             }
         });
+        jPanel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jPanel3MousePressed(evt);
+            }
+        });
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/BtnAtras.png"))); // NOI18N
+        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel4MouseClicked(evt);
+            }
+        });
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/info1.png"))); // NOI18N
+
+        jLabel7.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(240, 240, 240));
+        jLabel7.setText("PREGUNTAS");
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addComponent(jLabel4)
+                .addGap(444, 444, 444)
+                .addComponent(jLabel7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel5))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 66, Short.MAX_VALUE)
+            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        jPanel1.setBackground(new java.awt.Color(248, 248, 255));
+        jPanel1.setPreferredSize(new java.awt.Dimension(1130, 640));
+
+        jPanel8.setBackground(new java.awt.Color(27, 57, 106));
+        jPanel8.setPreferredSize(new java.awt.Dimension(120, 50));
+
+        jLabel9.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(248, 248, 255));
+        jLabel9.setText("AGREGAR");
+        jLabel9.setAlignmentY(0.0F);
+        jLabel9.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel9MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel9MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel9MouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
+        jPanel8.setLayout(jPanel8Layout);
+        jPanel8Layout.setHorizontalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel9)
+                .addContainerGap(22, Short.MAX_VALUE))
+        );
+        jPanel8Layout.setVerticalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+        );
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -102,13 +191,12 @@ public class opcPregunta extends javax.swing.JFrame {
             jTable1.getColumnModel().getColumn(1).setResizable(false);
         }
 
-        jLabel1.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel1.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setText("OPCIONES");
-
+        jLabel2.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(27, 57, 80));
         jLabel2.setText("RESPONSABLE DEL AREA");
 
+        jLabel3.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(27, 57, 80));
         jLabel3.setText("NUMERO DE ENCUESTAS");
 
         jButton2.setText("AGREGAR");
@@ -139,76 +227,179 @@ public class opcPregunta extends javax.swing.JFrame {
             }
         });
 
+        jPanel9.setBackground(new java.awt.Color(27, 57, 106));
+        jPanel9.setPreferredSize(new java.awt.Dimension(120, 50));
+
+        jLabel10.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(248, 248, 255));
+        jLabel10.setText("EDITAR");
+        jLabel10.setAlignmentY(0.0F);
+        jLabel10.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel10.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel10MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel10MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel10MouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
+        jPanel9.setLayout(jPanel9Layout);
+        jPanel9Layout.setHorizontalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addComponent(jLabel10)
+                .addContainerGap(27, Short.MAX_VALUE))
+        );
+        jPanel9Layout.setVerticalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+        );
+
+        jPanel11.setBackground(new java.awt.Color(27, 57, 106));
+        jPanel11.setPreferredSize(new java.awt.Dimension(120, 50));
+
+        jLabel12.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(248, 248, 255));
+        jLabel12.setText("ELIMINAR");
+        jLabel12.setAlignmentY(0.0F);
+        jLabel12.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel12.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel12MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel12MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel12MouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
+        jPanel11.setLayout(jPanel11Layout);
+        jPanel11Layout.setHorizontalGroup(
+            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel11Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel12)
+                .addContainerGap(27, Short.MAX_VALUE))
+        );
+        jPanel11Layout.setVerticalGroup(
+            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+        );
+
+        jPanel12.setBackground(new java.awt.Color(27, 57, 106));
+        jPanel12.setPreferredSize(new java.awt.Dimension(120, 50));
+
+        jLabel13.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(248, 248, 255));
+        jLabel13.setText("GUARDAR");
+        jLabel13.setAlignmentY(0.0F);
+        jLabel13.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel13.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel13MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel13MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel13MouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
+        jPanel12.setLayout(jPanel12Layout);
+        jPanel12Layout.setHorizontalGroup(
+            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel12Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel13)
+                .addContainerGap(22, Short.MAX_VALUE))
+        );
+        jPanel12Layout.setVerticalGroup(
+            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel13, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jButton1)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(117, 117, 117)
-                        .addComponent(jLabel1))
+                        .addGap(47, 47, 47)
+                        .addComponent(jLabel2))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, 323, Short.MAX_VALUE)
-                            .addComponent(jTextField2)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jTextField1)))
-                .addGap(18, 21, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 573, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(42, 42, 42)
+                            .addComponent(jTextField2)
+                            .addComponent(jTextField1)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(46, 46, 46)
+                                .addComponent(jLabel3)))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(34, 34, 34)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2)
-                    .addComponent(jButton4)
-                    .addComponent(jButton5))
-                .addContainerGap(49, Short.MAX_VALUE))
+                    .addComponent(jButton5)
+                    .addComponent(jButton4))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 248, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(76, 76, 76)
+                        .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(83, 83, 83)
+                        .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 718, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(23, 23, 23))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton1)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 497, Short.MAX_VALUE)
+                .addGap(17, 17, 17)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jScrollPane1)
-                                .addContainerGap())
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addGap(69, 69, 69)
-                                .addComponent(jLabel2)
-                                .addGap(27, 27, 27)
-                                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(27, 27, 27)
-                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 103, Short.MAX_VALUE)
-                                .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(149, 149, 149))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(131, 131, 131)
-                        .addComponent(jButton2)
-                        .addGap(72, 72, 72)
-                        .addComponent(jButton3)
-                        .addGap(81, 81, 81)
-                        .addComponent(jButton5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton4)
-                        .addGap(99, 99, 99))))
+                    .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(70, 70, 70))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addComponent(jLabel2)
+                .addGap(27, 27, 27)
+                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel3)
+                .addGap(18, 18, 18)
+                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(129, 129, 129)
+                .addComponent(jButton2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton4)
+                .addGap(0, 69, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -216,10 +407,15 @@ public class opcPregunta extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(1, 1, 1)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 650, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(28, Short.MAX_VALUE))
         );
 
         pack();
@@ -346,15 +542,190 @@ public class opcPregunta extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton4MouseClicked
 
-    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-        // TODO add your handling code here:
+    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
         int resp = JOptionPane.showConfirmDialog(null, "¿Deseas salir?\nSe perderan todos los cambios sin guardar.", "Aviso", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         if (resp == 0) {
             CAPTURA obj = new CAPTURA();
             obj.setVisible(true);
             this.dispose();
         }
-    }//GEN-LAST:event_jButton1MouseClicked
+
+    }//GEN-LAST:event_jLabel4MouseClicked
+
+    private void jPanel3MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseDragged
+        // TODO add your handling code here:
+        int x = evt.getXOnScreen();
+        int y = evt.getYOnScreen();
+        this.setLocation(x - xmouse, y - ymouse);
+    }//GEN-LAST:event_jPanel3MouseDragged
+
+    private void jPanel3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MousePressed
+        // TODO add your handling code here:
+        xmouse = evt.getX();
+        ymouse = evt.getY();
+    }//GEN-LAST:event_jPanel3MousePressed
+
+    private void jLabel9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseClicked
+        // TODO add your handling code here:
+        DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
+        String nuevoValor = (String) JOptionPane.showInputDialog(null, "Ingresa la nueva pregunta", "Nueva pregunta", JOptionPane.QUESTION_MESSAGE, null, null, "");
+        if (nuevoValor != null) {
+            modelo.addRow(new Object[]{nuevoValor});
+        }
+        
+    }//GEN-LAST:event_jLabel9MouseClicked
+
+    private void jLabel9MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseEntered
+        // TODO add your handling code here:
+        jPanel8.setBackground(new Color(67,80,80));
+    }//GEN-LAST:event_jLabel9MouseEntered
+
+    private void jLabel9MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseExited
+        // TODO add your handling code here:
+        jPanel8.setBackground(new Color(27,57,106));
+    }//GEN-LAST:event_jLabel9MouseExited
+
+    private void jLabel10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseClicked
+        // TODO add your handling code here:
+        DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
+        int columna = jTable1.getSelectedColumn();
+        int renglon = jTable1.getSelectedRow();
+
+        String valor = (String) modelo.getValueAt(renglon, columna);
+        String nuevoValor = (String) JOptionPane.showInputDialog(null, "Escriba aquí la nueva pregunta", "Editar pregunta", JOptionPane.QUESTION_MESSAGE, null, null, valor);
+        if (nuevoValor != null) {
+            jTable1.setValueAt(nuevoValor, jTable1.getSelectedRow(), jTable1.getSelectedColumn());
+        }
+    }//GEN-LAST:event_jLabel10MouseClicked
+
+    private void jLabel10MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseEntered
+        // TODO add your handling code here:
+        jPanel9.setBackground(new Color(67,80,80));
+    }//GEN-LAST:event_jLabel10MouseEntered
+
+    private void jLabel10MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseExited
+        // TODO add your handling code here:
+        jPanel9.setBackground(new Color(27,57,106));
+    }//GEN-LAST:event_jLabel10MouseExited
+
+    private void jLabel12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel12MouseClicked
+        // TODO add your handling code here:
+        DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
+        int seleccion = jTable1.getSelectedRow();
+        modelo.removeRow(seleccion);
+    }//GEN-LAST:event_jLabel12MouseClicked
+
+    private void jLabel12MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel12MouseEntered
+        // TODO add your handling code here:
+        jPanel11.setBackground(new Color(67,80,80));
+    }//GEN-LAST:event_jLabel12MouseEntered
+
+    private void jLabel12MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel12MouseExited
+        // TODO add your handling code here:
+        jPanel11.setBackground(new Color(27,57,106));
+    }//GEN-LAST:event_jLabel12MouseExited
+
+    private void jLabel13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel13MouseClicked
+        // TODO add your handling code here:
+        if (!jTextField3.getText().equals("") && !jTextField1.equals("")) {
+            if (jTextField1.getText().matches("^[0-9]+$") && Integer.parseInt(jTextField1.getText()) > 0) {
+                if (existeResponsable2) {
+                    if (!jTextField2.getText().equals("")) {
+                        int resp = JOptionPane.showConfirmDialog(null, "¿Deseas guardar los cambios?", "GUARDAR", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+                        if (resp == 0) {
+                            List<Pregunta> listaPreguntas = new ArrayList();
+                            for (int i = 0; i < jTable1.getRowCount(); i++) {
+                                //String valor = String.valueOf(jTable1.getValueAt(i, 0));
+                                Pregunta c = new Pregunta();
+                                c.setNumero(String.valueOf(jTable1.getValueAt(i, 0)));
+                                c.setPreg(String.valueOf(jTable1.getValueAt(i, 1)));
+                                listaPreguntas.add(c);
+                            }
+                            boolean mensaje = false;
+                            mensaje = prop.guardar("responsable" + area + "1", jTextField3.getText().trim(), ruta);
+                            mensaje = prop.guardar("responsable" + area + "2", jTextField2.getText().trim(), ruta);
+                            mensaje = prop.guardar("noEncuestas" + area, jTextField1.getText().trim(), ruta);
+                            if (mensaje) {
+                                rutaXml += prop.acceder("archivo" + area, ruta) + ".xml";
+                                if (xml.savePreguntasDataToFile(new File(rutaXml), listaPreguntas)) {
+                                    new rojerusan.RSNotifyAnimated("EXITO!", "Las preguntas registradas y almacenadas sin ningun error.", 7,
+                                            RSNotifyAnimated.PositionNotify.BottomRight,
+                                            RSNotifyAnimated.AnimationNotify.BottomUp,
+                                            RSNotifyAnimated.TypeNotify.SUCCESS).setVisible(true);
+                                } else {
+                                    new rojerusan.RSNotifyAnimated("ERROR!", "Algo salio mal al almacenar las preguntas.", 7,
+                                            RSNotifyAnimated.PositionNotify.BottomRight,
+                                            RSNotifyAnimated.AnimationNotify.BottomUp,
+                                            RSNotifyAnimated.TypeNotify.ERROR).setVisible(true);
+                                }
+                            } else {
+                                new rojerusan.RSNotifyAnimated("ERROR!", "Algo salio mal al almacenar las preguntas.", 7,
+                                        RSNotifyAnimated.PositionNotify.BottomRight,
+                                        RSNotifyAnimated.AnimationNotify.BottomUp,
+                                        RSNotifyAnimated.TypeNotify.ERROR).setVisible(true);
+                            }
+
+                        }
+
+                    } else {
+                        JOptionPane.showMessageDialog(null, "No dejes campos vacios");
+                    }
+
+                } else {
+                    int resp = JOptionPane.showConfirmDialog(null, "¿Deseas guardar los cambios?", "GUARDAR", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+                    if (resp == 0) {
+                        List<Pregunta> listaPreguntas = new ArrayList();
+                        for (int i = 0; i < jTable1.getRowCount(); i++) {
+                            //String valor = String.valueOf(jTable1.getValueAt(i, 0));
+                            Pregunta c = new Pregunta();
+                            c.setNumero(String.valueOf(jTable1.getValueAt(i, 0)));
+                            c.setPreg(String.valueOf(jTable1.getValueAt(i, 1)));
+                            listaPreguntas.add(c);
+                        }
+                        boolean mensaje = false;
+                        mensaje = prop.guardar("responsable" + area + "1", jTextField3.getText().trim(), ruta);
+                        mensaje = prop.guardar("noEncuestas" + area, jTextField1.getText().trim(), ruta);
+                        if (mensaje) {
+                            rutaXml += prop.acceder("archivo" + area, ruta) + ".xml";
+                            if (xml.savePreguntasDataToFile(new File(rutaXml), listaPreguntas)) {
+                                new rojerusan.RSNotifyAnimated("EXITO!", "Las preguntas registradas y almacenadas sin ningun error.", 7,
+                                        RSNotifyAnimated.PositionNotify.BottomRight,
+                                        RSNotifyAnimated.AnimationNotify.BottomUp,
+                                        RSNotifyAnimated.TypeNotify.SUCCESS).setVisible(true);
+                            } else {
+                                new rojerusan.RSNotifyAnimated("ERROR!", "Algo salio mal al almacenar las preguntas.", 7,
+                                        RSNotifyAnimated.PositionNotify.BottomRight,
+                                        RSNotifyAnimated.AnimationNotify.BottomUp,
+                                        RSNotifyAnimated.TypeNotify.ERROR).setVisible(true);
+                            }
+                        } else {
+                            new rojerusan.RSNotifyAnimated("ERROR!", "Algo salio mal al almacenar las preguntas.", 7,
+                                    RSNotifyAnimated.PositionNotify.BottomRight,
+                                    RSNotifyAnimated.AnimationNotify.BottomUp,
+                                    RSNotifyAnimated.TypeNotify.ERROR).setVisible(true);
+                        }
+
+                    }
+
+                }
+
+            } else {
+                JOptionPane.showMessageDialog(null, "El numero de encuestas no es valido.");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "No dejes campos vacios");
+        }
+    }//GEN-LAST:event_jLabel13MouseClicked
+
+    private void jLabel13MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel13MouseEntered
+        // TODO add your handling code here:
+        jPanel12.setBackground(new Color(67,80,80));
+    }//GEN-LAST:event_jLabel13MouseEntered
+
+    private void jLabel13MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel13MouseExited
+        // TODO add your handling code here:
+        jPanel12.setBackground(new Color(27,57,106));
+    }//GEN-LAST:event_jLabel13MouseExited
 
     public void llenadoCampos() {
         jTextField3.setText(prop.acceder("responsable" + area + "1", ruta));
@@ -424,15 +795,25 @@ public class opcPregunta extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel11;
+    private javax.swing.JPanel jPanel12;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;

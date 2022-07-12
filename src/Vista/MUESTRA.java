@@ -20,6 +20,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
@@ -32,16 +33,19 @@ public class MUESTRA extends javax.swing.JFrame {
     /**
      * Creates new form MUESTRA
      */
-    int cont=0;
+    int xmouse, ymouse;
+    int cont = 0;
     List<Carrera> carreras = new ArrayList();
-    int tam=0;
-    
+    int tam = 0;
+
     public MUESTRA() {
+        ImageIcon iconoT = new ImageIcon("src/Archivos/favicon.png");
+        this.setIconImage(iconoT.getImage());
         initComponents();
         setLocationRelativeTo(null);
         XmlActions xml = new XmlActions();
         carreras = xml.loadCarrerasDataFromFile(new File("src/Documentos/carreras.xml"));
-        tam=carreras.size();
+        tam = carreras.size();
         //fuentes();
         //creacionElementos();
     }
@@ -77,6 +81,7 @@ public class MUESTRA extends javax.swing.JFrame {
         jPanel6 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -111,7 +116,7 @@ public class MUESTRA extends javax.swing.JFrame {
 
         jLabel6.setBackground(new java.awt.Color(248, 248, 255));
         jLabel6.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(248, 248, 255));
+        jLabel6.setForeground(new java.awt.Color(103, 123, 134));
         jLabel6.setText("GENERA MUESTRA");
 
         jLabel7.setBackground(new java.awt.Color(248, 248, 255));
@@ -210,7 +215,7 @@ public class MUESTRA extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel6)
                             .addComponent(jLabel8))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(24, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -257,6 +262,8 @@ public class MUESTRA extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(248, 248, 255));
 
+        jLabel14.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(27, 57, 106));
         jLabel14.setText("GENERACION DE MUESTRA");
 
         jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/BtnAjuste.png"))); // NOI18N
@@ -264,6 +271,12 @@ public class MUESTRA extends javax.swing.JFrame {
         jLabel15.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel15MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel15MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel15MouseExited(evt);
             }
         });
 
@@ -273,10 +286,21 @@ public class MUESTRA extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel3MouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel3MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel3MouseExited(evt);
+            }
         });
 
-        jLabel17.setText("ADMINISTRACION DE CARRERAS");
+        jLabel17.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jLabel17.setForeground(new java.awt.Color(27, 57, 106));
+        jLabel17.setText("ADMINISTRACION\nDE\nCARRERAS");
+        jLabel17.setToolTipText("");
 
+        jLabel18.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(27, 57, 106));
         jLabel18.setText("GENERACION DE MUESTRA");
 
         jPanel5.setBackground(new java.awt.Color(248, 248, 255));
@@ -333,7 +357,7 @@ public class MUESTRA extends javax.swing.JFrame {
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                .addContainerGap(11, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel5)
                 .addContainerGap())
         );
@@ -365,62 +389,88 @@ public class MUESTRA extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(83, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel15)
-                                .addGap(64, 64, 64))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel17)
-                                .addGap(52, 52, 52)))
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel18)
-                            .addComponent(jLabel3))
-                        .addGap(73, 73, 73))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel16)
-                        .addContainerGap())))
+                .addComponent(jLabel3)
+                .addGap(89, 89, 89))
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(165, 165, 165)
-                .addComponent(jLabel14)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(46, 46, 46)
+                .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(44, 44, 44))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(86, 86, 86)
+                        .addComponent(jLabel15))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(152, 152, 152)
+                        .addComponent(jLabel14)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel16))
+                .addGap(31, 31, 31))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(8, 8, 8)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(91, 91, 91)
+                .addGap(83, 83, 83)
                 .addComponent(jLabel14)
-                .addGap(52, 52, 52)
+                .addGap(65, 65, 65)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel15)
-                    .addComponent(jLabel3))
-                .addGap(18, 18, 18)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel15))
+                .addGap(39, 39, 39)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel17)
-                    .addComponent(jLabel18))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 134, Short.MAX_VALUE)
-                .addComponent(jLabel16)
-                .addContainerGap())
+                    .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
+                .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(8, 8, 8))
         );
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 0, 520, 600));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 0, 630, 600));
+
+        jPanel3.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                jPanel3MouseDragged(evt);
+            }
+        });
+        jPanel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jPanel3MousePressed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 910, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 70, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 910, 70));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void fuentes(){
+    private void fuentes() {
         jLabel14.setFont(new Font("Agency FB", Font.BOLD, 18));
     }
-    
+
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
         // TODO add your handling code here:
         try {
@@ -432,49 +482,49 @@ public class MUESTRA extends javax.swing.JFrame {
 
     private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
         // TODO add your handling code here:
-        PERIODO obj= new PERIODO();
+        PERIODO obj = new PERIODO();
         obj.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jLabel7MouseClicked
 
     private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
         // TODO add your handling code here:
-        AJUSTES obj= new AJUSTES();
+        AJUSTES obj = new AJUSTES();
         obj.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jLabel8MouseClicked
 
     private void jLabel9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseClicked
         // TODO add your handling code here:
-        REPORTES obj= new REPORTES();
+        REPORTES obj = new REPORTES();
         obj.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jLabel9MouseClicked
 
     private void jLabel10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseClicked
         // TODO add your handling code here:
-        PERIODO obj= new PERIODO();
+        PERIODO obj = new PERIODO();
         obj.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jLabel10MouseClicked
 
     private void jLabel11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel11MouseClicked
         // TODO add your handling code here:
-        AJUSTES obj= new AJUSTES();
+        AJUSTES obj = new AJUSTES();
         obj.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jLabel11MouseClicked
 
     private void jLabel13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel13MouseClicked
         // TODO add your handling code here:
-        REPORTES obj= new REPORTES();
+        REPORTES obj = new REPORTES();
         obj.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jLabel13MouseClicked
 
     private void jLabel15MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel15MouseClicked
         // TODO add your handling code here:
-        OpcCarrera obj= new OpcCarrera();
+        OpcCarrera obj = new OpcCarrera();
         obj.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jLabel15MouseClicked
@@ -498,7 +548,7 @@ public class MUESTRA extends javax.swing.JFrame {
 
     private void jLabel4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseExited
         // TODO add your handling code here:
-        jPanel5.setBackground(new Color(248,248,255));
+        jPanel5.setBackground(new Color(248, 248, 255));
     }//GEN-LAST:event_jLabel4MouseExited
 
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
@@ -513,37 +563,37 @@ public class MUESTRA extends javax.swing.JFrame {
 
     private void jLabel5MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseExited
         // TODO add your handling code here:
-        jPanel6.setBackground(new Color(248,248,255));
+        jPanel6.setBackground(new Color(248, 248, 255));
     }//GEN-LAST:event_jLabel5MouseExited
 
     private void jLabel9MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseEntered
         // TODO add your handling code here:
-        jLabel9.setForeground(new Color(103,123,134));
+        jLabel9.setForeground(new Color(103, 123, 134));
     }//GEN-LAST:event_jLabel9MouseEntered
 
     private void jLabel9MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseExited
         // TODO add your handling code here:
-        jLabel9.setForeground(new Color(248, 248, 255 ));
+        jLabel9.setForeground(new Color(248, 248, 255));
     }//GEN-LAST:event_jLabel9MouseExited
 
     private void jLabel8MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseEntered
         // TODO add your handling code here:
-        jLabel8.setForeground(new Color(103,123,134));
+        jLabel8.setForeground(new Color(103, 123, 134));
     }//GEN-LAST:event_jLabel8MouseEntered
 
     private void jLabel8MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseExited
         // TODO add your handling code here:
-        jLabel8.setForeground(new Color(248, 248, 255 ));
+        jLabel8.setForeground(new Color(248, 248, 255));
     }//GEN-LAST:event_jLabel8MouseExited
 
     private void jLabel7MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseEntered
         // TODO add your handling code here:
-        jLabel7.setForeground(new Color(103,123,134));
+        jLabel7.setForeground(new Color(103, 123, 134));
     }//GEN-LAST:event_jLabel7MouseEntered
 
     private void jLabel7MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseExited
         // TODO add your handling code here:
-        jLabel7.setForeground(new Color(248, 248, 255 ));
+        jLabel7.setForeground(new Color(248, 248, 255));
     }//GEN-LAST:event_jLabel7MouseExited
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
@@ -555,12 +605,12 @@ public class MUESTRA extends javax.swing.JFrame {
 
     private void jLabel2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseEntered
         // TODO add your handling code here:
-        jLabel2.setForeground(new Color(103,123,134));
+        jLabel2.setForeground(new Color(103, 123, 134));
     }//GEN-LAST:event_jLabel2MouseEntered
 
     private void jLabel2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseExited
         // TODO add your handling code here:
-        jLabel2.setForeground(new Color(248, 248, 255 ));
+        jLabel2.setForeground(new Color(248, 248, 255));
     }//GEN-LAST:event_jLabel2MouseExited
 
     private void jLabel16MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel16MouseClicked
@@ -570,14 +620,49 @@ public class MUESTRA extends javax.swing.JFrame {
 
     private void jLabel16MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel16MouseEntered
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_jLabel16MouseEntered
 
     private void jLabel16MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel16MouseExited
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_jLabel16MouseExited
-/*
+
+    private void jLabel15MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel15MouseExited
+        // TODO add your handling code here:
+        jLabel17.setForeground(new Color(27, 57, 106));
+    }//GEN-LAST:event_jLabel15MouseExited
+
+    private void jLabel3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseExited
+        // TODO add your handling code here:
+        jLabel18.setForeground(new Color(27, 57, 106));
+    }//GEN-LAST:event_jLabel3MouseExited
+
+    private void jLabel15MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel15MouseEntered
+        // TODO add your handling code here:
+        jLabel17.setForeground(new Color(103, 123, 134));
+    }//GEN-LAST:event_jLabel15MouseEntered
+
+    private void jLabel3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseEntered
+        // TODO add your handling code here:
+        jLabel18.setForeground(new Color(103, 123, 134));
+    }//GEN-LAST:event_jLabel3MouseEntered
+
+    private void jPanel3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MousePressed
+        // TODO add your handling code here:
+        xmouse = evt.getX();
+        ymouse = evt.getY();
+
+    }//GEN-LAST:event_jPanel3MousePressed
+
+    private void jPanel3MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseDragged
+        // TODO add your handling code here:
+        int x = evt.getXOnScreen();
+        int y = evt.getYOnScreen();
+        this.setLocation(x - xmouse, y - ymouse);
+
+    }//GEN-LAST:event_jPanel3MouseDragged
+    /*
     public void creacionElementos(){
         
         for(int i=0;i<tam;i++){
@@ -593,7 +678,7 @@ public class MUESTRA extends javax.swing.JFrame {
                 }
         
     }
-    */
+     */
     /**
      * @param args the command line arguments
      */
@@ -650,6 +735,7 @@ public class MUESTRA extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     // End of variables declaration//GEN-END:variables

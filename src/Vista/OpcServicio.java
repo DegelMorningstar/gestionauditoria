@@ -9,6 +9,7 @@ import controlador.Propiedades;
 import controlador.XmlActions;
 import java.awt.Color;
 import java.io.File;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
@@ -20,6 +21,8 @@ public class OpcServicio extends javax.swing.JFrame {
     /**
      * Creates new form OpcServicio
      */
+    //variables moer ventana
+    int xmouse, ymouse;
     Propiedades prop = new Propiedades();
     String ruta = "src/documentos/";
     String carpeta = "";
@@ -27,6 +30,8 @@ public class OpcServicio extends javax.swing.JFrame {
     File periodo;
     XmlActions xml = new XmlActions();
     public OpcServicio() {
+        ImageIcon iconoT = new ImageIcon("src/Archivos/favicon.png");
+        this.setIconImage(iconoT.getImage());
         initComponents();
         this.setLocationRelativeTo(null);
         carpeta = prop.acceder("archivoActual", ruta + "config.properties");
@@ -44,11 +49,9 @@ public class OpcServicio extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jPanel6 = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
-        jPanel5 = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jCheckBox1 = new javax.swing.JCheckBox();
@@ -58,147 +61,94 @@ public class OpcServicio extends javax.swing.JFrame {
         jCheckBox8 = new javax.swing.JCheckBox();
         jCheckBox9 = new javax.swing.JCheckBox();
         jCheckBox10 = new javax.swing.JCheckBox();
-        jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jPanel5 = new javax.swing.JPanel();
+        jPanel8 = new javax.swing.JPanel();
+        jLabel9 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
-        jPanel1.setBackground(new java.awt.Color(248, 248, 255));
-
-        jPanel6.setBackground(new java.awt.Color(248, 248, 255));
-
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/BtnMinDark.png"))); // NOI18N
-        jLabel5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel5MouseClicked(evt);
+        jPanel3.setBackground(new java.awt.Color(0, 53, 153));
+        jPanel3.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                jPanel3MouseDragged(evt);
             }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jLabel5MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jLabel5MouseExited(evt);
+        });
+        jPanel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jPanel3MousePressed(evt);
             }
         });
 
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                .addContainerGap(11, Short.MAX_VALUE)
-                .addComponent(jLabel5)
-                .addContainerGap())
-        );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel5)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        jPanel5.setBackground(new java.awt.Color(248, 248, 255));
-
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/BtnXdark.png"))); // NOI18N
-        jLabel4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/BtnAtras.png"))); // NOI18N
+        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel4MouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jLabel4MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jLabel4MouseExited(evt);
+                jLabel2MouseClicked(evt);
             }
         });
 
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel4)
-                .addContainerGap())
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel4)
-                .addContainerGap())
-        );
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/info1.png"))); // NOI18N
 
-        jLabel7.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(240, 240, 240));
         jLabel7.setText("CONTROL DE SERVICIOS");
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(343, Short.MAX_VALUE)
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addComponent(jLabel2)
+                .addGap(200, 200, 200)
                 .addComponent(jLabel7)
-                .addGap(258, 258, 258)
-                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel3))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 18, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel7)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 66, Short.MAX_VALUE)
+            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         jPanel2.setBackground(new java.awt.Color(248, 248, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jCheckBox1.setBackground(new java.awt.Color(248, 248, 255));
+        jCheckBox1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jCheckBox1.setText("COORDINACION DE CARRERAS");
-        jPanel2.add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 150, -1, -1));
+        jPanel2.add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 120, 360, -1));
 
         jCheckBox2.setBackground(new java.awt.Color(248, 248, 255));
+        jCheckBox2.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jCheckBox2.setText("CENTRO DE INFORMACION");
-        jPanel2.add(jCheckBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 90, -1, -1));
+        jPanel2.add(jCheckBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 60, 320, -1));
 
         jCheckBox3.setBackground(new java.awt.Color(248, 248, 255));
+        jCheckBox3.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jCheckBox3.setText("DE COMPUTO");
-        jPanel2.add(jCheckBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 290, -1, -1));
+        jPanel2.add(jCheckBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 240, 200, -1));
 
         jCheckBox4.setBackground(new java.awt.Color(248, 248, 255));
+        jCheckBox4.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jCheckBox4.setText("RECURSOS FINANCIEROS");
-        jPanel2.add(jCheckBox4, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 220, -1, -1));
+        jPanel2.add(jCheckBox4, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 180, 310, -1));
 
         jCheckBox8.setBackground(new java.awt.Color(248, 248, 255));
+        jCheckBox8.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jCheckBox8.setText("RESIDENCIAS PROFESIONALES");
-        jPanel2.add(jCheckBox8, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 490, -1, -1));
+        jPanel2.add(jCheckBox8, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 420, 360, -1));
 
         jCheckBox9.setBackground(new java.awt.Color(248, 248, 255));
+        jCheckBox9.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jCheckBox9.setText("SERVICIOS ESCOLARES");
-        jPanel2.add(jCheckBox9, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 430, -1, -1));
+        jPanel2.add(jCheckBox9, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 360, 300, -1));
 
         jCheckBox10.setBackground(new java.awt.Color(248, 248, 255));
+        jCheckBox10.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jCheckBox10.setText("SERVICIO SOCIAL");
-        jPanel2.add(jCheckBox10, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 360, -1, -1));
-
-        jButton1.setText("REGRESAR");
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton1MouseClicked(evt);
-            }
-        });
-        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 570, -1, -1));
+        jPanel2.add(jCheckBox10, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 300, 240, -1));
 
         jButton2.setText("GUARDAR");
         jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -206,31 +156,75 @@ public class OpcServicio extends javax.swing.JFrame {
                 jButton2MouseClicked(evt);
             }
         });
-        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 570, -1, -1));
+        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 410, -1, -1));
+
+        jPanel5.setBackground(new java.awt.Color(248, 248, 255));
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 40, Short.MAX_VALUE)
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 40, Short.MAX_VALUE)
+        );
+
+        jPanel2.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 40, 40, 40));
+
+        jPanel8.setBackground(new java.awt.Color(27, 57, 106));
+        jPanel8.setPreferredSize(new java.awt.Dimension(120, 50));
+
+        jLabel9.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(248, 248, 255));
+        jLabel9.setText(" GUARDAR");
+        jLabel9.setAlignmentX(0.5F);
+        jLabel9.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel9MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel9MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel9MouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
+        jPanel8.setLayout(jPanel8Layout);
+        jPanel8Layout.setHorizontalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel9)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel8Layout.setVerticalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addGap(8, 8, 8)
+                .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
+                .addGap(8, 8, 8))
+        );
+
+        jPanel2.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 460, 120, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 900, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 900, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 800, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 700, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, 0)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 640, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(1, 1, 1)
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 526, Short.MAX_VALUE))
         );
 
         pack();
@@ -266,36 +260,6 @@ public class OpcServicio extends javax.swing.JFrame {
             jCheckBox8.setSelected(true);
         }
     }
-    private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
-        // TODO add your handling code here:
-        this.setExtendedState(ICONIFIED);
-    }//GEN-LAST:event_jLabel5MouseClicked
-
-    private void jLabel5MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseEntered
-        // TODO add your handling code here:
-        jPanel6.setBackground(Color.red);
-    }//GEN-LAST:event_jLabel5MouseEntered
-
-    private void jLabel5MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseExited
-        // TODO add your handling code here:
-        jPanel6.setBackground(new Color(248, 248, 255));
-    }//GEN-LAST:event_jLabel5MouseExited
-
-    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
-        // TODO add your handling code here:
-        System.exit(0);
-    }//GEN-LAST:event_jLabel4MouseClicked
-
-    private void jLabel4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseEntered
-        // TODO add your handling code here:
-        jPanel5.setBackground(Color.red);
-    }//GEN-LAST:event_jLabel4MouseEntered
-
-    private void jLabel4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseExited
-        // TODO add your handling code here:
-        jPanel5.setBackground(new Color(248, 248, 255));
-    }//GEN-LAST:event_jLabel4MouseExited
-
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
         // TODO add your handling code here:
         boolean mensaje = false;
@@ -339,12 +303,79 @@ public class OpcServicio extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton2MouseClicked
 
-    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+    private void jPanel3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MousePressed
+        // TODO add your handling code here:
+        xmouse = evt.getX();
+        ymouse = evt.getY();
+    }//GEN-LAST:event_jPanel3MousePressed
+
+    private void jPanel3MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseDragged
+        // TODO add your handling code here:
+        int x = evt.getXOnScreen();
+        int y = evt.getYOnScreen();
+        this.setLocation(x - xmouse, y - ymouse);
+    }//GEN-LAST:event_jPanel3MouseDragged
+
+    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
         // TODO add your handling code here:
         CAPTURA obj = new CAPTURA();
         obj.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jButton1MouseClicked
+        
+    }//GEN-LAST:event_jLabel2MouseClicked
+
+    private void jLabel9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseClicked
+        // TODO add your handling code here:
+        boolean mensaje = false;
+        if(jCheckBox2.isSelected()){
+            mensaje = prop.guardar("centroInformacionActivo", "si", periodo.getAbsolutePath());
+        }else{
+            mensaje = prop.guardar("centroInformacionActivo", "no", periodo.getAbsolutePath());
+        }
+        if(jCheckBox1.isSelected()){
+            mensaje = prop.guardar("coordinacionCarrerasActivo", "si", periodo.getAbsolutePath());
+        }else{
+            mensaje = prop.guardar("coordinacionCarrerasActivo", "no", periodo.getAbsolutePath());
+        }
+        if(jCheckBox4.isSelected()){
+            mensaje = prop.guardar("recursosFinancierosActivo", "si", periodo.getAbsolutePath());
+        }else{
+            mensaje = prop.guardar("recursosFinancierosActivo", "no", periodo.getAbsolutePath());
+        }
+        if(jCheckBox3.isSelected()){
+            mensaje = prop.guardar("computoActivo", "si", periodo.getAbsolutePath());
+        }else{
+            mensaje = prop.guardar("computoActivo", "no", periodo.getAbsolutePath());
+        }
+        if(jCheckBox10.isSelected()){
+            mensaje = prop.guardar("servicioSocialActivo", "si", periodo.getAbsolutePath());
+        }else{
+            mensaje = prop.guardar("servicioSocialActivo", "no", periodo.getAbsolutePath());
+        }
+        if(jCheckBox9.isSelected()){
+            mensaje = prop.guardar("serviciosEscolaresActivo", "si", periodo.getAbsolutePath());
+        }else{
+            mensaje = prop.guardar("serviciosEscolaresActivo", "no", periodo.getAbsolutePath());
+        }
+        if(jCheckBox8.isSelected()){
+            mensaje = prop.guardar("residenciaProfesionalActivo", "si", periodo.getAbsolutePath());
+        }else{
+            mensaje = prop.guardar("residenciaProfesionalActivo", "no", periodo.getAbsolutePath());
+        }
+        if(mensaje){
+            JOptionPane.showMessageDialog(null, "Se ha guardado con exito.");
+        }
+    }//GEN-LAST:event_jLabel9MouseClicked
+
+    private void jLabel9MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseEntered
+        // TODO add your handling code here:
+        jPanel8.setBackground(new Color(67,80,80));
+    }//GEN-LAST:event_jLabel9MouseEntered
+
+    private void jLabel9MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseExited
+        // TODO add your handling code here:
+        jPanel8.setBackground(new Color(27,57,106));
+    }//GEN-LAST:event_jLabel9MouseExited
 
     /**
      * @param args the command line arguments
@@ -382,7 +413,6 @@ public class OpcServicio extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBox jCheckBox10;
@@ -391,12 +421,13 @@ public class OpcServicio extends javax.swing.JFrame {
     private javax.swing.JCheckBox jCheckBox4;
     private javax.swing.JCheckBox jCheckBox8;
     private javax.swing.JCheckBox jCheckBox9;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel8;
     // End of variables declaration//GEN-END:variables
 }
