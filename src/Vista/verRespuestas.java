@@ -518,6 +518,21 @@ public class verRespuestas extends javax.swing.JFrame {
 
     private void jLabel12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel12MouseClicked
         // TODO add your handling code here:
+        if (banderafiltrado) {
+            String carrera = jComboBox1.getSelectedItem().toString().trim();
+            String rutaPeriodoCarrera = ruta + "/Periodos/" + carpeta + "/" + carrera + "/PeriodoCarrera.properties";
+            String iniciado = prop.acceder("iniciado" + clave, rutaPeriodoCarrera);
+            if (!iniciado.equals("no")) {
+                //necesita area, titulo pantalla, carrera
+                opcRecomendaciones obj = new opcRecomendaciones(clave, area, carrera);
+                obj.setVisible(true);
+                this.dispose();
+            } else {
+                JOptionPane.showMessageDialog(null, "Aun no has registrado la muestra para esta carrera.");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Es necesario seleccionar una carrera para acceder a sus resultados.");
+        }
     }//GEN-LAST:event_jLabel12MouseClicked
 
     private void jLabel12MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel12MouseEntered
