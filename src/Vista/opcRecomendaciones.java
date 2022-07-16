@@ -9,6 +9,7 @@ import Modelo.Encuesta;
 import Modelo.Pregunta;
 import Modelo.ResultadosTabla;
 import Modelo.TablaDiagnostico;
+import controlador.GeneradorReporte;
 import controlador.Propiedades;
 import controlador.XmlActions;
 import java.io.File;
@@ -37,6 +38,10 @@ public class opcRecomendaciones extends javax.swing.JFrame {
     ObservableList<TablaDiagnostico> datosDiagnostico;
     List<Encuesta> encuestas = new ArrayList();
     List<TablaDiagnostico> listaTablaDiagnostico = new ArrayList();
+    List<ResultadosTabla> resultados = new ArrayList();
+    List<Pregunta> preguntas = new ArrayList();
+    float promedios[];
+    
     
     private String carrera, area, tituloPantalla, nombreAreaBien, carpeta, comentarios = "", comparacion, carpetaAnterior;
     String rutaXml = "src/Documentos/";
@@ -61,8 +66,7 @@ public class opcRecomendaciones extends javax.swing.JFrame {
         
         loadrecomendaciones();
         
-        List<ResultadosTabla> resultados = new ArrayList();
-        List<Pregunta> preguntas = new ArrayList();
+        
         
         preguntas = xml.loadPreguntasDataFromFile(new File(rutaXml + nombreAreaBien + ".xml"));
         //preguntas = xml.loadPreguntasDataFromFile(new File(rutaXml + "residenciasProfesionales" + ".xml"));
@@ -105,6 +109,7 @@ public class opcRecomendaciones extends javax.swing.JFrame {
             }
             
         }
+        promedios = new float[respuestasCondensadas.length];
         for (int i = 0; i < respuestasCondensadas.length; i++) {
             System.out.println("Pregunta " + i + ": respuestas con 1=" + respuestasCondensadas[i].getNoCalificacionUno() +
                     ": respuestas con 2=" + respuestasCondensadas[i].getNoCalificacionDos() +
@@ -113,7 +118,7 @@ public class opcRecomendaciones extends javax.swing.JFrame {
                     ": respuestas con 5=" + respuestasCondensadas[i].getNoCalificacionCinco());
             ResultadosTabla resultado = new ResultadosTabla(i+1, respuestasCondensadas[i].getNoCalificacionUno(), respuestasCondensadas[i].getNoCalificacionDos(), respuestasCondensadas[i].getNoCalificacionTres(), respuestasCondensadas[i].getNoCalificacionCuatro(), respuestasCondensadas[i].getNoCalificacionCinco());
             promedio += resultado.getPromedio();
-            
+            promedios[i] = (float)resultado.getPromedio();
             
             prop.guardar("promedioPregunta" + (i + 1) + area, String.format("%.2f", resultado.getPromedio()), rutaXml+"Periodos/" + carpeta+"/"+carrera.trim() + "/PeriodoCarrera.properties");
             resultados.add(resultado);
@@ -131,6 +136,9 @@ public class opcRecomendaciones extends javax.swing.JFrame {
         System.out.println(comentarios);
         jTextArea3.setText(comentarios);
         datos = FXCollections.observableArrayList(resultados);
+        
+        
+        
         
         //tablaResultados.setItems(datos);
     }
@@ -154,6 +162,7 @@ public class opcRecomendaciones extends javax.swing.JFrame {
         jScrollPane4 = new javax.swing.JScrollPane();
         jTextArea3 = new javax.swing.JTextArea();
         jLabel4 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -161,7 +170,6 @@ public class opcRecomendaciones extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(1130, 650));
 
         jPanel1.setBackground(new java.awt.Color(248, 248, 255));
         jPanel1.setPreferredSize(new java.awt.Dimension(1130, 852));
@@ -183,6 +191,13 @@ public class opcRecomendaciones extends javax.swing.JFrame {
         jScrollPane4.setViewportView(jTextArea3);
 
         jLabel4.setText("COMENTARIOS");
+
+        jButton1.setText("jButton1");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -207,6 +222,10 @@ public class opcRecomendaciones extends javax.swing.JFrame {
                                     .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 451, Short.MAX_VALUE)
                                     .addComponent(jScrollPane1))
                                 .addGap(0, 0, Short.MAX_VALUE))))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(146, 146, 146))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -226,7 +245,9 @@ public class opcRecomendaciones extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 571, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(247, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 147, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(68, 68, 68))
         );
 
         jPanel3.setBackground(new java.awt.Color(0, 53, 153));
@@ -313,9 +334,16 @@ public class opcRecomendaciones extends javax.swing.JFrame {
         ymouse = evt.getY();
     }//GEN-LAST:event_jPanel3MousePressed
 
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        // TODO add your handling code here:
+        
+        GeneradorReporte genera = new GeneradorReporte();
+        String recomendaciones = jTextArea1.getText();
+        genera.generar(resultados, promedio, promedios,comentarios,preguntas,area, recomendaciones);
+    }//GEN-LAST:event_jButton1MouseClicked
+
     
     /**
-     * @param args the command line arguments
      */
     public void loadrecomendaciones(){
         File archivoXml = new File(rutaXml+"Periodos/" + carpeta + "/"+carrera.trim()+"/" + nombreAreaBien + "Encuestas.xml");
@@ -360,6 +388,7 @@ public class opcRecomendaciones extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

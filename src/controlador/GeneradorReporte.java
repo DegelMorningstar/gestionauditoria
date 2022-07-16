@@ -1,26 +1,22 @@
 package controlador;
 
-import java.awt.Graphics2D;
+import Modelo.Pregunta;
+import Modelo.ResultadosTabla;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javafx.stage.FileChooser;
 import javax.imageio.ImageIO;
 import javax.swing.WindowConstants;
 import net.sf.jasperreports.engine.JRException;
-import net.sf.jasperreports.engine.JRExporterParameter;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperPrintManager;
 import net.sf.jasperreports.engine.JasperReport;
-import net.sf.jasperreports.engine.export.JRGraphics2DExporter;
-import net.sf.jasperreports.engine.export.JRGraphics2DExporterParameter;
 import net.sf.jasperreports.engine.util.JRLoader;
 import net.sf.jasperreports.view.JasperViewer;
 
@@ -45,47 +41,25 @@ public class GeneradorReporte {
     String fecha;
     String noEncuestas;
     String areaAuditada;
-    String comentarios;
     String recomendaciones;
     Float promTotal;
-    private final Object[][] listadoPreguntas  = new Object[][]{
-            {1.3f, 5.4f, "1. Me informa oportunamente sobre el horario de atención"},
-            {2.2f, 1.4f, "2. Me informa oportunamente sobre el horario de atención"},
-            {3.3f, 2.3f, "3. Me informa oportunamente sobre el horario de atención"},
-            {4.4f, 2.5f, "4. Me informa oportunamente sobre el horario de atención"},
-            {5.2f, 5.0f, "5. Me informa oportunamente sobre el horario de atención"},
-            {6.1f, 5.0f, "6. Me informa oportunamente sobre el horario de atención"},
-            {7.9f, 6.5f, "7. Me informa oportunamente sobre el horario de atención"},
-            {8.78f, 6.4f, "8. Me informa oportunamente sobre el horario de atención"},
-            {9.23f, 7.8f, "9. Me informa oportunamente sobre el horario de atención"},
-            {1.23f, 9.5f, "Este servicio no fue aditado debido a que el inmueble donde se encuentra ubicado el centro de información resultó con severos daños"
-                + " por el sismo pasado 19 de septiembre del presente año."}
-        };
-    
-    private final Object[][] listadoCalificaciones = new Object[][]{
-            {1, 1, 9, 10, 20, 10, 8.9f},
-            {2, 1, 39, 10, 20, 10, 8.9f},
-            {3, 1, 23, 10, 20, 10, 5.9f},
-            {4, 1, 232, 10, 20, 10, 7.9f},
-            {5, 1, 9, 10, 20, 10, 6.9f},
-            {6, 1, 9, 10, 20, 10, 6.9f},
-            {7, 1, 9, 10, 20, 10, 8.9f},
-            {8, 1, 9, 10, 20, 10, 9.9f},
-            {9, 1, 9, 10, 20, 10, 5.9f},
-            {"Promedio", 1, 9, 10, 20, 10, 5.9f}
-        };
-    
-    public static Object[][] grafico = new Object[][]{
-        {"1", 4.9f},
-        {"2", 2.9f},
-        {"3", 3.9f},
-        {"4", 2.9f},
-        {"5", 1.9f},
-        {"6", 4.4f},
-        {"7", 2.9f},
-        {"8", 3.9f},
-        {"9", 2.9f}
+    private Object[][] listadoPreguntas = new Object[][]{
+        {1.3f, 5.4f, "1. Me informa oportunamente sobre el horario de atención"},
+        {2.2f, 1.4f, "2. Me informa oportunamente sobre el horario de atención"},
+        {3.3f, 2.3f, "3. Me informa oportunamente sobre el horario de atención"},
+        {4.4f, 2.5f, "4. Me informa oportunamente sobre el horario de atención"},
+        {5.2f, 5.0f, "5. Me informa oportunamente sobre el horario de atención"},
+        {6.1f, 5.0f, "6. Me informa oportunamente sobre el horario de atención"},
+        {7.9f, 6.5f, "7. Me informa oportunamente sobre el horario de atención"},
+        {8.78f, 6.4f, "8. Me informa oportunamente sobre el horario de atención"},
+        {9.23f, 7.8f, "9. Me informa oportunamente sobre el horario de atención"},
+        {1.23f, 9.5f, "Este servicio no fue aditado debido a que el inmueble donde se encuentra ubicado el centro de información resultó con severos daños"
+            + " por el sismo pasado 19 de septiembre del presente año."}
     };
+
+    private Object[][] listadoCalificaciones;
+
+    public static Object[][] grafico;
 
     public void responsable(String area) {
 
@@ -128,14 +102,47 @@ public class GeneradorReporte {
 
     public GeneradorReporte() {
 
+    }
+    
+    public void llenarResultados(List<ResultadosTabla> resultados,float promedios[]){
+        listadoCalificaciones = new Object[][]{
+        {1, resultados.get(0).getNoCalificacionUno(), resultados.get(0).getNoCalificacionDos(), resultados.get(0).getNoCalificacionTres(), resultados.get(0).getNoCalificacionCuatro(), resultados.get(0).getNoCalificacionCinco(), promedios[0]},
+        {2, resultados.get(1).getNoCalificacionUno(), resultados.get(1).getNoCalificacionDos(), resultados.get(1).getNoCalificacionTres(), resultados.get(1).getNoCalificacionCuatro(), resultados.get(1).getNoCalificacionCinco(), promedios[1]},
+        {3, resultados.get(2).getNoCalificacionUno(), resultados.get(2).getNoCalificacionDos(), resultados.get(2).getNoCalificacionTres(), resultados.get(2).getNoCalificacionCuatro(), resultados.get(2).getNoCalificacionCinco(), promedios[2]},
+        {4, resultados.get(3).getNoCalificacionUno(), resultados.get(3).getNoCalificacionDos(), resultados.get(3).getNoCalificacionTres(), resultados.get(3).getNoCalificacionCuatro(), resultados.get(3).getNoCalificacionCinco(), promedios[3]},
+        {5, resultados.get(4).getNoCalificacionUno(), resultados.get(4).getNoCalificacionDos(), resultados.get(4).getNoCalificacionTres(), resultados.get(4).getNoCalificacionCuatro(), resultados.get(4).getNoCalificacionCinco(), promedios[4]},
+        {6, resultados.get(5).getNoCalificacionUno(), resultados.get(5).getNoCalificacionDos(), resultados.get(5).getNoCalificacionTres(), resultados.get(5).getNoCalificacionCuatro(), resultados.get(5).getNoCalificacionCinco(), promedios[5]},
+        {7, resultados.get(6).getNoCalificacionUno(), resultados.get(6).getNoCalificacionDos(), resultados.get(6).getNoCalificacionTres(), resultados.get(6).getNoCalificacionCuatro(), resultados.get(6).getNoCalificacionCinco(), promedios[6]},
+        {8, resultados.get(7).getNoCalificacionUno(), resultados.get(7).getNoCalificacionDos(), resultados.get(7).getNoCalificacionTres(), resultados.get(7).getNoCalificacionCuatro(), resultados.get(7).getNoCalificacionCinco(), promedios[7]},
+        {9, resultados.get(8).getNoCalificacionUno(), resultados.get(8).getNoCalificacionDos(), resultados.get(8).getNoCalificacionTres(), resultados.get(8).getNoCalificacionCuatro(), resultados.get(8).getNoCalificacionCinco(), promedios[8]},
+        {"Promedio", 1, 9, 10, 20, 10, 5.9f}
+    };
+        
+        grafico = new Object[][]{
+        {"1", promedios[0]},
+        {"2", promedios[1]},
+        {"3", promedios[2]},
+        {"4", promedios[3]},
+        {"5", promedios[4]},
+        {"6", promedios[5]},
+        {"7", promedios[6]},
+        {"8", promedios[7]},
+        {"9", promedios[8]}
+    };
+        
+    }
+
+    public GeneradorReporte(List<ResultadosTabla> resultados, double promedio,float promedios[], String comentarios, List<Pregunta> preguntas, String area, String recomendaciones) {
+
         try {
+            llenarResultados(resultados,promedios);
 
             responsable("Computo");
             fecha();
             muestra("ING. Electromecánica");
             areaAuditada("Centro de Computo");
-            promTotal = 4.6f;
 
+            promTotal = (float)promedio;
             JasperReport report = (JasperReport) JRLoader.loadObject(getClass().getResource("reporteMaestroEncuesta.jasper"));
             Map<String, Object> parametros = new HashMap();
             parametros.put("nombreDocumento", nombreDocumento);
@@ -153,13 +160,8 @@ public class GeneradorReporte {
             parametros.put("noEncuestas", noEncuestas);
             parametros.put("promTotal", promTotal);
 
-            comentarios = "1. Este servicio no fue auditado debido a que el inmueble donde se encuentra ubicado el centro de "
-                    + "información resultó con severos daños por el sismo del pasado 19 de septiembre del presente año. "
-                    + "No se ha proporcionado el servicio a la comunidad tecnológica, por lo tanto, no se tienen elementos para "
-                    + "realizar esta auditoria.";
             parametros.put("comentarios", comentarios);
-            
-            
+
             GraficoReporte.hacerGrafico(grafico);
             file = new File("src/Archivos/" + "grafica.png");
             String grafica = file.getAbsolutePath();
@@ -185,12 +187,10 @@ public class GeneradorReporte {
                 }
             }
 
-            
             file = new File("src/Archivos/" + "diagnostico1.png");
             String diagnostico = file.getAbsolutePath();
             parametros.put("diagnostico", diagnostico);
-            
-            
+
             recomendaciones = "1. Este servicio no fue auditado debido a que el inmueble donde se encuentra ubicado el centro de "
                     + "información resultó con severos daños por el sismo del pasado 19 de septiembre del presente año. "
                     + "No se ha proporcionado el servicio a la comunidad tecnológica, por lo tanto, no se tienen elementos para "
@@ -202,10 +202,6 @@ public class GeneradorReporte {
             JasperPrint jprint = JasperFillManager.fillReport(report, parametros, ReporteDataSource.getDataSource(listadoCalificaciones));
 
             JasperViewer view = new JasperViewer(jprint, false);
-            
-            
-            
-
             view.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
             view.setVisible(true);
 
@@ -216,11 +212,17 @@ public class GeneradorReporte {
     }
 
     /**
-     * @param args the command line arguments
+     * @param resultados
+     * @param promedio
+     * @param promedios
+     * @param comentarios
+     * @param preguntas
+     * @param area
+     * @param recomendaciones
      */
-    public static void main(String[] args) {
+    public void generar(List<ResultadosTabla> resultados, double promedio, float promedios[], String comentarios, List<Pregunta> preguntas, String area, String recomendaciones) {
 
-        GeneradorReporte jasper = new GeneradorReporte();
+        GeneradorReporte jasper = new GeneradorReporte(resultados, promedio, promedios,comentarios,preguntas,area, recomendaciones);
 
     }
 
