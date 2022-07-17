@@ -339,7 +339,8 @@ public class opcRecomendaciones extends javax.swing.JFrame {
         
         GeneradorReporte genera = new GeneradorReporte();
         String recomendaciones = jTextArea1.getText();
-        genera.generar(resultados, promedio, promedios,comentarios,preguntas,area, recomendaciones);
+        String comparativo = jTextArea2.getText();
+        genera.generar(resultados, promedio, promedios,comentarios,preguntas,area, recomendaciones,carrera,tituloPantalla,comparativo);
     }//GEN-LAST:event_jButton1MouseClicked
 
     

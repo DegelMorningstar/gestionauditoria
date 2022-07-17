@@ -7,6 +7,8 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -41,21 +43,8 @@ public class GeneradorReporte {
     String fecha;
     String noEncuestas;
     String areaAuditada;
-    String recomendaciones;
     Float promTotal;
-    private Object[][] listadoPreguntas = new Object[][]{
-        {1.3f, 5.4f, "1. Me informa oportunamente sobre el horario de atención"},
-        {2.2f, 1.4f, "2. Me informa oportunamente sobre el horario de atención"},
-        {3.3f, 2.3f, "3. Me informa oportunamente sobre el horario de atención"},
-        {4.4f, 2.5f, "4. Me informa oportunamente sobre el horario de atención"},
-        {5.2f, 5.0f, "5. Me informa oportunamente sobre el horario de atención"},
-        {6.1f, 5.0f, "6. Me informa oportunamente sobre el horario de atención"},
-        {7.9f, 6.5f, "7. Me informa oportunamente sobre el horario de atención"},
-        {8.78f, 6.4f, "8. Me informa oportunamente sobre el horario de atención"},
-        {9.23f, 7.8f, "9. Me informa oportunamente sobre el horario de atención"},
-        {1.23f, 9.5f, "Este servicio no fue aditado debido a que el inmueble donde se encuentra ubicado el centro de información resultó con severos daños"
-            + " por el sismo pasado 19 de septiembre del presente año."}
-    };
+    private Object[][] listadoPreguntas;
 
     private Object[][] listadoCalificaciones;
 
@@ -104,7 +93,19 @@ public class GeneradorReporte {
 
     }
     
-    public void llenarResultados(List<ResultadosTabla> resultados,float promedios[]){
+    public void llenarResultados(List<ResultadosTabla> resultados,float promedios[], float promedio,List<Pregunta> preguntas,String comparativo){
+        int fila1=0,fila2=0,fila3=0,fila4=0,fila5=0;
+        
+        for(int i=1; i<=8;i++){
+            fila1 += resultados.get(i).getNoCalificacionUno();
+            fila2 += resultados.get(i).getNoCalificacionDos();
+            fila3 += resultados.get(i).getNoCalificacionTres();
+            fila4 += resultados.get(i).getNoCalificacionCuatro();
+            fila5 += resultados.get(i).getNoCalificacionCinco();
+        }
+        BigDecimal bd = new BigDecimal(promedio).setScale(2, RoundingMode.HALF_UP);
+        promedio = (float)bd.doubleValue();
+        
         listadoCalificaciones = new Object[][]{
         {1, resultados.get(0).getNoCalificacionUno(), resultados.get(0).getNoCalificacionDos(), resultados.get(0).getNoCalificacionTres(), resultados.get(0).getNoCalificacionCuatro(), resultados.get(0).getNoCalificacionCinco(), promedios[0]},
         {2, resultados.get(1).getNoCalificacionUno(), resultados.get(1).getNoCalificacionDos(), resultados.get(1).getNoCalificacionTres(), resultados.get(1).getNoCalificacionCuatro(), resultados.get(1).getNoCalificacionCinco(), promedios[1]},
@@ -115,7 +116,7 @@ public class GeneradorReporte {
         {7, resultados.get(6).getNoCalificacionUno(), resultados.get(6).getNoCalificacionDos(), resultados.get(6).getNoCalificacionTres(), resultados.get(6).getNoCalificacionCuatro(), resultados.get(6).getNoCalificacionCinco(), promedios[6]},
         {8, resultados.get(7).getNoCalificacionUno(), resultados.get(7).getNoCalificacionDos(), resultados.get(7).getNoCalificacionTres(), resultados.get(7).getNoCalificacionCuatro(), resultados.get(7).getNoCalificacionCinco(), promedios[7]},
         {9, resultados.get(8).getNoCalificacionUno(), resultados.get(8).getNoCalificacionDos(), resultados.get(8).getNoCalificacionTres(), resultados.get(8).getNoCalificacionCuatro(), resultados.get(8).getNoCalificacionCinco(), promedios[8]},
-        {"Promedio", 1, 9, 10, 20, 10, 5.9f}
+        {"Promedio", fila1, fila2, fila3, fila4, fila5, promedio}
     };
         
         grafico = new Object[][]{
@@ -129,20 +130,33 @@ public class GeneradorReporte {
         {"8", promedios[7]},
         {"9", promedios[8]}
     };
+        listadoPreguntas = new Object[][]{
+        {1.3f, promedios[0], preguntas.get(0).getPreg()},
+        {2.2f, promedios[1], preguntas.get(1).getPreg()},
+        {3.3f, promedios[2], preguntas.get(2).getPreg()},
+        {4.4f, promedios[3], preguntas.get(3).getPreg()},
+        {5.2f, promedios[4], preguntas.get(4).getPreg()},
+        {6.1f, promedios[5], preguntas.get(5).getPreg()},
+        {7.9f, promedios[6], preguntas.get(6).getPreg()},
+        {8.78f, promedios[7], preguntas.get(7).getPreg()},
+        {9.23f, promedios[8], preguntas.get(8).getPreg()},
+        {1.23f, promedio, comparativo}
+    };
         
     }
 
-    public GeneradorReporte(List<ResultadosTabla> resultados, double promedio,float promedios[], String comentarios, List<Pregunta> preguntas, String area, String recomendaciones) {
+    public GeneradorReporte(List<ResultadosTabla> resultados, double promedio,float promedios[], String comentarios, List<Pregunta> preguntas, String area, String recomendaciones, String carrera, String areaAudi,String comparativo) {
 
         try {
-            llenarResultados(resultados,promedios);
-
-            responsable("Computo");
-            fecha();
-            muestra("ING. Electromecánica");
-            areaAuditada("Centro de Computo");
-
             promTotal = (float)promedio;
+            llenarResultados(resultados,promedios,promTotal,preguntas,comparativo);
+
+            responsable(area);
+            fecha();
+            muestra(carrera);
+            areaAuditada(areaAudi);
+
+            
             JasperReport report = (JasperReport) JRLoader.loadObject(getClass().getResource("reporteMaestroEncuesta.jasper"));
             Map<String, Object> parametros = new HashMap();
             parametros.put("nombreDocumento", nombreDocumento);
@@ -191,10 +205,6 @@ public class GeneradorReporte {
             String diagnostico = file.getAbsolutePath();
             parametros.put("diagnostico", diagnostico);
 
-            recomendaciones = "1. Este servicio no fue auditado debido a que el inmueble donde se encuentra ubicado el centro de "
-                    + "información resultó con severos daños por el sismo del pasado 19 de septiembre del presente año. "
-                    + "No se ha proporcionado el servicio a la comunidad tecnológica, por lo tanto, no se tienen elementos para "
-                    + "realizar esta auditoria.";
             parametros.put("recomendaciones", recomendaciones);
 
             //parametros.put("subReporte", subReporte);
@@ -219,10 +229,13 @@ public class GeneradorReporte {
      * @param preguntas
      * @param area
      * @param recomendaciones
+     * @param carrera
+     * @param areaAudi
+     * @param comparativo
      */
-    public void generar(List<ResultadosTabla> resultados, double promedio, float promedios[], String comentarios, List<Pregunta> preguntas, String area, String recomendaciones) {
+    public void generar(List<ResultadosTabla> resultados, double promedio, float promedios[], String comentarios, List<Pregunta> preguntas, String area, String recomendaciones, String carrera, String areaAudi, String comparativo) {
 
-        GeneradorReporte jasper = new GeneradorReporte(resultados, promedio, promedios,comentarios,preguntas,area, recomendaciones);
+        GeneradorReporte jasper = new GeneradorReporte(resultados, promedio, promedios,comentarios,preguntas,area, recomendaciones,carrera,areaAudi,comparativo);
 
     }
 
