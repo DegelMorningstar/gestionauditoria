@@ -2,6 +2,7 @@ package controlador;
 
 import Modelo.Pregunta;
 import Modelo.ResultadosTabla;
+import Modelo.TablaDiagnostico;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -93,7 +94,7 @@ public class GeneradorReporte {
 
     }
     
-    public void llenarResultados(List<ResultadosTabla> resultados,float promedios[], float promedio,List<Pregunta> preguntas,String comparativo){
+    public void llenarResultados(List<ResultadosTabla> resultados,float promedios[], float promedio,List<Pregunta> preguntas,String comparativo,List<TablaDiagnostico> listaTablaDiagnostico){
         int fila1=0,fila2=0,fila3=0,fila4=0,fila5=0;
         
         for(int i=1; i<=8;i++){
@@ -130,26 +131,28 @@ public class GeneradorReporte {
         {"8", promedios[7]},
         {"9", promedios[8]}
     };
+        
+        
         listadoPreguntas = new Object[][]{
-        {1.3f, promedios[0], preguntas.get(0).getPreg()},
-        {2.2f, promedios[1], preguntas.get(1).getPreg()},
-        {3.3f, promedios[2], preguntas.get(2).getPreg()},
-        {4.4f, promedios[3], preguntas.get(3).getPreg()},
-        {5.2f, promedios[4], preguntas.get(4).getPreg()},
-        {6.1f, promedios[5], preguntas.get(5).getPreg()},
-        {7.9f, promedios[6], preguntas.get(6).getPreg()},
-        {8.78f, promedios[7], preguntas.get(7).getPreg()},
-        {9.23f, promedios[8], preguntas.get(8).getPreg()},
-        {1.23f, promedio, comparativo}
+        {Float.parseFloat(listaTablaDiagnostico.get(0).getPromedioAnterior()), promedios[0], preguntas.get(0).getPreg()},
+        {Float.parseFloat(listaTablaDiagnostico.get(1).getPromedioAnterior()), promedios[1], preguntas.get(1).getPreg()},
+        {Float.parseFloat(listaTablaDiagnostico.get(2).getPromedioAnterior()), promedios[2], preguntas.get(2).getPreg()},
+        {Float.parseFloat(listaTablaDiagnostico.get(3).getPromedioAnterior()), promedios[3], preguntas.get(3).getPreg()},
+        {Float.parseFloat(listaTablaDiagnostico.get(4).getPromedioAnterior()), promedios[4], preguntas.get(4).getPreg()},
+        {Float.parseFloat(listaTablaDiagnostico.get(5).getPromedioAnterior()), promedios[5], preguntas.get(5).getPreg()},
+        {Float.parseFloat(listaTablaDiagnostico.get(6).getPromedioAnterior()), promedios[6], preguntas.get(6).getPreg()},
+        {Float.parseFloat(listaTablaDiagnostico.get(7).getPromedioAnterior()), promedios[7], preguntas.get(7).getPreg()},
+        {Float.parseFloat(listaTablaDiagnostico.get(8).getPromedioAnterior()), promedios[8], preguntas.get(8).getPreg()},
+        {Float.parseFloat(listaTablaDiagnostico.get(9).getPromedioAnterior()), promedio, comparativo}
     };
         
     }
 
-    public GeneradorReporte(List<ResultadosTabla> resultados, double promedio,float promedios[], String comentarios, List<Pregunta> preguntas, String area, String recomendaciones, String carrera, String areaAudi,String comparativo) {
+    public GeneradorReporte(List<ResultadosTabla> resultados, double promedio,float promedios[], String comentarios, List<Pregunta> preguntas, String area, String recomendaciones, String carrera, String areaAudi,String comparativo,List<TablaDiagnostico> listaTablaDiagnostico) {
 
         try {
             promTotal = (float)promedio;
-            llenarResultados(resultados,promedios,promTotal,preguntas,comparativo);
+            llenarResultados(resultados,promedios,promTotal,preguntas,comparativo,listaTablaDiagnostico);
 
             responsable(area);
             fecha();
@@ -214,6 +217,7 @@ public class GeneradorReporte {
             JasperViewer view = new JasperViewer(jprint, false);
             view.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
             view.setVisible(true);
+            
 
         } catch (JRException ex) {
             ex.getMessage();
@@ -232,10 +236,11 @@ public class GeneradorReporte {
      * @param carrera
      * @param areaAudi
      * @param comparativo
+     * @param listaTablaDiagnostico
      */
-    public void generar(List<ResultadosTabla> resultados, double promedio, float promedios[], String comentarios, List<Pregunta> preguntas, String area, String recomendaciones, String carrera, String areaAudi, String comparativo) {
+    public void generar(List<ResultadosTabla> resultados, double promedio, float promedios[], String comentarios, List<Pregunta> preguntas, String area, String recomendaciones, String carrera, String areaAudi, String comparativo,List<TablaDiagnostico> listaTablaDiagnostico) {
 
-        GeneradorReporte jasper = new GeneradorReporte(resultados, promedio, promedios,comentarios,preguntas,area, recomendaciones,carrera,areaAudi,comparativo);
+        GeneradorReporte jasper = new GeneradorReporte(resultados, promedio, promedios,comentarios,preguntas,area, recomendaciones,carrera,areaAudi,comparativo,listaTablaDiagnostico);
 
     }
 

@@ -3,8 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/Users/edgar/OneDrive/Documentos/NetBeansProjects/GitHub/gestionauditoria/src/Modelo/ResultadosTabla.java</file>
+            <file>file:/C:/Users/edgar/OneDrive/Documentos/NetBeansProjects/GitHub/gestionauditoria/src/Modelo/Pregunta.java</file>
+            <file>file:/C:/Users/edgar/OneDrive/Documentos/NetBeansProjects/GitHub/gestionauditoria/src/Modelo/TablaDiagnostico.java</file>
             <file>file:/C:/Users/edgar/OneDrive/Documentos/NetBeansProjects/GitHub/gestionauditoria/src/controlador/GeneradorReporte.java</file>
-            <file>file:/C:/Users/edgar/OneDrive/Documentos/NetBeansProjects/GitHub/gestionauditoria/src/Documentos/ajustesAreas.properties</file>
+            <file>file:/C:/Users/edgar/OneDrive/Documentos/NetBeansProjects/GitHub/gestionauditoria/src/controlador/GraficoReporte.java</file>
+            <file>file:/C:/Users/edgar/OneDrive/Documentos/NetBeansProjects/GitHub/gestionauditoria/src/Vista/opcRecomendaciones.java</file>
         </group>
     </open-files>
 </project-private>

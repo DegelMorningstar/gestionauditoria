@@ -5,11 +5,14 @@
  */
 package controlador;
 
+import static com.sun.javafx.application.PlatformImpl.exit;
+import static com.sun.javafx.application.PlatformImpl.tkExit;
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.fxml.FXML;
 import javafx.scene.Group;
@@ -30,7 +33,6 @@ import javax.imageio.ImageIO;
 public class GraficoReporte extends Application {
 
     public static Object[][] grafico;
-
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -107,12 +109,12 @@ public class GraficoReporte extends Application {
         primaryStage.setScene(scene);
         primaryStage.setTitle("BarChart Example");
 
-        
         primaryStage.show();
-        primaryStage.close();
+        //primaryStage.close();
 
         saveAsPng(bar);
-        
+        exit();
+        stop();
     }
 
     /**
@@ -189,8 +191,8 @@ public class GraficoReporte extends Application {
         }
     }
 
-    public static void hacerGrafico (Object[][] grafico_sub) {
-        grafico=grafico_sub;
+    public static void hacerGrafico(Object[][] grafico_sub) {
+        grafico = grafico_sub;
         launch();
     }
 

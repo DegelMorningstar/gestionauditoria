@@ -26,8 +26,7 @@ import javax.swing.ImageIcon;
  * @author Yael_
  */
 public class opcRecomendaciones extends javax.swing.JFrame {
-    
-    
+
     //variables moer ventana
     int xmouse, ymouse;
 
@@ -41,46 +40,43 @@ public class opcRecomendaciones extends javax.swing.JFrame {
     List<ResultadosTabla> resultados = new ArrayList();
     List<Pregunta> preguntas = new ArrayList();
     float promedios[];
-    
-    
+
     private String carrera, area, tituloPantalla, nombreAreaBien, carpeta, comentarios = "", comparacion, carpetaAnterior;
     String rutaXml = "src/Documentos/";
     XmlActions xml = new XmlActions();
-    Propiedades prop= new Propiedades();
+    Propiedades prop = new Propiedades();
     double promedio = 0;
     boolean banderaComparacion = false;
     int preguntasDobles = 0, aumentosAltos = 0, aumentosComparacion = 0;
     private double valorParcial;
-    
+
     public opcRecomendaciones(String area, String tituloPantalla, String carrera) {
         ImageIcon iconoT = new ImageIcon("src/Archivos/favicon.png");
         this.setIconImage(iconoT.getImage());
         initComponents();
-        this.carrera=carrera;
+        this.carrera = carrera;
         this.area = area;
         this.tituloPantalla = tituloPantalla;
         System.out.println(area);
-        nombreAreaBien = prop.acceder("archivo"+area, rutaXml + "ajustesAreas.properties");
+        nombreAreaBien = prop.acceder("archivo" + area, rutaXml + "ajustesAreas.properties");
         carpeta = prop.acceder("archivoActual", rutaXml + "config.properties");
         System.out.println(nombreAreaBien + "\n" + carpeta);
-        
+
         loadrecomendaciones();
-        
-        
-        
+
         preguntas = xml.loadPreguntasDataFromFile(new File(rutaXml + nombreAreaBien + ".xml"));
         //preguntas = xml.loadPreguntasDataFromFile(new File(rutaXml + "residenciasProfesionales" + ".xml"));
-        encuestas = xml.loadEncuestasDataFromFile(new File(rutaXml+"Periodos/" + carpeta + "/"+carrera.trim()+"/" + nombreAreaBien + "Encuestas.xml"));
+        encuestas = xml.loadEncuestasDataFromFile(new File(rutaXml + "Periodos/" + carpeta + "/" + carrera.trim() + "/" + nombreAreaBien + "Encuestas.xml"));
         System.out.println("Numero de preguntas: " + preguntas.size());
         System.out.println("Numero de encuestas: " + encuestas.size());
-        
+
         //como llenar la informacion
-        ResultadosTabla respuestasCondensadas [] = new ResultadosTabla[preguntas.size()];
-        
-        for (int i = 0; i < respuestasCondensadas.length ; i++) {
-            respuestasCondensadas[i] = new ResultadosTabla(i+1);
+        ResultadosTabla respuestasCondensadas[] = new ResultadosTabla[preguntas.size()];
+
+        for (int i = 0; i < respuestasCondensadas.length; i++) {
+            respuestasCondensadas[i] = new ResultadosTabla(i + 1);
         }
-        
+
         int numeracion = 1;
         for (int i = 0; i < encuestas.size(); i++) {
             Encuesta encuesta = encuestas.get(i);
@@ -88,58 +84,53 @@ public class opcRecomendaciones extends javax.swing.JFrame {
                 int respuesta = Integer.parseInt(encuesta.getRespuesta(j).getRespuesta());
                 switch (respuesta) {
                     case 1:
-                        respuestasCondensadas[j].setNoCalificacionUno(respuestasCondensadas[j].getNoCalificacionUno()+1);
+                        respuestasCondensadas[j].setNoCalificacionUno(respuestasCondensadas[j].getNoCalificacionUno() + 1);
                         break;
                     case 2:
-                        respuestasCondensadas[j].setNoCalificacionDos(respuestasCondensadas[j].getNoCalificacionDos()+1);
+                        respuestasCondensadas[j].setNoCalificacionDos(respuestasCondensadas[j].getNoCalificacionDos() + 1);
                         break;
                     case 3:
-                        respuestasCondensadas[j].setNoCalificacionTres(respuestasCondensadas[j].getNoCalificacionTres()+1);
+                        respuestasCondensadas[j].setNoCalificacionTres(respuestasCondensadas[j].getNoCalificacionTres() + 1);
                         break;
                     case 4:
-                        respuestasCondensadas[j].setNoCalificacionCuatro(respuestasCondensadas[j].getNoCalificacionCuatro()+1);
+                        respuestasCondensadas[j].setNoCalificacionCuatro(respuestasCondensadas[j].getNoCalificacionCuatro() + 1);
                         break;
                     case 5:
-                        respuestasCondensadas[j].setNoCalificacionCinco(respuestasCondensadas[j].getNoCalificacionCinco()+1);
+                        respuestasCondensadas[j].setNoCalificacionCinco(respuestasCondensadas[j].getNoCalificacionCinco() + 1);
                         break;
                 }
             }
             if (!encuesta.getComentario().isEmpty()) {
                 comentarios += /*"• "*/ (numeracion++) + ". " + encuesta.getComentario() + "\n";
             }
-            
+
         }
         promedios = new float[respuestasCondensadas.length];
         for (int i = 0; i < respuestasCondensadas.length; i++) {
-            System.out.println("Pregunta " + i + ": respuestas con 1=" + respuestasCondensadas[i].getNoCalificacionUno() +
-                    ": respuestas con 2=" + respuestasCondensadas[i].getNoCalificacionDos() +
-                    ": respuestas con 3=" + respuestasCondensadas[i].getNoCalificacionTres() +
-                    ": respuestas con 4=" + respuestasCondensadas[i].getNoCalificacionCuatro() +
-                    ": respuestas con 5=" + respuestasCondensadas[i].getNoCalificacionCinco());
-            ResultadosTabla resultado = new ResultadosTabla(i+1, respuestasCondensadas[i].getNoCalificacionUno(), respuestasCondensadas[i].getNoCalificacionDos(), respuestasCondensadas[i].getNoCalificacionTres(), respuestasCondensadas[i].getNoCalificacionCuatro(), respuestasCondensadas[i].getNoCalificacionCinco());
+            System.out.println("Pregunta " + i + ": respuestas con 1=" + respuestasCondensadas[i].getNoCalificacionUno()
+                    + ": respuestas con 2=" + respuestasCondensadas[i].getNoCalificacionDos()
+                    + ": respuestas con 3=" + respuestasCondensadas[i].getNoCalificacionTres()
+                    + ": respuestas con 4=" + respuestasCondensadas[i].getNoCalificacionCuatro()
+                    + ": respuestas con 5=" + respuestasCondensadas[i].getNoCalificacionCinco());
+            ResultadosTabla resultado = new ResultadosTabla(i + 1, respuestasCondensadas[i].getNoCalificacionUno(), respuestasCondensadas[i].getNoCalificacionDos(), respuestasCondensadas[i].getNoCalificacionTres(), respuestasCondensadas[i].getNoCalificacionCuatro(), respuestasCondensadas[i].getNoCalificacionCinco());
             promedio += resultado.getPromedio();
-            promedios[i] = (float)resultado.getPromedio();
-            
-            prop.guardar("promedioPregunta" + (i + 1) + area, String.format("%.2f", resultado.getPromedio()), rutaXml+"Periodos/" + carpeta+"/"+carrera.trim() + "/PeriodoCarrera.properties");
+            promedios[i] = (float) resultado.getPromedio();
+
+            prop.guardar("promedioPregunta" + (i + 1) + area, String.format("%.2f", resultado.getPromedio()), rutaXml + "Periodos/" + carpeta + "/" + carrera.trim() + "/PeriodoCarrera.properties");
             resultados.add(resultado);
         }
         valorParcial = promedio;
         BigDecimal bd = new BigDecimal(valorParcial).setScale(2, RoundingMode.HALF_UP);
         promedio = bd.doubleValue();
-        
-        promedio = promedio/resultados.size();
-        
-        
+
+        promedio = promedio / resultados.size();
+
         //DATOS A ENVIAR
-        
         System.out.println("Promedio General: " + promedio);
         System.out.println(comentarios);
         jTextArea3.setText(comentarios);
         datos = FXCollections.observableArrayList(resultados);
-        
-        
-        
-        
+
         //tablaResultados.setItems(datos);
     }
 
@@ -318,7 +309,7 @@ public class opcRecomendaciones extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
-        
+
     }//GEN-LAST:event_jLabel6MouseClicked
 
     private void jPanel3MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseDragged
@@ -336,26 +327,79 @@ public class opcRecomendaciones extends javax.swing.JFrame {
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         // TODO add your handling code here:
-        
         GeneradorReporte genera = new GeneradorReporte();
         String recomendaciones = jTextArea1.getText();
         String comparativo = jTextArea2.getText();
-        genera.generar(resultados, promedio, promedios,comentarios,preguntas,area, recomendaciones,carrera,tituloPantalla,comparativo);
+        carpetaAnterior = prop.acceder("archivoAnterior", rutaXml + "config.properties");
+        System.out.println("Carpeta anterior: "+carpetaAnterior);
+
+        for (int i = 0; i < preguntas.size(); i++) {
+            String promedioPreguntaAnterior = prop.acceder("promedioPregunta" + (i + 1)+area, rutaXml + "Periodos/" + carpetaAnterior + "/" + carrera + "/PeriodoCarrera.properties");
+            System.out.println("Promedio Pregunta Anterior: "+promedioPreguntaAnterior +"\nCarrera: "+carrera);
+            String pregunta = (i + 1) + ". " + preguntas.get(i).getPreg();
+            if (pregunta.length() > 80) {
+                String palabras[] = pregunta.split(" ");
+                String preguntaFormateada = "", auxiliarPregunta = "";
+                for (int j = 0; j < palabras.length; j++) {
+                    String palabra = palabras[j];
+                    if ((auxiliarPregunta.length() + palabra.length()) < 80) {
+                        auxiliarPregunta += palabra + " ";
+                    } else {
+                        preguntaFormateada += auxiliarPregunta + "\n";
+                        auxiliarPregunta = palabra + " ";
+                        aumentosAltos++;
+                    }
+                }
+                preguntaFormateada += auxiliarPregunta;
+                System.out.println(preguntaFormateada);
+                pregunta = preguntaFormateada;
+                preguntasDobles++;
+            }
+            //ARRAYLIST SE LLENA LA TABLA DIAGNOSTICO :)
+            listaTablaDiagnostico.add(new TablaDiagnostico(promedioPreguntaAnterior, resultados.get(i).getPromedio() + "", pregunta));
+        }
+        comparacion = prop.acceder("comparacion" + area, rutaXml + "Periodos/" + carpeta + "/" + carrera + "/PeriodoCarrera.properties");
+        if (!comparacion.equals("sincomparacion")) {
+            banderaComparacion = true;
+            if (comparacion.length() > 80) {
+                String palabras[] = comparacion.replace("\n", "").split(" ");
+                String comparacionFormateada = "", auxiliarComparacion = "";
+                for (int j = 0; j < palabras.length; j++) {
+                    String palabra = palabras[j];
+                    System.out.println(palabra);
+                    if ((auxiliarComparacion.length() + palabra.length()) < 80) {
+                        auxiliarComparacion += palabra + " ";
+                    } else {
+                        comparacionFormateada += auxiliarComparacion + "\n";
+                        auxiliarComparacion = palabra + " ";
+                        aumentosComparacion++;
+                    }
+                }
+                comparacionFormateada += auxiliarComparacion;
+                System.out.println(comparacionFormateada);
+                comparacion = comparacionFormateada;
+            }
+            listaTablaDiagnostico.add(new TablaDiagnostico(prop.acceder("promedioEncuestas" + area, rutaXml + "Periodos/" + carpetaAnterior + "/" + carrera + "/PeriodoCarrera.properties"), String.format("%.2f", promedio), jTextArea2.getText()));
+        } else {
+            listaTablaDiagnostico.add(new TablaDiagnostico(prop.acceder("promedioEncuestas" + area, rutaXml + "Periodos/" + carpetaAnterior + "/" + carrera + "/PeriodoCarrera.properties"), String.format("%.2f", promedio), ""));
+        }
+        
+        genera.generar(resultados, promedio, promedios, comentarios, preguntas, area, recomendaciones, carrera, tituloPantalla, comparativo,listaTablaDiagnostico);
     }//GEN-LAST:event_jButton1MouseClicked
 
-    
     /**
      */
-    public void loadrecomendaciones(){
-        File archivoXml = new File(rutaXml+"Periodos/" + carpeta + "/"+carrera.trim()+"/" + nombreAreaBien + "Encuestas.xml");
+    public void loadrecomendaciones() {
+        File archivoXml = new File(rutaXml + "Periodos/" + carpeta + "/" + carrera.trim() + "/" + nombreAreaBien + "Encuestas.xml");
         String recomendaciones = xml.loadRecomendacionDataFromFile(archivoXml);
         if (recomendaciones == null) {
             jTextArea1.setText("");
             System.out.println("nose ha obtenido nada");
         } else {
-             jTextArea1.setText(recomendaciones);
+            jTextArea1.setText(recomendaciones);
         }
     }
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -383,7 +427,7 @@ public class opcRecomendaciones extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new opcRecomendaciones("Centro","Centro De Informacion","ING. En administración").setVisible(true);
+                new opcRecomendaciones("Centro", "Centro De Informacion", "ING. En administración").setVisible(true);
             }
         });
     }
