@@ -20,6 +20,7 @@ import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -33,8 +34,6 @@ public class opcRecomendaciones extends javax.swing.JFrame {
     /**
      * Creates new form opcRecomendaciones
      */
-    ObservableList<ResultadosTabla> datos;
-    ObservableList<TablaDiagnostico> datosDiagnostico;
     List<Encuesta> encuestas = new ArrayList();
     List<TablaDiagnostico> listaTablaDiagnostico = new ArrayList();
     List<ResultadosTabla> resultados = new ArrayList();
@@ -56,9 +55,11 @@ public class opcRecomendaciones extends javax.swing.JFrame {
         initComponents();
         this.carrera = carrera;
         this.area = area;
+        System.out.println("nombre de la variable area "+area);
         this.tituloPantalla = tituloPantalla;
         System.out.println(area);
         nombreAreaBien = prop.acceder("archivo" + area, rutaXml + "ajustesAreas.properties");
+        System.out.println("nombre area bien "+nombreAreaBien);
         carpeta = prop.acceder("archivoActual", rutaXml + "config.properties");
         System.out.println(nombreAreaBien + "\n" + carpeta);
 
@@ -129,9 +130,76 @@ public class opcRecomendaciones extends javax.swing.JFrame {
         System.out.println("Promedio General: " + promedio);
         System.out.println(comentarios);
         jTextArea3.setText(comentarios);
-        datos = FXCollections.observableArrayList(resultados);
 
-        //tablaResultados.setItems(datos);
+        //cargando promedios anteriores
+        carpetaAnterior = prop.acceder("archivoAnterior", rutaXml + "config.properties");
+        System.out.println("Carpeta anterior: " + carpetaAnterior);
+
+        for (int i = 0; i < preguntas.size(); i++) {
+            String promedioPreguntaAnterior = prop.acceder("promedioPregunta" + (i + 1) + area, rutaXml + "Periodos/" + carpetaAnterior + "/" + carrera + "/PeriodoCarrera.properties");
+            System.out.println("Promedio Pregunta Anterior: " + promedioPreguntaAnterior + "\nCarrera: " + carrera);
+            String pregunta = (i + 1) + ". " + preguntas.get(i).getPreg();
+            if (pregunta.length() > 80) {
+                String palabras[] = pregunta.split(" ");
+                String preguntaFormateada = "", auxiliarPregunta = "";
+                for (int j = 0; j < palabras.length; j++) {
+                    String palabra = palabras[j];
+                    if ((auxiliarPregunta.length() + palabra.length()) < 80) {
+                        auxiliarPregunta += palabra + " ";
+                    } else {
+                        preguntaFormateada += auxiliarPregunta + "\n";
+                        auxiliarPregunta = palabra + " ";
+                        aumentosAltos++;
+                    }
+                }
+                preguntaFormateada += auxiliarPregunta;
+                System.out.println(preguntaFormateada);
+                pregunta = preguntaFormateada;
+                preguntasDobles++;
+            }
+            //ARRAYLIST SE LLENA LA TABLA DIAGNOSTICO :)
+            listaTablaDiagnostico.add(new TablaDiagnostico(promedioPreguntaAnterior, resultados.get(i).getPromedio() + "", pregunta));
+        }
+        comparacion = prop.acceder("comparacion" + area, rutaXml + "Periodos/" + carpeta + "/" + carrera + "/PeriodoCarrera.properties");
+        System.out.println("valor inicial de comparacion "+comparacion);
+        if (!comparacion.equals("sincomparacion")) {
+            System.out.println("EXISTE COMPARACION");
+            banderaComparacion = true;
+            /*if (comparacion.length() > 80) {
+                String palabras[] = comparacion.replace("\n", "").split(" ");
+                String comparacionFormateada = "", auxiliarComparacion = "";
+                for (int j = 0; j < palabras.length; j++) {
+                    String palabra = palabras[j];
+                    System.out.println(palabra);
+                    if ((auxiliarComparacion.length() + palabra.length()) < 80) {
+                        auxiliarComparacion += palabra + " ";
+                    } else {
+                        comparacionFormateada += auxiliarComparacion + "\n";
+                        auxiliarComparacion = palabra + " ";
+                        aumentosComparacion++;
+                    }
+                }
+                comparacionFormateada += auxiliarComparacion;
+                System.out.println("COMPARACION FORMATEADA "+comparacionFormateada);
+                comparacion = comparacionFormateada;
+                System.out.println("COMPARACION "+comparacion);
+                
+            }*/
+            jTextArea2.setText(comparacion);
+            listaTablaDiagnostico.add(new TablaDiagnostico(prop.acceder("promedioEncuestas" + area, rutaXml + "Periodos/" + carpetaAnterior + "/" + carrera + "/PeriodoCarrera.properties"), String.format("%.2f", promedio), jTextArea2.getText()));
+        } else {
+            listaTablaDiagnostico.add(new TablaDiagnostico(prop.acceder("promedioEncuestas" + area, rutaXml + "Periodos/" + carpetaAnterior + "/" + carrera + "/PeriodoCarrera.properties"), String.format("%.2f", promedio), ""));
+        }
+        System.out.println("promedio general anterior" + listaTablaDiagnostico.get(preguntas.size()).getPromedioAnterior());
+        System.out.println("promedio general anterior" + listaTablaDiagnostico.get(preguntas.size()).getPromedioActual());
+        jTextField1.setText(listaTablaDiagnostico.get(preguntas.size()).getPromedioAnterior());
+        jTextField2.setText(listaTablaDiagnostico.get(preguntas.size()).getPromedioActual());
+        String terminado = prop.acceder("procesosTerminados" + area, rutaXml + "Periodos/" + carpeta + "/" + carrera + "/PeriodoCarrera.properties");
+        if(terminado.equalsIgnoreCase("si")){
+            jLabel9.setText("EL SERVICIO HA SIDO FINALIZADO");
+        }else{
+            jLabel9.setText("EL SERVICIO ESTA EN PROCESO DE CAPTURA");
+        }
     }
 
     /**
@@ -154,6 +222,12 @@ public class opcRecomendaciones extends javax.swing.JFrame {
         jTextArea3 = new javax.swing.JTextArea();
         jLabel4 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        jTextField2 = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -183,12 +257,29 @@ public class opcRecomendaciones extends javax.swing.JFrame {
 
         jLabel4.setText("COMENTARIOS");
 
-        jButton1.setText("jButton1");
+        jButton1.setText("VISUALIZAR REPORTE");
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton1MouseClicked(evt);
             }
         });
+
+        jButton2.setText("GUARDAR Y FINALIZAR");
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton2MouseClicked(evt);
+            }
+        });
+
+        jLabel2.setText("PROMEDIO GENERAL ANTERIOR:");
+
+        jTextField1.setEditable(false);
+
+        jLabel5.setText("PROMEDIO GENERAL ACTUAL:");
+
+        jTextField2.setEditable(false);
+
+        jLabel9.setText("EL SERVICIO SIGUE EN CAPTURA");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -198,47 +289,67 @@ public class opcRecomendaciones extends javax.swing.JFrame {
                 .addGap(33, 33, 33)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addContainerGap())
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 575, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(61, 61, 61)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(jLabel4)
+                                .addGap(521, 521, 521)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel1)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(jLabel3)
+                                        .addComponent(jScrollPane3)
+                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 451, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 451, Short.MAX_VALUE)
-                                    .addComponent(jScrollPane1))
-                                .addGap(0, 0, Short.MAX_VALUE))))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(146, 146, 146))
+                                .addGap(357, 357, 357)
+                                .addComponent(jButton1)
+                                .addGap(45, 45, 45)
+                                .addComponent(jButton2)))
+                        .addContainerGap(30, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel9)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(52, 52, 52)
+                                .addComponent(jLabel5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 575, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel4)
+                .addGap(42, 42, 42)
+                .addComponent(jLabel9)
+                .addGap(38, 38, 38)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel5)
+                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel2)
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel4))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addComponent(jLabel3)
-                        .addGap(18, 18, 18)
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 571, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 147, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(68, 68, 68))
+                        .addComponent(jScrollPane1))
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 433, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 157, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2))
+                .addGap(58, 58, 58))
         );
 
         jPanel3.setBackground(new java.awt.Color(0, 53, 153));
@@ -330,62 +441,52 @@ public class opcRecomendaciones extends javax.swing.JFrame {
         GeneradorReporte genera = new GeneradorReporte();
         String recomendaciones = jTextArea1.getText();
         String comparativo = jTextArea2.getText();
-        carpetaAnterior = prop.acceder("archivoAnterior", rutaXml + "config.properties");
-        System.out.println("Carpeta anterior: "+carpetaAnterior);
-
-        for (int i = 0; i < preguntas.size(); i++) {
-            String promedioPreguntaAnterior = prop.acceder("promedioPregunta" + (i + 1)+area, rutaXml + "Periodos/" + carpetaAnterior + "/" + carrera + "/PeriodoCarrera.properties");
-            System.out.println("Promedio Pregunta Anterior: "+promedioPreguntaAnterior +"\nCarrera: "+carrera);
-            String pregunta = (i + 1) + ". " + preguntas.get(i).getPreg();
-            if (pregunta.length() > 80) {
-                String palabras[] = pregunta.split(" ");
-                String preguntaFormateada = "", auxiliarPregunta = "";
-                for (int j = 0; j < palabras.length; j++) {
-                    String palabra = palabras[j];
-                    if ((auxiliarPregunta.length() + palabra.length()) < 80) {
-                        auxiliarPregunta += palabra + " ";
-                    } else {
-                        preguntaFormateada += auxiliarPregunta + "\n";
-                        auxiliarPregunta = palabra + " ";
-                        aumentosAltos++;
-                    }
-                }
-                preguntaFormateada += auxiliarPregunta;
-                System.out.println(preguntaFormateada);
-                pregunta = preguntaFormateada;
-                preguntasDobles++;
+        if (!comparativo.isEmpty()) {
+            if (!recomendaciones.isEmpty()) {
+                genera.generar(resultados, promedio, promedios, comentarios, preguntas, area, recomendaciones, carrera, tituloPantalla, comparativo, listaTablaDiagnostico);
+            } else {
+                JOptionPane.showMessageDialog(null, "NO PUEDES DEJAR EL CAMPO DE RECOMENDACIONES VACIO");
             }
-            //ARRAYLIST SE LLENA LA TABLA DIAGNOSTICO :)
-            listaTablaDiagnostico.add(new TablaDiagnostico(promedioPreguntaAnterior, resultados.get(i).getPromedio() + "", pregunta));
-        }
-        comparacion = prop.acceder("comparacion" + area, rutaXml + "Periodos/" + carpeta + "/" + carrera + "/PeriodoCarrera.properties");
-        if (!comparacion.equals("sincomparacion")) {
-            banderaComparacion = true;
-            if (comparacion.length() > 80) {
-                String palabras[] = comparacion.replace("\n", "").split(" ");
-                String comparacionFormateada = "", auxiliarComparacion = "";
-                for (int j = 0; j < palabras.length; j++) {
-                    String palabra = palabras[j];
-                    System.out.println(palabra);
-                    if ((auxiliarComparacion.length() + palabra.length()) < 80) {
-                        auxiliarComparacion += palabra + " ";
-                    } else {
-                        comparacionFormateada += auxiliarComparacion + "\n";
-                        auxiliarComparacion = palabra + " ";
-                        aumentosComparacion++;
-                    }
-                }
-                comparacionFormateada += auxiliarComparacion;
-                System.out.println(comparacionFormateada);
-                comparacion = comparacionFormateada;
-            }
-            listaTablaDiagnostico.add(new TablaDiagnostico(prop.acceder("promedioEncuestas" + area, rutaXml + "Periodos/" + carpetaAnterior + "/" + carrera + "/PeriodoCarrera.properties"), String.format("%.2f", promedio), jTextArea2.getText()));
         } else {
-            listaTablaDiagnostico.add(new TablaDiagnostico(prop.acceder("promedioEncuestas" + area, rutaXml + "Periodos/" + carpetaAnterior + "/" + carrera + "/PeriodoCarrera.properties"), String.format("%.2f", promedio), ""));
+            JOptionPane.showMessageDialog(null, "EL DIAGNOSTICO COMPARATIVO DE LOS PROMEDIOS ESTA VACIO, POR FAVOR NO DEJES VACIO ESTE CAMPO");
         }
-        
-        genera.generar(resultados, promedio, promedios, comentarios, preguntas, area, recomendaciones, carrera, tituloPantalla, comparativo,listaTablaDiagnostico);
+
     }//GEN-LAST:event_jButton1MouseClicked
+
+    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+        // TODO add your handling code here:
+
+        String recomendaciones = jTextArea1.getText();
+        String comparativo = jTextArea2.getText();
+        if (!comparativo.isEmpty()) {
+            if (!recomendaciones.isEmpty()) {
+                int resp = JOptionPane.showConfirmDialog(null, "Antes de finalizar este proceso es recomendable revisar que el documento este correcto\n"
+                    + "¿Deseas finalizar este proceso?", "Finalizar Reporte", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+                if (resp == 0) {
+
+                    System.out.println("si tiene contenido: " + recomendaciones);
+
+                    File archivoXml = new File(rutaXml + "Periodos/" + carpeta + "/" + carrera.trim() + "/" + nombreAreaBien + "Encuestas.xml");
+                    if (xml.saveRecomendacionesDataToFile(archivoXml, recomendaciones)) {
+
+                        prop.guardar("procesosTerminados" + area, "si", rutaXml + "Periodos/" + carpeta + "/" + carrera + "/PeriodoCarrera.properties");
+                        prop.guardar("recomendacionesCapturadas" + area, "si", rutaXml + "Periodos/" + carpeta + "/" + carrera + "/PeriodoCarrera.properties");
+                        prop.guardar("promedioEncuestas" + area, String.format("%.2f", promedio), rutaXml + "Periodos/" + carpeta + "/" + carrera + "/PeriodoCarrera.properties");
+                        prop.guardar("comparacion" + area, jTextArea2.getText(), rutaXml + "Periodos/" + carpeta + "/" + carrera + "/PeriodoCarrera.properties");
+
+                        JOptionPane.showMessageDialog(null, "Se han guardado las recomendaciones.");
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Se ha producido un error al guardar las recomendaciones");
+                    }
+
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "No se ha escrito nada en las recomendaciones");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "No se ha escrito nada en el diagnóstico.");
+        }
+    }//GEN-LAST:event_jButton2MouseClicked
 
     /**
      */
@@ -434,12 +535,16 @@ public class opcRecomendaciones extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
@@ -448,5 +553,7 @@ public class opcRecomendaciones extends javax.swing.JFrame {
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextArea jTextArea2;
     private javax.swing.JTextArea jTextArea3;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
 }

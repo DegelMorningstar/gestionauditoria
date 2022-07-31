@@ -87,12 +87,11 @@ public class verRespuestas extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jPanel9 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
-        jPanel10 = new javax.swing.JPanel();
-        jLabel11 = new javax.swing.JLabel();
         jPanel11 = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
         jPanel12 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -205,49 +204,6 @@ public class verRespuestas extends javax.swing.JFrame {
 
         jPanel1.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 460, 280, 40));
 
-        jPanel10.setBackground(new java.awt.Color(27, 57, 106));
-        jPanel10.setPreferredSize(new java.awt.Dimension(120, 50));
-
-        jLabel11.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(248, 248, 255));
-        jLabel11.setText("COMENTARIOS");
-        jLabel11.setAlignmentY(0.0F);
-        jLabel11.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel11.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel11MouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jLabel11MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jLabel11MouseExited(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
-        jPanel10.setLayout(jPanel10Layout);
-        jPanel10Layout.setHorizontalGroup(
-            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 200, Short.MAX_VALUE)
-            .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel10Layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jLabel11)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-        jPanel10Layout.setVerticalGroup(
-            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 40, Short.MAX_VALUE)
-            .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel10Layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-
-        jPanel1.add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 520, 200, 40));
-
         jPanel11.setBackground(new java.awt.Color(27, 57, 106));
         jPanel11.setPreferredSize(new java.awt.Dimension(120, 50));
 
@@ -329,6 +285,9 @@ public class verRespuestas extends javax.swing.JFrame {
 
         jPanel1.add(jPanel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 520, 150, 40));
 
+        jLabel4.setText("SELECCIONA UNA CARRERA");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 530, -1, -1));
+
         jPanel3.setBackground(new java.awt.Color(0, 53, 153));
         jPanel3.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
@@ -398,8 +357,10 @@ public class verRespuestas extends javax.swing.JFrame {
                 if (!item.equalsIgnoreCase("Selecciona una carrera")) {
                     banderafiltrado = true;
                     filtrar(item);
+                    getStatus(item);
                 } else {
                     JOptionPane.showMessageDialog(null, "Aun no seleccionas ninguna carrera");
+                    getStatus("");
                 }
             } else {
                 JOptionPane.showMessageDialog(null, "Para filtrar una carrera nueva necesitas limpiar la tabla primero");
@@ -494,27 +455,13 @@ public class verRespuestas extends javax.swing.JFrame {
 
     private void jLabel10MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseEntered
         // TODO add your handling code here:
-        jPanel9.setBackground(new Color(67,80,80));
+        jPanel9.setBackground(new Color(67, 80, 80));
     }//GEN-LAST:event_jLabel10MouseEntered
 
     private void jLabel10MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseExited
         // TODO add your handling code here:
-        jPanel9.setBackground(new Color(27,57,106));
+        jPanel9.setBackground(new Color(27, 57, 106));
     }//GEN-LAST:event_jLabel10MouseExited
-
-    private void jLabel11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel11MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jLabel11MouseClicked
-
-    private void jLabel11MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel11MouseEntered
-        // TODO add your handling code here:
-        jPanel10.setBackground(new Color(60,80,80));
-    }//GEN-LAST:event_jLabel11MouseEntered
-
-    private void jLabel11MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel11MouseExited
-        // TODO add your handling code here:
-        jPanel10.setBackground(new Color(27,57,106));
-    }//GEN-LAST:event_jLabel11MouseExited
 
     private void jLabel12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel12MouseClicked
         // TODO add your handling code here:
@@ -537,12 +484,12 @@ public class verRespuestas extends javax.swing.JFrame {
 
     private void jLabel12MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel12MouseEntered
         // TODO add your handling code here:
-        jPanel11.setBackground(new Color(67,80,80));
+        jPanel11.setBackground(new Color(67, 80, 80));
     }//GEN-LAST:event_jLabel12MouseEntered
 
     private void jLabel12MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel12MouseExited
         // TODO add your handling code here:
-        jPanel11.setBackground(new Color(27,57,106));
+        jPanel11.setBackground(new Color(27, 57, 106));
     }//GEN-LAST:event_jLabel12MouseExited
 
     private void jLabel13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel13MouseClicked
@@ -551,17 +498,17 @@ public class verRespuestas extends javax.swing.JFrame {
 
     private void jLabel13MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel13MouseEntered
         // TODO add your handling code here:
-        jPanel12.setBackground(new Color(67,80,80));
+        jPanel12.setBackground(new Color(67, 80, 80));
     }//GEN-LAST:event_jLabel13MouseEntered
 
     private void jLabel13MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel13MouseExited
         // TODO add your handling code here:
-        jPanel12.setBackground(new Color(27,57,106));
+        jPanel12.setBackground(new Color(27, 57, 106));
     }//GEN-LAST:event_jLabel13MouseExited
 
     private void jPanel12MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel12MouseEntered
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_jPanel12MouseEntered
     private boolean guardarRespuestas(String carrera, Float muestra) {
         rutaXml = ruta + "Periodos/" + carpeta + "/" + carrera.trim() + "/" + archivo + "Encuestas.xml";
@@ -606,7 +553,7 @@ public class verRespuestas extends javax.swing.JFrame {
                 System.out.println("value of: " + renglon + " " + columna + " is " + aux);
                 enc.addRespuesta(new Respuesta(String.valueOf(j), aux));
             }
-            comentarios = (pregunta + i) + ".-" + jTable1.getValueAt(index.get(i), 12);
+            comentarios = (String) jTable1.getValueAt(index.get(i), 12);
             enc.setComentario(comentarios);
             System.out.println(comentarios);
             if (enc != null) {
@@ -670,6 +617,19 @@ public class verRespuestas extends javax.swing.JFrame {
         }
     }
 
+    private void getStatus(String carrera) {
+        if (!carrera.isEmpty()) {
+            String terminado = prop.acceder("procesosTerminados" + clave, rutaXml + "Periodos/" + carpeta + "/" + carrera + "/PeriodoCarrera.properties");
+            if (terminado.equalsIgnoreCase("si")) {
+                jLabel4.setText("EL SERVICIO HA SIDO FINALIZADO");
+            } else {
+                jLabel4.setText("EL SERVICIO ESTA EN PROCESO DE CAPTURA");
+            }
+        }else{
+            jLabel4.setText("SELECCIONA UNA CARRERA");
+        }
+    }
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -706,14 +666,13 @@ public class verRespuestas extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel3;
