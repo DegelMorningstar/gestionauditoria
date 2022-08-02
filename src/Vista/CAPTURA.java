@@ -681,7 +681,7 @@ public class CAPTURA extends javax.swing.JFrame {
                     jPanel4.setVisible(true);
                     jLabel21.setVisible(true);
                     jLabel37.setVisible(false);
-                    procesoTerminado = prop.acceder("centroDeInformacionExcelTerminado", periodo.getAbsolutePath());
+                    procesoTerminado = prop.acceder("CentroExcelTerminado", periodo.getAbsolutePath());
                     if (procesoTerminado.equals("si")) {
                         jLabel14.setVisible(true);
                     } else {
@@ -714,7 +714,7 @@ public class CAPTURA extends javax.swing.JFrame {
                     jPanel3.setVisible(true);
                     jLabel20.setVisible(true);
                     jLabel36.setVisible(false);
-                    procesoTerminado = prop.acceder("coordinacionDeCarrerasExcelTerminado", periodo.getAbsolutePath());
+                    procesoTerminado = prop.acceder("CoordinacionExcelTerminado", periodo.getAbsolutePath());
                     if (procesoTerminado.equals("si")) {
                         jLabel13.setVisible(true);
                     } else {
@@ -744,7 +744,7 @@ public class CAPTURA extends javax.swing.JFrame {
                     jPanel8.setVisible(true);
                     jLabel23.setVisible(true);
                     jLabel35.setVisible(false);
-                    procesoTerminado = prop.acceder("recursosFinancierosExcelTerminado", periodo.getAbsolutePath());
+                    procesoTerminado = prop.acceder("FinancierosExcelTerminado", periodo.getAbsolutePath());
                     if (procesoTerminado.equals("si")) {
                         jLabel12.setVisible(true);
                     } else {
@@ -774,7 +774,7 @@ public class CAPTURA extends javax.swing.JFrame {
                     jPanel7.setVisible(true);
                     jLabel22.setVisible(true);
                     jLabel38.setVisible(false);
-                    procesoTerminado = prop.acceder("computoExcelTerminado", periodo.getAbsolutePath());
+                    procesoTerminado = prop.acceder("ComputoExcelTerminado", periodo.getAbsolutePath());
                     if (procesoTerminado.equals("si")) {
                         jLabel15.setVisible(true);
                     } else {
@@ -804,7 +804,7 @@ public class CAPTURA extends javax.swing.JFrame {
                     jPanel11.setVisible(true);
                     jLabel26.setVisible(true);
                     jLabel39.setVisible(false);
-                    procesoTerminado = prop.acceder("servicioSocialExcelTerminado", periodo.getAbsolutePath());
+                    procesoTerminado = prop.acceder("SocialExcelTerminado", periodo.getAbsolutePath());
                     if (procesoTerminado.equals("si")) {
                         jLabel16.setVisible(true);
                     } else {
@@ -834,7 +834,7 @@ public class CAPTURA extends javax.swing.JFrame {
                     jPanel9.setVisible(true);
                     jLabel24.setVisible(true);
                     jLabel41.setVisible(false);
-                    procesoTerminado = prop.acceder("serviciosEscolaresExcelTerminado", periodo.getAbsolutePath());
+                    procesoTerminado = prop.acceder("EscolaresExcelTerminado", periodo.getAbsolutePath());
                     if (procesoTerminado.equals("si")) {
                         jLabel18.setVisible(true);
                     } else {
@@ -864,7 +864,7 @@ public class CAPTURA extends javax.swing.JFrame {
                     jPanel10.setVisible(true);
                     jLabel25.setVisible(true);
                     jLabel40.setVisible(false);
-                    procesoTerminado = prop.acceder("residenciasProfesionalesExcelTerminado", periodo.getAbsolutePath());
+                    procesoTerminado = prop.acceder("ResidenciasExcelTerminado", periodo.getAbsolutePath());
                     if (procesoTerminado.equals("si")) {
                         jLabel17.setVisible(true);
                     } else {
@@ -890,7 +890,7 @@ public class CAPTURA extends javax.swing.JFrame {
             }
             procesoFinal();
         } else {
-            System.out.println("error");
+            JOptionPane.showMessageDialog(null, "Hubo un error relacionado con el periodo, al parecer no existe.");
         }
     }
 

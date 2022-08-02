@@ -786,31 +786,31 @@ public class PERIODO extends javax.swing.JFrame {
                                 prop.guardar("fechaFin", FormatoFechas.dateFormatToString(fin), informacionPeriodo.getAbsolutePath());
                                 
                                 prop.guardar("centroDeInformacionExcel", "no", informacionPeriodo.getAbsolutePath());
-                                prop.guardar("centroDeInformacionExcelTerminado", "no", informacionPeriodo.getAbsolutePath());
+                                prop.guardar("CentroExcelTerminado", "no", informacionPeriodo.getAbsolutePath());
                                 prop.guardar("centroInformacionActivo", "si", informacionPeriodo.getAbsolutePath());
                                 
                                 prop.guardar("coordinacionDeCarrerasExcel", "no", informacionPeriodo.getAbsolutePath());
-                                prop.guardar("coordinacionDeCarrerasExcelTerminado", "no", informacionPeriodo.getAbsolutePath());
+                                prop.guardar("CoordinacionExcelTerminado", "no", informacionPeriodo.getAbsolutePath());
                                 prop.guardar("coordinacionCarrerasActivo", "si", informacionPeriodo.getAbsolutePath());
                                 
                                 prop.guardar("recursosFinancierosExcel", "no", informacionPeriodo.getAbsolutePath());
-                                prop.guardar("recursosFinancierosExcelTerminado", "no", informacionPeriodo.getAbsolutePath());
+                                prop.guardar("FinancierosExcelTerminado", "no", informacionPeriodo.getAbsolutePath());
                                 prop.guardar("recursosFinancierosActivo", "si", informacionPeriodo.getAbsolutePath());
                                 
                                 prop.guardar("computoExcel", "no", informacionPeriodo.getAbsolutePath());
-                                prop.guardar("computoExcelTerminado", "no", informacionPeriodo.getAbsolutePath());
+                                prop.guardar("ComputoExcelTerminado", "no", informacionPeriodo.getAbsolutePath());
                                 prop.guardar("computoActivo", "si", informacionPeriodo.getAbsolutePath());
                                 
                                 prop.guardar("servicioSocialExcel", "no", informacionPeriodo.getAbsolutePath());
-                                prop.guardar("servicioSocialExcelTerminado", "no", informacionPeriodo.getAbsolutePath());
+                                prop.guardar("SocialExcelTerminado", "no", informacionPeriodo.getAbsolutePath());
                                 prop.guardar("servicioSocialActivo", "si", informacionPeriodo.getAbsolutePath());
                                 
                                 prop.guardar("serviciosEscolaresExcel", "no", informacionPeriodo.getAbsolutePath());
-                                prop.guardar("serviciosEscolaresExcelTerminado", "no", informacionPeriodo.getAbsolutePath());
+                                prop.guardar("EscolaresExcelTerminado", "no", informacionPeriodo.getAbsolutePath());
                                 prop.guardar("serviciosEscolaresActivo", "si", informacionPeriodo.getAbsolutePath());
                                 
                                 prop.guardar("residenciasProfesionalesExcel", "no", informacionPeriodo.getAbsolutePath());
-                                prop.guardar("residenciasProfesionalesExcelTerminado", "no", informacionPeriodo.getAbsolutePath());
+                                prop.guardar("ResidenciasExcelTerminado", "no", informacionPeriodo.getAbsolutePath());
                                 prop.guardar("residenciaProfesionalActivo", "si", informacionPeriodo.getAbsolutePath());
                                 //CREAMOS LOS PROPIETIES PARA CADA CARRERA, PRACTICAMENTE SON FLAGS QUE INDICAN SI YA ESTAN LLENADAS LAS ENCUESTAS
                                 File informacionCarrera = null;

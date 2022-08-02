@@ -505,11 +505,22 @@ public class verRespuestas extends javax.swing.JFrame {
             }
         }
         if(bandera){
-            JOptionPane.showMessageDialog(null, "Si se puede finalizar");
+            if(prop.guardar(clave+"ExcelTerminado","si", rutaXml+"Periodos/"+carpeta+ "/Periodo.properties")){
+                new rojerusan.RSNotifyAnimated("COMPLETADO", "Se han finalizado completamente el servicio de "+area, 7,
+                        RSNotifyAnimated.PositionNotify.BottomRight,
+                        RSNotifyAnimated.AnimationNotify.BottomUp,
+                        RSNotifyAnimated.TypeNotify.SUCCESS).setVisible(true);
+            }else{
+                new rojerusan.RSNotifyAnimated("ERROR!", "Ocurrio un error al finalizar el servicio " + area+"\n No se pudo guardar.", 7,
+                        RSNotifyAnimated.PositionNotify.BottomRight,
+                        RSNotifyAnimated.AnimationNotify.BottomUp,
+                        RSNotifyAnimated.TypeNotify.ERROR).setVisible(true);
+            }
         }else{
             JOptionPane.showMessageDialog(null, "Aun no has finalizado la captura de todas las carreras.\n"
                     + "Finaliza cada una de ellas para finalizar el proceso.");
         }
+        System.out.println(clave+"ExcelTerminado");
     }//GEN-LAST:event_jLabel13MouseClicked
 
     private void jLabel13MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel13MouseEntered
