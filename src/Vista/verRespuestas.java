@@ -252,7 +252,7 @@ public class verRespuestas extends javax.swing.JFrame {
 
         jLabel13.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(248, 248, 255));
-        jLabel13.setText("GUARDAR");
+        jLabel13.setText("FINALIZAR SERVICIO");
         jLabel13.setAlignmentY(0.0F);
         jLabel13.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel13.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -272,9 +272,9 @@ public class verRespuestas extends javax.swing.JFrame {
         jPanel12Layout.setHorizontalGroup(
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel12Layout.createSequentialGroup()
-                .addGap(25, 25, 25)
+                .addGap(40, 40, 40)
                 .addComponent(jLabel13)
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addContainerGap(54, Short.MAX_VALUE))
         );
         jPanel12Layout.setVerticalGroup(
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -283,7 +283,7 @@ public class verRespuestas extends javax.swing.JFrame {
                 .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jPanel1.add(jPanel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 520, 150, 40));
+        jPanel1.add(jPanel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 520, 280, 40));
 
         jLabel4.setText("SELECCIONA UNA CARRERA");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 530, -1, -1));
@@ -494,6 +494,22 @@ public class verRespuestas extends javax.swing.JFrame {
 
     private void jLabel13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel13MouseClicked
         // TODO add your handling code here:
+        boolean bandera = false;
+        for (int i = 0; i < tam; i++) {
+            String nombreCarrera = carreras.get(i).getNombre();
+            String terminado = prop.acceder("procesosTerminados" + clave, rutaXml + "Periodos/" + carpeta + "/" + nombreCarrera + "/PeriodoCarrera.properties");
+            if (terminado.equalsIgnoreCase("si")) {
+                bandera = true;
+            } else {
+                bandera = false;
+            }
+        }
+        if(bandera){
+            JOptionPane.showMessageDialog(null, "Si se puede finalizar");
+        }else{
+            JOptionPane.showMessageDialog(null, "Aun no has finalizado la captura de todas las carreras.\n"
+                    + "Finaliza cada una de ellas para finalizar el proceso.");
+        }
     }//GEN-LAST:event_jLabel13MouseClicked
 
     private void jLabel13MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel13MouseEntered
