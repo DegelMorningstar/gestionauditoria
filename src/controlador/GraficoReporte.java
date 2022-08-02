@@ -6,7 +6,6 @@
 package controlador;
 
 import static com.sun.javafx.application.PlatformImpl.exit;
-import static com.sun.javafx.application.PlatformImpl.tkExit;
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
@@ -110,11 +109,9 @@ public class GraficoReporte extends Application {
         primaryStage.setTitle("BarChart Example");
 
         primaryStage.show();
-        //primaryStage.close();
-
+        primaryStage.close();
         saveAsPng(bar);
-        exit();
-        stop();
+        
     }
 
     /**
@@ -191,7 +188,7 @@ public class GraficoReporte extends Application {
         }
     }
 
-    public static void hacerGrafico(Object[][] grafico_sub) {
+    public void hacerGrafico(Object[][] grafico_sub) {
         grafico = grafico_sub;
         launch();
     }

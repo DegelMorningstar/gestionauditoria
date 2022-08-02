@@ -13,6 +13,7 @@ import java.math.RoundingMode;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import javafx.application.Platform;
 import javax.imageio.ImageIO;
 import javax.swing.WindowConstants;
 import net.sf.jasperreports.engine.JRException;
@@ -49,7 +50,7 @@ public class GeneradorReporte {
 
     private Object[][] listadoCalificaciones;
 
-    public static Object[][] grafico;
+    public Object[][] grafico;
 
     public void responsable(String area) {
 
@@ -93,11 +94,11 @@ public class GeneradorReporte {
     public GeneradorReporte() {
 
     }
-    
-    public void llenarResultados(List<ResultadosTabla> resultados,float promedios[], float promedio,List<Pregunta> preguntas,String comparativo,List<TablaDiagnostico> listaTablaDiagnostico){
-        int fila1=0,fila2=0,fila3=0,fila4=0,fila5=0;
-        
-        for(int i=1; i<=8;i++){
+
+    public void llenarResultados(List<ResultadosTabla> resultados, float promedios[], float promedio, List<Pregunta> preguntas, String comparativo, List<TablaDiagnostico> listaTablaDiagnostico) {
+        int fila1 = 0, fila2 = 0, fila3 = 0, fila4 = 0, fila5 = 0;
+
+        for (int i = 1; i <= 8; i++) {
             fila1 += resultados.get(i).getNoCalificacionUno();
             fila2 += resultados.get(i).getNoCalificacionDos();
             fila3 += resultados.get(i).getNoCalificacionTres();
@@ -105,61 +106,59 @@ public class GeneradorReporte {
             fila5 += resultados.get(i).getNoCalificacionCinco();
         }
         BigDecimal bd = new BigDecimal(promedio).setScale(2, RoundingMode.HALF_UP);
-        promedio = (float)bd.doubleValue();
-        
+        promedio = (float) bd.doubleValue();
+
         listadoCalificaciones = new Object[][]{
-        {1, resultados.get(0).getNoCalificacionUno(), resultados.get(0).getNoCalificacionDos(), resultados.get(0).getNoCalificacionTres(), resultados.get(0).getNoCalificacionCuatro(), resultados.get(0).getNoCalificacionCinco(), promedios[0]},
-        {2, resultados.get(1).getNoCalificacionUno(), resultados.get(1).getNoCalificacionDos(), resultados.get(1).getNoCalificacionTres(), resultados.get(1).getNoCalificacionCuatro(), resultados.get(1).getNoCalificacionCinco(), promedios[1]},
-        {3, resultados.get(2).getNoCalificacionUno(), resultados.get(2).getNoCalificacionDos(), resultados.get(2).getNoCalificacionTres(), resultados.get(2).getNoCalificacionCuatro(), resultados.get(2).getNoCalificacionCinco(), promedios[2]},
-        {4, resultados.get(3).getNoCalificacionUno(), resultados.get(3).getNoCalificacionDos(), resultados.get(3).getNoCalificacionTres(), resultados.get(3).getNoCalificacionCuatro(), resultados.get(3).getNoCalificacionCinco(), promedios[3]},
-        {5, resultados.get(4).getNoCalificacionUno(), resultados.get(4).getNoCalificacionDos(), resultados.get(4).getNoCalificacionTres(), resultados.get(4).getNoCalificacionCuatro(), resultados.get(4).getNoCalificacionCinco(), promedios[4]},
-        {6, resultados.get(5).getNoCalificacionUno(), resultados.get(5).getNoCalificacionDos(), resultados.get(5).getNoCalificacionTres(), resultados.get(5).getNoCalificacionCuatro(), resultados.get(5).getNoCalificacionCinco(), promedios[5]},
-        {7, resultados.get(6).getNoCalificacionUno(), resultados.get(6).getNoCalificacionDos(), resultados.get(6).getNoCalificacionTres(), resultados.get(6).getNoCalificacionCuatro(), resultados.get(6).getNoCalificacionCinco(), promedios[6]},
-        {8, resultados.get(7).getNoCalificacionUno(), resultados.get(7).getNoCalificacionDos(), resultados.get(7).getNoCalificacionTres(), resultados.get(7).getNoCalificacionCuatro(), resultados.get(7).getNoCalificacionCinco(), promedios[7]},
-        {9, resultados.get(8).getNoCalificacionUno(), resultados.get(8).getNoCalificacionDos(), resultados.get(8).getNoCalificacionTres(), resultados.get(8).getNoCalificacionCuatro(), resultados.get(8).getNoCalificacionCinco(), promedios[8]},
-        {"Promedio", fila1, fila2, fila3, fila4, fila5, promedio}
-    };
-        
+            {1, resultados.get(0).getNoCalificacionUno(), resultados.get(0).getNoCalificacionDos(), resultados.get(0).getNoCalificacionTres(), resultados.get(0).getNoCalificacionCuatro(), resultados.get(0).getNoCalificacionCinco(), promedios[0]},
+            {2, resultados.get(1).getNoCalificacionUno(), resultados.get(1).getNoCalificacionDos(), resultados.get(1).getNoCalificacionTres(), resultados.get(1).getNoCalificacionCuatro(), resultados.get(1).getNoCalificacionCinco(), promedios[1]},
+            {3, resultados.get(2).getNoCalificacionUno(), resultados.get(2).getNoCalificacionDos(), resultados.get(2).getNoCalificacionTres(), resultados.get(2).getNoCalificacionCuatro(), resultados.get(2).getNoCalificacionCinco(), promedios[2]},
+            {4, resultados.get(3).getNoCalificacionUno(), resultados.get(3).getNoCalificacionDos(), resultados.get(3).getNoCalificacionTres(), resultados.get(3).getNoCalificacionCuatro(), resultados.get(3).getNoCalificacionCinco(), promedios[3]},
+            {5, resultados.get(4).getNoCalificacionUno(), resultados.get(4).getNoCalificacionDos(), resultados.get(4).getNoCalificacionTres(), resultados.get(4).getNoCalificacionCuatro(), resultados.get(4).getNoCalificacionCinco(), promedios[4]},
+            {6, resultados.get(5).getNoCalificacionUno(), resultados.get(5).getNoCalificacionDos(), resultados.get(5).getNoCalificacionTres(), resultados.get(5).getNoCalificacionCuatro(), resultados.get(5).getNoCalificacionCinco(), promedios[5]},
+            {7, resultados.get(6).getNoCalificacionUno(), resultados.get(6).getNoCalificacionDos(), resultados.get(6).getNoCalificacionTres(), resultados.get(6).getNoCalificacionCuatro(), resultados.get(6).getNoCalificacionCinco(), promedios[6]},
+            {8, resultados.get(7).getNoCalificacionUno(), resultados.get(7).getNoCalificacionDos(), resultados.get(7).getNoCalificacionTres(), resultados.get(7).getNoCalificacionCuatro(), resultados.get(7).getNoCalificacionCinco(), promedios[7]},
+            {9, resultados.get(8).getNoCalificacionUno(), resultados.get(8).getNoCalificacionDos(), resultados.get(8).getNoCalificacionTres(), resultados.get(8).getNoCalificacionCuatro(), resultados.get(8).getNoCalificacionCinco(), promedios[8]},
+            {"Promedio", fila1, fila2, fila3, fila4, fila5, promedio}
+        };
+
         grafico = new Object[][]{
-        {"1", promedios[0]},
-        {"2", promedios[1]},
-        {"3", promedios[2]},
-        {"4", promedios[3]},
-        {"5", promedios[4]},
-        {"6", promedios[5]},
-        {"7", promedios[6]},
-        {"8", promedios[7]},
-        {"9", promedios[8]}
-    };
-        
-        
+            {"1", promedios[0]},
+            {"2", promedios[1]},
+            {"3", promedios[2]},
+            {"4", promedios[3]},
+            {"5", promedios[4]},
+            {"6", promedios[5]},
+            {"7", promedios[6]},
+            {"8", promedios[7]},
+            {"9", promedios[8]}
+        };
+
         listadoPreguntas = new Object[][]{
-        {Float.parseFloat(listaTablaDiagnostico.get(0).getPromedioAnterior()), promedios[0], preguntas.get(0).getPreg()},
-        {Float.parseFloat(listaTablaDiagnostico.get(1).getPromedioAnterior()), promedios[1], preguntas.get(1).getPreg()},
-        {Float.parseFloat(listaTablaDiagnostico.get(2).getPromedioAnterior()), promedios[2], preguntas.get(2).getPreg()},
-        {Float.parseFloat(listaTablaDiagnostico.get(3).getPromedioAnterior()), promedios[3], preguntas.get(3).getPreg()},
-        {Float.parseFloat(listaTablaDiagnostico.get(4).getPromedioAnterior()), promedios[4], preguntas.get(4).getPreg()},
-        {Float.parseFloat(listaTablaDiagnostico.get(5).getPromedioAnterior()), promedios[5], preguntas.get(5).getPreg()},
-        {Float.parseFloat(listaTablaDiagnostico.get(6).getPromedioAnterior()), promedios[6], preguntas.get(6).getPreg()},
-        {Float.parseFloat(listaTablaDiagnostico.get(7).getPromedioAnterior()), promedios[7], preguntas.get(7).getPreg()},
-        {Float.parseFloat(listaTablaDiagnostico.get(8).getPromedioAnterior()), promedios[8], preguntas.get(8).getPreg()},
-        {Float.parseFloat(listaTablaDiagnostico.get(9).getPromedioAnterior()), promedio, comparativo}
-    };
-        
+            {Float.parseFloat(listaTablaDiagnostico.get(0).getPromedioAnterior()), promedios[0], preguntas.get(0).getPreg()},
+            {Float.parseFloat(listaTablaDiagnostico.get(1).getPromedioAnterior()), promedios[1], preguntas.get(1).getPreg()},
+            {Float.parseFloat(listaTablaDiagnostico.get(2).getPromedioAnterior()), promedios[2], preguntas.get(2).getPreg()},
+            {Float.parseFloat(listaTablaDiagnostico.get(3).getPromedioAnterior()), promedios[3], preguntas.get(3).getPreg()},
+            {Float.parseFloat(listaTablaDiagnostico.get(4).getPromedioAnterior()), promedios[4], preguntas.get(4).getPreg()},
+            {Float.parseFloat(listaTablaDiagnostico.get(5).getPromedioAnterior()), promedios[5], preguntas.get(5).getPreg()},
+            {Float.parseFloat(listaTablaDiagnostico.get(6).getPromedioAnterior()), promedios[6], preguntas.get(6).getPreg()},
+            {Float.parseFloat(listaTablaDiagnostico.get(7).getPromedioAnterior()), promedios[7], preguntas.get(7).getPreg()},
+            {Float.parseFloat(listaTablaDiagnostico.get(8).getPromedioAnterior()), promedios[8], preguntas.get(8).getPreg()},
+            {Float.parseFloat(listaTablaDiagnostico.get(9).getPromedioAnterior()), promedio, comparativo}
+        };
+
     }
 
-    public GeneradorReporte(List<ResultadosTabla> resultados, double promedio,float promedios[], String comentarios, List<Pregunta> preguntas, String area, String recomendaciones, String carrera, String areaAudi,String comparativo,List<TablaDiagnostico> listaTablaDiagnostico) {
+    public GeneradorReporte(List<ResultadosTabla> resultados, double promedio, float promedios[], String comentarios, List<Pregunta> preguntas, String area, String recomendaciones, String carrera, String areaAudi, String comparativo, List<TablaDiagnostico> listaTablaDiagnostico) {
 
         try {
-            promTotal = (float)promedio;
-            llenarResultados(resultados,promedios,promTotal,preguntas,comparativo,listaTablaDiagnostico);
+            promTotal = (float) promedio;
+            llenarResultados(resultados, promedios, promTotal, preguntas, comparativo, listaTablaDiagnostico);
 
             responsable(area);
             fecha();
             muestra(carrera);
             areaAuditada(areaAudi);
 
-            
             JasperReport report = (JasperReport) JRLoader.loadObject(getClass().getResource("reporteMaestroEncuesta.jasper"));
             Map<String, Object> parametros = new HashMap();
             parametros.put("nombreDocumento", nombreDocumento);
@@ -169,7 +168,7 @@ public class GeneradorReporte {
             String logo = file.getAbsolutePath();
             parametros.put("logo", logo);
             parametros.put("nombreIT", nombreIT.toUpperCase());
-            parametros.put("areaAuditada", areaAuditada);
+            parametros.put("areaAuditada", areaAuditada + " / "+carrera);
             parametros.put("responsable", responsables.toUpperCase());
             parametros.put("fecha", fecha);
             parametros.put("rd", rd.toUpperCase());
@@ -179,7 +178,10 @@ public class GeneradorReporte {
 
             parametros.put("comentarios", comentarios);
 
-            GraficoReporte.hacerGrafico(grafico);
+            GraficoReporte generaGrafico = new GraficoReporte();
+
+            generaGrafico.hacerGrafico(grafico);
+
             file = new File("src/Archivos/" + "grafica.png");
             String grafica = file.getAbsolutePath();
             parametros.put("grafica", grafica);
@@ -217,7 +219,6 @@ public class GeneradorReporte {
             JasperViewer view = new JasperViewer(jprint, false);
             view.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
             view.setVisible(true);
-            
 
         } catch (JRException ex) {
             ex.getMessage();
@@ -238,10 +239,11 @@ public class GeneradorReporte {
      * @param comparativo
      * @param listaTablaDiagnostico
      */
-    public void generar(List<ResultadosTabla> resultados, double promedio, float promedios[], String comentarios, List<Pregunta> preguntas, String area, String recomendaciones, String carrera, String areaAudi, String comparativo,List<TablaDiagnostico> listaTablaDiagnostico) {
+    public void generar(List<ResultadosTabla> resultados, double promedio, float promedios[], String comentarios, List<Pregunta> preguntas, String area, String recomendaciones, String carrera, String areaAudi, String comparativo, List<TablaDiagnostico> listaTablaDiagnostico) {
 
-        GeneradorReporte jasper = new GeneradorReporte(resultados, promedio, promedios,comentarios,preguntas,area, recomendaciones,carrera,areaAudi,comparativo,listaTablaDiagnostico);
-
+        GeneradorReporte jasper = new GeneradorReporte(resultados, promedio, promedios, comentarios, preguntas, area, recomendaciones, carrera, areaAudi, comparativo, listaTablaDiagnostico);
+        Platform.exit();
+        Platform.setImplicitExit(true);
     }
 
 }

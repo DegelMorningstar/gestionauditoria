@@ -420,7 +420,9 @@ public class opcRecomendaciones extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
-
+        CAPTURA cap = new CAPTURA();
+        cap.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jLabel6MouseClicked
 
     private void jPanel3MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseDragged
