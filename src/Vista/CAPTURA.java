@@ -680,7 +680,7 @@ public class CAPTURA extends javax.swing.JFrame {
                     jLabel29.setVisible(true);
                     jPanel4.setVisible(true);
                     jLabel21.setVisible(true);
-                    jLabel37.setVisible(false);
+                    //jLabel37.setVisible(false);
                     procesoTerminado = prop.acceder("CentroExcelTerminado", periodo.getAbsolutePath());
                     if (procesoTerminado.equals("si")) {
                         jLabel14.setVisible(true);
@@ -693,7 +693,7 @@ public class CAPTURA extends javax.swing.JFrame {
                     jLabel29.setVisible(false);
                     jPanel4.setVisible(false);
                     jLabel21.setVisible(false);
-                    jLabel37.setVisible(true);
+                    //jLabel37.setVisible(true);
                     banderaReporte = false;
 
                 }
@@ -713,7 +713,7 @@ public class CAPTURA extends javax.swing.JFrame {
                     jLabel28.setVisible(true);
                     jPanel3.setVisible(true);
                     jLabel20.setVisible(true);
-                    jLabel36.setVisible(false);
+                    //jLabel36.setVisible(false);
                     procesoTerminado = prop.acceder("CoordinacionExcelTerminado", periodo.getAbsolutePath());
                     if (procesoTerminado.equals("si")) {
                         jLabel13.setVisible(true);
@@ -725,7 +725,7 @@ public class CAPTURA extends javax.swing.JFrame {
                     jLabel28.setVisible(false);
                     jPanel3.setVisible(false);
                     jLabel20.setVisible(false);
-                    jLabel36.setVisible(true);
+                    //jLabel36.setVisible(true);
                     banderaReporte = false;
                 }
             } else {
@@ -743,7 +743,7 @@ public class CAPTURA extends javax.swing.JFrame {
                     jLabel31.setVisible(true);
                     jPanel8.setVisible(true);
                     jLabel23.setVisible(true);
-                    jLabel35.setVisible(false);
+                    //jLabel35.setVisible(false);
                     procesoTerminado = prop.acceder("FinancierosExcelTerminado", periodo.getAbsolutePath());
                     if (procesoTerminado.equals("si")) {
                         jLabel12.setVisible(true);
@@ -755,7 +755,7 @@ public class CAPTURA extends javax.swing.JFrame {
                     jLabel31.setVisible(false);
                     jPanel8.setVisible(false);
                     jLabel23.setVisible(false);
-                    jLabel35.setVisible(true);
+                    //jLabel35.setVisible(true);
                     banderaReporte = false;
                 }
             } else {
@@ -773,7 +773,7 @@ public class CAPTURA extends javax.swing.JFrame {
                     jLabel30.setVisible(true);
                     jPanel7.setVisible(true);
                     jLabel22.setVisible(true);
-                    jLabel38.setVisible(false);
+                    //jLabel38.setVisible(false);
                     procesoTerminado = prop.acceder("ComputoExcelTerminado", periodo.getAbsolutePath());
                     if (procesoTerminado.equals("si")) {
                         jLabel15.setVisible(true);
@@ -785,7 +785,7 @@ public class CAPTURA extends javax.swing.JFrame {
                     jLabel30.setVisible(false);
                     jPanel7.setVisible(false);
                     jLabel22.setVisible(false);
-                    jLabel38.setVisible(true);
+                    //jLabel38.setVisible(true);
                     banderaReporte = false;
                 }
             } else {
@@ -803,7 +803,7 @@ public class CAPTURA extends javax.swing.JFrame {
                     jLabel33.setVisible(true);
                     jPanel11.setVisible(true);
                     jLabel26.setVisible(true);
-                    jLabel39.setVisible(false);
+                    //jLabel39.setVisible(false);
                     procesoTerminado = prop.acceder("SocialExcelTerminado", periodo.getAbsolutePath());
                     if (procesoTerminado.equals("si")) {
                         jLabel16.setVisible(true);
@@ -815,7 +815,7 @@ public class CAPTURA extends javax.swing.JFrame {
                     jLabel33.setVisible(false);
                     jPanel11.setVisible(false);
                     jLabel26.setVisible(false);
-                    jLabel39.setVisible(true);
+                    //jLabel39.setVisible(true);
                     banderaReporte = false;
                 }
             } else {
@@ -833,7 +833,7 @@ public class CAPTURA extends javax.swing.JFrame {
                     jLabel34.setVisible(true);
                     jPanel9.setVisible(true);
                     jLabel24.setVisible(true);
-                    jLabel41.setVisible(false);
+                    //jLabel41.setVisible(false);
                     procesoTerminado = prop.acceder("EscolaresExcelTerminado", periodo.getAbsolutePath());
                     if (procesoTerminado.equals("si")) {
                         jLabel18.setVisible(true);
@@ -845,7 +845,7 @@ public class CAPTURA extends javax.swing.JFrame {
                     jLabel34.setVisible(false);
                     jPanel9.setVisible(false);
                     jLabel24.setVisible(false);
-                    jLabel41.setVisible(true);
+                    //jLabel41.setVisible(true);
                     banderaReporte = false;
                 }
             } else {
@@ -863,7 +863,7 @@ public class CAPTURA extends javax.swing.JFrame {
                     jLabel32.setVisible(true);
                     jPanel10.setVisible(true);
                     jLabel25.setVisible(true);
-                    jLabel40.setVisible(false);
+                    //jLabel40.setVisible(false);
                     procesoTerminado = prop.acceder("ResidenciasExcelTerminado", periodo.getAbsolutePath());
                     if (procesoTerminado.equals("si")) {
                         jLabel17.setVisible(true);
@@ -875,7 +875,7 @@ public class CAPTURA extends javax.swing.JFrame {
                     jLabel32.setVisible(false);
                     jPanel10.setVisible(false);
                     jLabel25.setVisible(false);
-                    jLabel40.setVisible(true);
+                    //jLabel40.setVisible(true);
                     banderaReporte = false;
                 }
             } else {

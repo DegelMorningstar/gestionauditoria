@@ -425,7 +425,9 @@ public class verRespuestas extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, "Aun no has registrado la muestra para esta carrera, por favor ve a la generacion de muestra.");
                 }
             } else {
-                JOptionPane.showMessageDialog(null, "Ya has registrado la muestra para esta carrera.");
+                verCapturas obj = new verCapturas(area,carrera,clave);
+                obj.setVisible(true);
+                this.dispose();
             }
 
         } else {
@@ -450,7 +452,7 @@ public class verRespuestas extends javax.swing.JFrame {
         modelo.setRowCount(0);
         llenarTabla();
         banderafiltrado = false;
-        jComboBox1.setSelectedItem(null);
+        jComboBox1.setSelectedItem("Selecciona una carrera");
     }//GEN-LAST:event_jLabel10MouseClicked
 
     private void jLabel10MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseEntered
@@ -645,16 +647,26 @@ public class verRespuestas extends javax.swing.JFrame {
     }
 
     private void getStatus(String carrera) {
+        String rutaPeriodoCarrera = ruta + "/Periodos/" + carpeta + "/" + carrera + "/PeriodoCarrera.properties";
+        String iniciado = prop.acceder("iniciado" + clave, rutaPeriodoCarrera);
         if (!carrera.isEmpty()) {
             String terminado = prop.acceder("procesosTerminados" + clave, rutaXml + "Periodos/" + carpeta + "/" + carrera + "/PeriodoCarrera.properties");
             if (terminado.equalsIgnoreCase("si")) {
                 jLabel4.setText("EL SERVICIO HA SIDO FINALIZADO");
+                jLabel9.setText("VER RESPUESTAS");
             } else {
+                if(iniciado.equalsIgnoreCase("no")){
+                    jLabel9.setText("APLICAR MUESTRA");
+                }else{
+                    jLabel9.setText("VER RESPUESTAS");
+                }
                 jLabel4.setText("EL SERVICIO ESTA EN PROCESO DE CAPTURA");
             }
         }else{
             jLabel4.setText("SELECCIONA UNA CARRERA");
+            jLabel9.setText("APLICAR MUESTRA");
         }
+        
     }
 
     public static void main(String args[]) {
