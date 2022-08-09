@@ -1,0 +1,38 @@
+{
+    type: 'bar',
+    data: {
+        labels: [1, 2, 3, 4, 5, 6, 7, 8, 9],
+        datasets: [{
+            label: '',
+            data: [1.23, 2.23, 3.23, 3.2, 5, 4.23, 4.32, 3.23, 2.23],
+            backgroundColor: ['#FE642E', '#FE9A2E', '#00FF80', '#81F7F3', '#0174DF', '#8000FF', '#DF0174', '#6E6E6E', '#FE642E']
+        }]
+    },
+    options: {
+        legend: {
+            display: false,
+          },
+          scales: {
+      yAxes: [
+        {
+          ticks: {
+            suggestedMax: 5,
+            beginAtZero: true,
+            fontFamily: 'Mono',
+          },
+        },
+      ],
+          },
+        plugins: {
+            datalabels: {
+                anchor: 'end',
+                align: 'top',
+                color: '#000',
+                backgroundColor: 'rgba(0, 0, 0, 0)',
+                borderColor: 'rgba(0, 0, 0, 0)',
+                borderWidth: 1,
+                borderRadius: 5,
+            },
+        },
+    },
+}

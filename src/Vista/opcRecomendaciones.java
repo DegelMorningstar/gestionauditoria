@@ -17,9 +17,12 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javax.swing.ImageIcon;
+import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
 /**
@@ -48,6 +51,7 @@ public class opcRecomendaciones extends javax.swing.JFrame {
     boolean banderaComparacion = false;
     int preguntasDobles = 0, aumentosAltos = 0, aumentosComparacion = 0;
     private double valorParcial;
+    boolean graficoHecho = false;
 
     public opcRecomendaciones(String area, String tituloPantalla, String carrera) {
         ImageIcon iconoT = new ImageIcon("src/Archivos/favicon.png");
@@ -55,11 +59,11 @@ public class opcRecomendaciones extends javax.swing.JFrame {
         initComponents();
         this.carrera = carrera;
         this.area = area;
-        System.out.println("nombre de la variable area "+area);
+        System.out.println("nombre de la variable area " + area);
         this.tituloPantalla = tituloPantalla;
         System.out.println(area);
         nombreAreaBien = prop.acceder("archivo" + area, rutaXml + "ajustesAreas.properties");
-        System.out.println("nombre area bien "+nombreAreaBien);
+        System.out.println("nombre area bien " + nombreAreaBien);
         carpeta = prop.acceder("archivoActual", rutaXml + "config.properties");
         System.out.println(nombreAreaBien + "\n" + carpeta);
 
@@ -161,7 +165,7 @@ public class opcRecomendaciones extends javax.swing.JFrame {
             listaTablaDiagnostico.add(new TablaDiagnostico(promedioPreguntaAnterior, resultados.get(i).getPromedio() + "", pregunta));
         }
         comparacion = prop.acceder("comparacion" + area, rutaXml + "Periodos/" + carpeta + "/" + carrera + "/PeriodoCarrera.properties");
-        System.out.println("valor inicial de comparacion "+comparacion);
+        System.out.println("valor inicial de comparacion " + comparacion);
         if (!comparacion.equals("sincomparacion")) {
             System.out.println("EXISTE COMPARACION");
             banderaComparacion = true;
@@ -195,9 +199,9 @@ public class opcRecomendaciones extends javax.swing.JFrame {
         jTextField1.setText(listaTablaDiagnostico.get(preguntas.size()).getPromedioAnterior());
         jTextField2.setText(listaTablaDiagnostico.get(preguntas.size()).getPromedioActual());
         String terminado = prop.acceder("procesosTerminados" + area, rutaXml + "Periodos/" + carpeta + "/" + carrera + "/PeriodoCarrera.properties");
-        if(terminado.equalsIgnoreCase("si")){
+        if (terminado.equalsIgnoreCase("si")) {
             jLabel9.setText("EL SERVICIO HA SIDO FINALIZADO");
-        }else{
+        } else {
             jLabel9.setText("EL SERVICIO ESTA EN PROCESO DE CAPTURA");
         }
     }
@@ -440,19 +444,43 @@ public class opcRecomendaciones extends javax.swing.JFrame {
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         // TODO add your handling code here:
-        GeneradorReporte genera = new GeneradorReporte();
-        String recomendaciones = jTextArea1.getText();
-        String comparativo = jTextArea2.getText();
-        if (!comparativo.isEmpty()) {
-            if (!recomendaciones.isEmpty()) {
-                genera.generar(resultados, promedio, promedios, comentarios, preguntas, area, recomendaciones, carrera, tituloPantalla, comparativo, listaTablaDiagnostico);
-            } else {
-                JOptionPane.showMessageDialog(null, "NO PUEDES DEJAR EL CAMPO DE RECOMENDACIONES VACIO");
-            }
-        } else {
-            JOptionPane.showMessageDialog(null, "EL DIAGNOSTICO COMPARATIVO DE LOS PROMEDIOS ESTA VACIO, POR FAVOR NO DEJES VACIO ESTE CAMPO");
-        }
+        jButton1.setEnabled(false);
+        jButton1.enable(false);
+        JOptionPane pane = new JOptionPane("Generando reporte, espere unos segundos.", JOptionPane.INFORMATION_MESSAGE);
+        JDialog dialog = pane.createDialog(null, "Generando reporte, espere unos segundos.");
+        dialog.setModal(false);
 
+        Thread t = new Thread(new Runnable() {
+            public void run() {
+
+                Thread t = new Thread(new Runnable() {
+                    public void run() {
+                        dialog.setVisible(true);
+                    }
+                });
+                t.start();
+
+                GeneradorReporte genera = new GeneradorReporte();
+                String recomendaciones = jTextArea1.getText();
+                String comparativo = jTextArea2.getText();
+                if (!comparativo.isEmpty()) {
+                    if (!recomendaciones.isEmpty()) {
+                        genera.generar(resultados, promedio, promedios, comentarios, preguntas, area, recomendaciones, carrera, tituloPantalla, comparativo, listaTablaDiagnostico, graficoHecho);
+                        graficoHecho = true;
+                    } else {
+                        JOptionPane.showMessageDialog(null, "NO PUEDES DEJAR EL CAMPO DE RECOMENDACIONES VACIO");
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "EL DIAGNOSTICO COMPARATIVO DE LOS PROMEDIOS ESTA VACIO, POR FAVOR NO DEJES VACIO ESTE CAMPO");
+                }
+                
+                jButton1.setEnabled(true);
+                jButton1.enable(true);
+                dialog.setVisible(false);
+
+            }
+        });
+        t.start();
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
@@ -463,7 +491,7 @@ public class opcRecomendaciones extends javax.swing.JFrame {
         if (!comparativo.isEmpty()) {
             if (!recomendaciones.isEmpty()) {
                 int resp = JOptionPane.showConfirmDialog(null, "Antes de finalizar este proceso es recomendable revisar que el documento este correcto\n"
-                    + "¿Deseas finalizar este proceso?", "Finalizar Reporte", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+                        + "¿Deseas finalizar este proceso?", "Finalizar Reporte", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
                 if (resp == 0) {
 
                     System.out.println("si tiene contenido: " + recomendaciones);

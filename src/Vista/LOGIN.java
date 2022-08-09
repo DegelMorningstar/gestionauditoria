@@ -2,6 +2,7 @@ package Vista;
 
 import controlador.Propiedades;
 import com.sun.glass.events.KeyEvent;
+import controlador.GraficoReporte;
 import java.awt.Color;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -306,6 +307,8 @@ public class LOGIN extends javax.swing.JFrame {
                 MENU obj= new MENU();
                 obj.setVisible(true);
                 this.dispose();
+                
+               
             } else {
                 JOptionPane.showMessageDialog(null, "Contraseña Incorrecta.", "Inicio de Sesión", JOptionPane.WARNING_MESSAGE);
                 jPasswordField1.setText("");

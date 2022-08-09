@@ -13,8 +13,12 @@ import java.math.RoundingMode;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.application.Platform;
 import javax.imageio.ImageIO;
+import javax.swing.JDialog;
+import javax.swing.JOptionPane;
 import javax.swing.WindowConstants;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperFillManager;
@@ -148,7 +152,7 @@ public class GeneradorReporte {
 
     }
 
-    public GeneradorReporte(List<ResultadosTabla> resultados, double promedio, float promedios[], String comentarios, List<Pregunta> preguntas, String area, String recomendaciones, String carrera, String areaAudi, String comparativo, List<TablaDiagnostico> listaTablaDiagnostico) {
+    public GeneradorReporte(List<ResultadosTabla> resultados, double promedio, float promedios[], String comentarios, List<Pregunta> preguntas, String area, String recomendaciones, String carrera, String areaAudi, String comparativo, List<TablaDiagnostico> listaTablaDiagnostico, boolean graficoHecho) {
 
         try {
             promTotal = (float) promedio;
@@ -168,7 +172,7 @@ public class GeneradorReporte {
             String logo = file.getAbsolutePath();
             parametros.put("logo", logo);
             parametros.put("nombreIT", nombreIT.toUpperCase());
-            parametros.put("areaAuditada", areaAuditada + " / "+carrera);
+            parametros.put("areaAuditada", areaAuditada + " / " + carrera);
             parametros.put("responsable", responsables.toUpperCase());
             parametros.put("fecha", fecha);
             parametros.put("rd", rd.toUpperCase());
@@ -178,10 +182,20 @@ public class GeneradorReporte {
 
             parametros.put("comentarios", comentarios);
 
-            GraficoReporte generaGrafico = new GraficoReporte();
+            //GraficoReporte generaGrafico = new GraficoReporte(grafico);
+            try {
+                GraficaQuickChart.generarGrafico(promedios);
+            } catch (Exception ex) {
+                Logger.getLogger(GeneradorReporte.class.getName()).log(Level.SEVERE, null, ex);
+            }
 
-            generaGrafico.hacerGrafico(grafico);
-
+//            try {
+//                // if(graficoHecho==false){
+//                generaGrafico.hacerGrafico(grafico);
+//                // }
+//            } catch (Exception ex) {
+//                Logger.getLogger(GeneradorReporte.class.getName()).log(Level.SEVERE, null, ex);
+//            }
             file = new File("src/Archivos/" + "grafica.png");
             String grafica = file.getAbsolutePath();
             parametros.put("grafica", grafica);
@@ -238,12 +252,12 @@ public class GeneradorReporte {
      * @param areaAudi
      * @param comparativo
      * @param listaTablaDiagnostico
+     * @param graficoHecho
      */
-    public void generar(List<ResultadosTabla> resultados, double promedio, float promedios[], String comentarios, List<Pregunta> preguntas, String area, String recomendaciones, String carrera, String areaAudi, String comparativo, List<TablaDiagnostico> listaTablaDiagnostico) {
+    public void generar(List<ResultadosTabla> resultados, double promedio, float promedios[], String comentarios, List<Pregunta> preguntas, String area, String recomendaciones, String carrera, String areaAudi, String comparativo, List<TablaDiagnostico> listaTablaDiagnostico, boolean graficoHecho) {
 
-        GeneradorReporte jasper = new GeneradorReporte(resultados, promedio, promedios, comentarios, preguntas, area, recomendaciones, carrera, areaAudi, comparativo, listaTablaDiagnostico);
-        Platform.exit();
-        Platform.setImplicitExit(true);
+        GeneradorReporte jasper = new GeneradorReporte(resultados, promedio, promedios, comentarios, preguntas, area, recomendaciones, carrera, areaAudi, comparativo, listaTablaDiagnostico, graficoHecho);
+        
     }
 
 }
