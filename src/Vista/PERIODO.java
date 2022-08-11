@@ -26,44 +26,51 @@ public class PERIODO extends javax.swing.JFrame {
         initComponents();
         ordenInterfaz();
         this.setLocationRelativeTo(null);
-        
+
         ImageIcon iconoT = new ImageIcon("src/Archivos/favicon.png");
         this.setIconImage(iconoT.getImage());
-        
+
         XmlActions xml = new XmlActions();
         carreras = xml.loadCarrerasDataFromFile(new File("src/Documentos/carreras.xml"));
         tam = carreras.size();
-        
+
     }
 
     private void ordenInterfaz() {
         if (prop.acceder("actual", ruta).equals("si")) {
-            nueva.setVisible(false);
+
             //continuar.setVisible(true);
             chooserFecha1.setVisible(false);
             chooserFecha2.setVisible(false);
-            btnGenera.setVisible(false);
+
             lblSelecciona.setVisible(false);
             //btnEliminar.setVisible(true);
             lblInicio.setVisible(false);
             lblFin.setVisible(false);
             //paneles agragados como btns
-            continuar.setVisible(false);
-            btnEliminar.setVisible(false);
+
             jPanel7.setVisible(false);
             jPanel9.setVisible(false);
         } else {
-            nueva.setVisible(true);
-            continuar.setVisible(false);
+
             chooserFecha1.setVisible(false);
             chooserFecha2.setVisible(false);
-            btnGenera.setVisible(false);
+
             lblSelecciona.setVisible(false);
-            btnEliminar.setVisible(false);
+
             lblInicio.setVisible(false);
             lblFin.setVisible(false);
             //paneles agregados como btns
             jPanel8.setVisible(false);
+            //continuar
+            jPanel6.setVisible(false);
+            jLabel16.setVisible(false);
+            //generar captura
+            jLabel19.setVisible(false);
+            jPanel9.setVisible(false);
+           
+            jLabel17.setVisible(true);
+            jPanel7.setVisible(true);
         }
     }
 
@@ -83,12 +90,7 @@ public class PERIODO extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
-        nueva = new javax.swing.JButton();
-        continuar = new javax.swing.JButton();
-        btnGenera = new javax.swing.JButton();
         lblSelecciona = new javax.swing.JLabel();
-        btnEliminar = new javax.swing.JButton();
         lblInicio = new javax.swing.JLabel();
         lblFin = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
@@ -279,43 +281,9 @@ public class PERIODO extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(248, 248, 255));
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/info2.png"))); // NOI18N
-
-        nueva.setText("Nueva Captura");
-        nueva.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nuevaActionPerformed(evt);
-            }
-        });
-
-        continuar.setBackground(new java.awt.Color(27, 57, 106));
-        continuar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        continuar.setText("Continuar Captura");
-        continuar.setBorderPainted(false);
-        continuar.setOpaque(false);
-        continuar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                continuarActionPerformed(evt);
-            }
-        });
-
-        btnGenera.setText("Generar Captura");
-        btnGenera.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGeneraActionPerformed(evt);
-            }
-        });
-
         lblSelecciona.setFont(new java.awt.Font("Arial", 3, 20)); // NOI18N
         lblSelecciona.setForeground(new java.awt.Color(27, 57, 106));
         lblSelecciona.setText("Selecciona el Periodo");
-
-        btnEliminar.setText("Eliminar Periodo");
-        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEliminarActionPerformed(evt);
-            }
-        });
 
         lblInicio.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         lblInicio.setForeground(new java.awt.Color(27, 57, 106));
@@ -552,43 +520,28 @@ public class PERIODO extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(btnGenera, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(nueva)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel3)
-                        .addGap(25, 25, 25))))
+                        .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(25, 102, Short.MAX_VALUE))))
             .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(141, 141, 141)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(70, 70, 70)
-                        .addComponent(continuar, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(141, 141, 141)
+                        .addGap(106, 106, 106)
+                        .addComponent(lblInicio))
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(chooserFecha2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(chooserFecha1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(106, 106, 106)
-                                .addComponent(lblInicio))
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(chooserFecha2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(chooserFecha1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addGap(10, 10, 10)
-                                        .addComponent(lblSelecciona, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(109, 109, 109)
-                                .addComponent(lblFin)))))
+                                .addGap(10, 10, 10)
+                                .addComponent(lblSelecciona, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(109, 109, 109)
+                        .addComponent(lblFin)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -616,19 +569,10 @@ public class PERIODO extends javax.swing.JFrame {
                 .addComponent(lblFin)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(chooserFecha2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
-                .addComponent(continuar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 242, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jPanel9, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnGenera)
-                            .addComponent(btnEliminar)
-                            .addComponent(nueva))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jPanel8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -677,8 +621,7 @@ public class PERIODO extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jLabel8MouseClicked
 
-    
-    
+
     private void jLabel9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseClicked
         // TODO add your handling code here:
         REPORTES obj = new REPORTES();
@@ -686,8 +629,7 @@ public class PERIODO extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jLabel9MouseClicked
 
-    
-    
+
     private void jLabel13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel13MouseClicked
         // TODO add your handling code here:
         REPORTES obj = new REPORTES();
@@ -705,275 +647,6 @@ public class PERIODO extends javax.swing.JFrame {
         this.setExtendedState(ICONIFIED);
     }//GEN-LAST:event_jLabel5MouseClicked
 
-    private void nuevaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nuevaActionPerformed
-        // TODO add your handling code here:
-        lblSelecciona.setVisible(true);
-        chooserFecha1.setVisible(true);
-        chooserFecha2.setVisible(true);
-        btnGenera.setVisible(true);
-        lblInicio.setVisible(true);
-        lblFin.setVisible(true);
-
-    }//GEN-LAST:event_nuevaActionPerformed
-
-    private void continuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_continuarActionPerformed
-        // TODO add your handling code here:
-        CAPTURA obj = new CAPTURA();
-        obj.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_continuarActionPerformed
-
-    private void btnGeneraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGeneraActionPerformed
-        Date fecha1 = null;
-        Date fecha2 = null;
-        if (chooserFecha1.getDatoFecha() == null) {
-            JOptionPane.showMessageDialog(this, "Selecciona una fecha de inicio", "ERROR", JOptionPane.ERROR_MESSAGE);
-        } else if (chooserFecha2.getDatoFecha() == null) {
-            JOptionPane.showMessageDialog(this, "Selecciona una fecha de fin", "ERROR", JOptionPane.ERROR_MESSAGE);
-        } else {
-            fecha1 = chooserFecha1.getDatoFecha();
-            fecha2 = chooserFecha2.getDatoFecha();
-        }
-        //guardado
-        if (fecha1 != null && fecha2 != null) {
-            System.out.println("PASO");
-            Date inicio = fecha1;
-            Date fin = fecha2;
-            System.out.println(inicio);
-            System.out.println(fin);
-            if (inicio.before(fin)) {
-                if (FormatoFechas.compruebaPeriodo(inicio, fin)) {
-                    //Confirmacion.
-                    //MEJORAR EL DIALOGO DE CONFIRMACION
-                    String r = JOptionPane.showInputDialog("¿Quieres generar el periodo de captura de " + FormatoFechas.dateFormatToString(inicio) + " al " + FormatoFechas.dateFormatToString(fin) + "?");
-                    //if (alert.showAndWait().get() == ButtonType.OK) {
-                    if (r.equals("s")) {
-
-                        String nombreCarpeta = FormatoFechas.dateFormatToString(inicio) + "_" + FormatoFechas.dateFormatToString(fin);
-                        File folder = new File("src/Documentos/Periodos/", nombreCarpeta);
-                        if (folder.exists()) {
-                            nombreCarpeta += "(1)";
-                            folder = new File("src/Documentos/Periodos/", nombreCarpeta);
-                            folder.mkdir();
-                        } else {
-                            folder.mkdir();
-                        }
-                        //UNA VEZ CREADA LA CARPETA PADRE, CREAMOS CARPETA POR CARRERA EXISTENTE
-                        String auxiliarNombre = nombreCarpeta;
-                        nombreCarpeta = "src/Documentos/Periodos/" + nombreCarpeta;
-                        for (int i = 0; i < tam; i++) {
-                            System.out.println("el tamaño de las carreras son: " + carreras.get(i).getNombre());
-                            String nombreCarrera = carreras.get(i).getNombre();
-                            File Cfolder = new File(nombreCarpeta + "/", nombreCarrera);
-                            if (Cfolder.exists()) {
-                                nombreCarrera += "(1)";
-                                Cfolder = new File(nombreCarpeta + "/", nombreCarrera);
-                                Cfolder.mkdir();
-                            } else {
-                                Cfolder.mkdir();
-                            }
-                        }
-
-                        File informacionPeriodo = new File(nombreCarpeta, "Periodo.properties");
-                        System.out.println(nombreCarpeta);
-
-                        try {
-
-                            if (informacionPeriodo.createNewFile()) {
-
-                                prop.guardar("nombreCarpeta", auxiliarNombre, informacionPeriodo.getAbsolutePath());
-                                prop.guardar("fechaInicio", FormatoFechas.dateFormatToString(inicio), informacionPeriodo.getAbsolutePath());
-                                prop.guardar("fechaFin", FormatoFechas.dateFormatToString(fin), informacionPeriodo.getAbsolutePath());
-                                
-                                prop.guardar("centroDeInformacionExcel", "no", informacionPeriodo.getAbsolutePath());
-                                prop.guardar("CentroExcelTerminado", "no", informacionPeriodo.getAbsolutePath());
-                                prop.guardar("centroInformacionActivo", "si", informacionPeriodo.getAbsolutePath());
-                                
-                                prop.guardar("coordinacionDeCarrerasExcel", "no", informacionPeriodo.getAbsolutePath());
-                                prop.guardar("CoordinacionExcelTerminado", "no", informacionPeriodo.getAbsolutePath());
-                                prop.guardar("coordinacionCarrerasActivo", "si", informacionPeriodo.getAbsolutePath());
-                                
-                                prop.guardar("recursosFinancierosExcel", "no", informacionPeriodo.getAbsolutePath());
-                                prop.guardar("FinancierosExcelTerminado", "no", informacionPeriodo.getAbsolutePath());
-                                prop.guardar("recursosFinancierosActivo", "si", informacionPeriodo.getAbsolutePath());
-                                
-                                prop.guardar("computoExcel", "no", informacionPeriodo.getAbsolutePath());
-                                prop.guardar("ComputoExcelTerminado", "no", informacionPeriodo.getAbsolutePath());
-                                prop.guardar("computoActivo", "si", informacionPeriodo.getAbsolutePath());
-                                
-                                prop.guardar("servicioSocialExcel", "no", informacionPeriodo.getAbsolutePath());
-                                prop.guardar("SocialExcelTerminado", "no", informacionPeriodo.getAbsolutePath());
-                                prop.guardar("servicioSocialActivo", "si", informacionPeriodo.getAbsolutePath());
-                                
-                                prop.guardar("serviciosEscolaresExcel", "no", informacionPeriodo.getAbsolutePath());
-                                prop.guardar("EscolaresExcelTerminado", "no", informacionPeriodo.getAbsolutePath());
-                                prop.guardar("serviciosEscolaresActivo", "si", informacionPeriodo.getAbsolutePath());
-                                
-                                prop.guardar("residenciasProfesionalesExcel", "no", informacionPeriodo.getAbsolutePath());
-                                prop.guardar("ResidenciasExcelTerminado", "no", informacionPeriodo.getAbsolutePath());
-                                prop.guardar("residenciaProfesionalActivo", "si", informacionPeriodo.getAbsolutePath());
-                                //CREAMOS LOS PROPIETIES PARA CADA CARRERA, PRACTICAMENTE SON FLAGS QUE INDICAN SI YA ESTAN LLENADAS LAS ENCUESTAS
-                                File informacionCarrera = null;
-                                for (int i = 0; i < tam; i++) {
-                                    String aux = nombreCarpeta + "/" + carreras.get(i).getNombre();
-                                    System.out.println(aux);
-                                    
-                                    informacionCarrera = new File(aux, "PeriodoCarrera.properties");
-                                    informacionCarrera.createNewFile();
-                                    //llenamos los propieties
-                                    prop.guardar("iniciadoCentro", "no", informacionCarrera.getAbsolutePath());
-                                    prop.guardar("encuestasLlenadasCentro", "0", informacionCarrera.getAbsolutePath());
-                                    prop.guardar("recomendacionesCapturadasCentro", "no", informacionCarrera.getAbsolutePath());
-                                    prop.guardar("procesosTerminadosCentro", "no", informacionCarrera.getAbsolutePath());
-                                    prop.guardar("comparacionCentro", "sincomparacion", informacionCarrera.getAbsolutePath());
-                                    prop.guardar("activoCentro", "si", informacionCarrera.getAbsolutePath());
-                                    
-                                    prop.guardar("iniciadoCoordinacion", "no", informacionCarrera.getAbsolutePath());
-                                    prop.guardar("encuestasLlenadasCoordinacion", "0", informacionCarrera.getAbsolutePath());
-                                    prop.guardar("recomendacionesCapturadasCoordinacion", "no", informacionCarrera.getAbsolutePath());
-                                    prop.guardar("procesosTerminadosCoordinacion", "no", informacionCarrera.getAbsolutePath());
-                                    prop.guardar("comparacionCoordinacion", "sincomparacion", informacionCarrera.getAbsolutePath());
-                                    prop.guardar("activoCoordinacion", "si", informacionCarrera.getAbsolutePath());
-                                    
-                                    prop.guardar("iniciadoFinancieros", "no", informacionCarrera.getAbsolutePath());
-                                    prop.guardar("encuestasLlenadasFinancieros", "0", informacionCarrera.getAbsolutePath());
-                                    prop.guardar("recomendacionesCapturadasFinancieros", "no", informacionCarrera.getAbsolutePath());
-                                    prop.guardar("procesosTerminadosFinancieros", "no", informacionCarrera.getAbsolutePath());
-                                    prop.guardar("comparacionFinancieros", "sincomparacion", informacionCarrera.getAbsolutePath());
-                                    prop.guardar("activoFinancieros", "si", informacionCarrera.getAbsolutePath());
-                                    
-                                    prop.guardar("iniciadoComputo", "no", informacionCarrera.getAbsolutePath());
-                                    prop.guardar("encuestasLlenadasComputo", "0", informacionCarrera.getAbsolutePath());
-                                    prop.guardar("recomendacionesCapturadasComputo", "no", informacionCarrera.getAbsolutePath());
-                                    prop.guardar("procesosTerminadosComputo", "no", informacionCarrera.getAbsolutePath());
-                                    prop.guardar("comparacionComputo", "sincomparacion", informacionCarrera.getAbsolutePath());
-                                    prop.guardar("activoComputo", "si", informacionCarrera.getAbsolutePath());
-                                    
-                                    prop.guardar("iniciadoSocial", "no", informacionCarrera.getAbsolutePath());
-                                    prop.guardar("encuestasLlenadasSocial", "0", informacionCarrera.getAbsolutePath());
-                                    prop.guardar("recomendacionesCapturadasSocial", "no", informacionCarrera.getAbsolutePath());
-                                    prop.guardar("procesosTerminadosSocial", "no", informacionCarrera.getAbsolutePath());
-                                    prop.guardar("comparacionSocial", "sincomparacion", informacionCarrera.getAbsolutePath());
-                                    prop.guardar("activoSocial", "si", informacionCarrera.getAbsolutePath());
-                                    
-                                    prop.guardar("iniciadoEscolares", "no", informacionCarrera.getAbsolutePath());
-                                    prop.guardar("encuestasLlenadasEscolares", "0", informacionCarrera.getAbsolutePath());
-                                    prop.guardar("recomendacionesCapturadasEscolares", "no", informacionCarrera.getAbsolutePath());
-                                    prop.guardar("procesosTerminadosEscolares", "no", informacionCarrera.getAbsolutePath());
-                                    prop.guardar("comparacionEscolares", "sincomparacion", informacionCarrera.getAbsolutePath());
-                                    prop.guardar("activoEscolares", "si", informacionCarrera.getAbsolutePath());
-                                    
-                                    prop.guardar("iniciadoResidencias", "no", informacionCarrera.getAbsolutePath());
-                                    prop.guardar("encuestasLlenadasResidencias", "0", informacionCarrera.getAbsolutePath());
-                                    prop.guardar("recomendacionesCapturadasResidencias", "no", informacionCarrera.getAbsolutePath());
-                                    prop.guardar("procesosTerminadosResidencias", "no", informacionCarrera.getAbsolutePath());
-                                    prop.guardar("comparacionResidencias", "sincomparacion", informacionCarrera.getAbsolutePath());
-                                    prop.guardar("activoResidencias", "si", informacionCarrera.getAbsolutePath());
-                                }
-
-                                //guardar configuracion de que se inicio un nuevo registro de encuestas
-                                prop.guardar("actual", "si", ruta);
-                                prop.guardar("archivoAnterior", prop.acceder("archivoActual", ruta), ruta);
-                                prop.guardar("archivoActual", auxiliarNombre, ruta);
-                                //encuestas, generar cada una en las carpetas de carrera para almacenar los resultados de encuestas
-
-                                File encuestasCentro = null;
-                                File encuestasCoordinacion = null;
-                                File encuestasFinancieros = null;
-                                File encuestasComputo = null;
-                                File encuestasSocial = null;
-                                File encuestasEscolares = null;
-                                File encuestasResidencias = null;
-                                int i = 0;
-                                do {
-                                    String aux = nombreCarpeta + "/" + carreras.get(i).getNombre();
-                                    System.out.println(aux);
-                                    encuestasCentro = new File(aux, "centroInformacionEncuestas.xml");
-                                    encuestasCentro.createNewFile();
-                                    encuestasCoordinacion = new File(aux, "coordinacionCarrerasEncuestas.xml");
-                                    encuestasCoordinacion.createNewFile();
-                                    encuestasFinancieros = new File(aux, "recursosFinancierosEncuestas.xml");
-                                    encuestasFinancieros.createNewFile();
-                                    encuestasComputo = new File(aux, "centroComputoEncuestas.xml");
-                                    encuestasComputo.createNewFile();
-                                    encuestasSocial = new File(aux, "servicioSocialEncuestas.xml");
-                                    encuestasSocial.createNewFile();
-                                    encuestasEscolares = new File(aux, "serviciosEscolaresEncuestas.xml");
-                                    encuestasEscolares.createNewFile();
-                                    encuestasResidencias = new File(aux, "residenciasProfesionalesEncuestas.xml");
-                                    encuestasResidencias.createNewFile();
-                                    i++;
-                                } while (i < tam);
-                                //si se crea
-                                if (encuestasCentro.exists() && encuestasComputo.exists()
-                                        && encuestasCoordinacion.exists() && encuestasEscolares.exists()
-                                        && encuestasFinancieros.exists() && encuestasResidencias.exists()
-                                        && encuestasSocial.exists()) {
-                                    //SI SE CREAN TODOS LOS ARCHIVOS ABRE INTERFAZ DE CAPTURA.
-                                    CAPTURA obj = new CAPTURA();
-                                    obj.setVisible(true);
-                                    this.dispose();
-                                    System.out.println("se crearon con exito, archivos y ahora deberia mostrar capturaForm");
-                                } else {
-                                    //no se crearon los archivos
-                                    funcionEliminarCarpeta(new File(nombreCarpeta));
-                                    System.out.println("no se crearon los archivos");
-                                }
-                            } else {
-                                //no se creo el periodo
-                                System.out.println("no se creo el peridoo");
-                            }
-                        } catch (IOException ex) {
-                            System.out.println("No se creo archivo");
-                        }
-                    }
-                } else {
-                    //el periodo excede el rango
-                    System.out.println("El periodo de fechas es mayor a 6 meses y no es posible.");
-                }
-            } else {
-                //La fecha FIN es mayor a la fecha INICIO
-                System.out.println("Las fechas estan invertidas");
-            }
-
-        } else {
-            //no seleccionaste fechhas
-            System.out.println("No se han seleccionado fechas");
-        }
-
-    }//GEN-LAST:event_btnGeneraActionPerformed
-
-    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        String rutaCarpeta = this.rutaCarpeta + prop.acceder("archivoActual", ruta);
-        System.out.println(rutaCarpeta);
-        String inicioPeriodo = prop.acceder("fechaInicio", rutaCarpeta + "/Periodo.properties");
-        String finalPeriodo = prop.acceder("fechaFin", rutaCarpeta + "/Periodo.properties");
-        System.out.println(inicioPeriodo);
-        System.out.println(finalPeriodo);
-        //CONFIRMACION DE ELIMINACION
-        String r = JOptionPane.showInputDialog("estas seguro de eliminar el periodo?");
-        if (r.equals("s")) {
-            //introduce contraseña para eliminar
-            String password = JOptionPane.showInputDialog("ingrese su contraseña pa confirmar");
-            if (!password.equals("")) {
-                //System.out.println("si se elimina: " + result.get());
-                System.out.println(prop.acceder("acceso", ruta));
-                if (prop.acceder("acceso", ruta).equals(password)) {
-                    prop.guardar("actual", "no", ruta);
-                    prop.guardar("archivoActual", prop.acceder("archivoAnterior", ruta), ruta);
-                    funcionEliminarCarpeta(new File(rutaCarpeta));
-                    System.out.println("se elimino equisde");
-                    ordenInterfaz();
-                } else {
-                    System.out.println("contraseña incorrecta");
-                }
-
-            } else {
-                System.out.println("no hay nada");
-            }
-        }
-    }//GEN-LAST:event_btnEliminarActionPerformed
-
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
         // TODO add your handling code here:
         MENU obj = new MENU();
@@ -983,7 +656,7 @@ public class PERIODO extends javax.swing.JFrame {
 
     private void jLabel11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel11MouseClicked
         // TODO add your handling code here:
-        AJUSTES obj= new AJUSTES();
+        AJUSTES obj = new AJUSTES();
         obj.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jLabel11MouseClicked
@@ -995,8 +668,7 @@ public class PERIODO extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jLabel6MouseClicked
 
-    
-    
+
     private void jLabel12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel12MouseClicked
         // TODO add your handling code here:
         MUESTRA obj = new MUESTRA();
@@ -1006,32 +678,32 @@ public class PERIODO extends javax.swing.JFrame {
 
     private void jLabel8MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseExited
         // TODO add your handling code here:
-         jLabel8.setForeground(new Color(248, 248, 255 ));
+        jLabel8.setForeground(new Color(248, 248, 255));
     }//GEN-LAST:event_jLabel8MouseExited
 
     private void jLabel8MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseEntered
         // TODO add your handling code here:
-        jLabel8.setForeground(new Color(103,123,134));
+        jLabel8.setForeground(new Color(103, 123, 134));
     }//GEN-LAST:event_jLabel8MouseEntered
 
     private void jLabel6MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseEntered
         // TODO add your handling code here:
-        jLabel6.setForeground(new Color(103,123,134));
+        jLabel6.setForeground(new Color(103, 123, 134));
     }//GEN-LAST:event_jLabel6MouseEntered
 
     private void jLabel6MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseExited
         // TODO add your handling code here:
-        jLabel6.setForeground(new Color(248,248,255));
+        jLabel6.setForeground(new Color(248, 248, 255));
     }//GEN-LAST:event_jLabel6MouseExited
 
     private void jLabel9MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseEntered
         // TODO add your handling code here:
-        jLabel9.setForeground(new Color(103,123,134));
+        jLabel9.setForeground(new Color(103, 123, 134));
     }//GEN-LAST:event_jLabel9MouseEntered
 
     private void jLabel9MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseExited
         // TODO add your handling code here:
-        jLabel9.setForeground(new Color(248,248,255));
+        jLabel9.setForeground(new Color(248, 248, 255));
     }//GEN-LAST:event_jLabel9MouseExited
 
     private void jLabel4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseExited
@@ -1056,7 +728,7 @@ public class PERIODO extends javax.swing.JFrame {
 
     private void jLabel16MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel16MouseEntered
         // TODO add your handling code here:
-        jPanel6.setBackground(new Color(67, 80, 88 ));
+        jPanel6.setBackground(new Color(67, 80, 88));
     }//GEN-LAST:event_jLabel16MouseEntered
 
     private void jLabel16MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel16MouseExited
@@ -1076,14 +748,15 @@ public class PERIODO extends javax.swing.JFrame {
         lblSelecciona.setVisible(true);
         chooserFecha1.setVisible(true);
         chooserFecha2.setVisible(true);
-        btnGenera.setVisible(true);
         lblInicio.setVisible(true);
         lblFin.setVisible(true);
+        jLabel19.setVisible(true);
+        jPanel9.setVisible(true);
     }//GEN-LAST:event_jLabel17MouseClicked
 
     private void jLabel17MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel17MouseEntered
         // TODO add your handling code here:
-        jPanel7.setBackground(new Color(67, 80, 88 ));
+        jPanel7.setBackground(new Color(67, 80, 88));
     }//GEN-LAST:event_jLabel17MouseEntered
 
     private void jLabel17MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel17MouseExited
@@ -1120,7 +793,7 @@ public class PERIODO extends javax.swing.JFrame {
                 System.out.println("no hay nada");
             }
         }
-        
+
         /*
         String r = JOptionPane.showInputDialog("estas seguro de eliminar el periodo?");
         if (r.equals("s")) {
@@ -1147,16 +820,16 @@ public class PERIODO extends javax.swing.JFrame {
 
     private void jLabel18MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel18MouseEntered
         // TODO add your handling code here:
-        jPanel8.setBackground(new Color(67, 80, 88 ));
+        jPanel8.setBackground(new Color(67, 80, 88));
     }//GEN-LAST:event_jLabel18MouseEntered
 
     private void jLabel18MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel18MouseExited
         // TODO add your handling code here:
-        setBackground(new Color(27,57,106));
+        setBackground(new Color(27, 57, 106));
     }//GEN-LAST:event_jLabel18MouseExited
 
     private void jLabel19MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel19MouseClicked
-        // TODO add your handling code here:
+
         Date fecha1 = null;
         Date fecha2 = null;
         if (chooserFecha1.getDatoFecha() == null) {
@@ -1178,9 +851,11 @@ public class PERIODO extends javax.swing.JFrame {
                 if (FormatoFechas.compruebaPeriodo(inicio, fin)) {
                     //Confirmacion.
                     //MEJORAR EL DIALOGO DE CONFIRMACION
-                    String r = JOptionPane.showInputDialog("¿Quieres generar el periodo de captura de " + FormatoFechas.dateFormatToString(inicio) + " al " + FormatoFechas.dateFormatToString(fin) + "?");
+                    int resp = JOptionPane.showConfirmDialog(null, "¿Quieres generar el periodo de captura de " + FormatoFechas.dateFormatToString(inicio) + " al " + FormatoFechas.dateFormatToString(fin) + "?", "GENERACION DE PERIODO", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+                    if (resp == 0) {
+                    //String r = JOptionPane.showInputDialog("¿Quieres generar el periodo de captura de " + FormatoFechas.dateFormatToString(inicio) + " al " + FormatoFechas.dateFormatToString(fin) + "?");
                     //if (alert.showAndWait().get() == ButtonType.OK) {
-                    if (r.equals("s")) {
+                    //if (r.equals("s")) {
 
                         String nombreCarpeta = FormatoFechas.dateFormatToString(inicio) + "_" + FormatoFechas.dateFormatToString(fin);
                         File folder = new File("src/Documentos/Periodos/", nombreCarpeta);
@@ -1217,40 +892,40 @@ public class PERIODO extends javax.swing.JFrame {
                                 prop.guardar("nombreCarpeta", auxiliarNombre, informacionPeriodo.getAbsolutePath());
                                 prop.guardar("fechaInicio", FormatoFechas.dateFormatToString(inicio), informacionPeriodo.getAbsolutePath());
                                 prop.guardar("fechaFin", FormatoFechas.dateFormatToString(fin), informacionPeriodo.getAbsolutePath());
-                                
+
                                 prop.guardar("centroDeInformacionExcel", "no", informacionPeriodo.getAbsolutePath());
-                                prop.guardar("centroDeInformacionExcelTerminado", "no", informacionPeriodo.getAbsolutePath());
+                                prop.guardar("CentroExcelTerminado", "no", informacionPeriodo.getAbsolutePath());
                                 prop.guardar("centroInformacionActivo", "si", informacionPeriodo.getAbsolutePath());
-                                
+
                                 prop.guardar("coordinacionDeCarrerasExcel", "no", informacionPeriodo.getAbsolutePath());
-                                prop.guardar("coordinacionDeCarrerasExcelTerminado", "no", informacionPeriodo.getAbsolutePath());
+                                prop.guardar("CoordinacionExcelTerminado", "no", informacionPeriodo.getAbsolutePath());
                                 prop.guardar("coordinacionCarrerasActivo", "si", informacionPeriodo.getAbsolutePath());
-                                
+
                                 prop.guardar("recursosFinancierosExcel", "no", informacionPeriodo.getAbsolutePath());
-                                prop.guardar("recursosFinancierosExcelTerminado", "no", informacionPeriodo.getAbsolutePath());
+                                prop.guardar("FinancierosExcelTerminado", "no", informacionPeriodo.getAbsolutePath());
                                 prop.guardar("recursosFinancierosActivo", "si", informacionPeriodo.getAbsolutePath());
-                                
+
                                 prop.guardar("computoExcel", "no", informacionPeriodo.getAbsolutePath());
-                                prop.guardar("computoExcelTerminado", "no", informacionPeriodo.getAbsolutePath());
+                                prop.guardar("ComputoExcelTerminado", "no", informacionPeriodo.getAbsolutePath());
                                 prop.guardar("computoActivo", "si", informacionPeriodo.getAbsolutePath());
-                                
+
                                 prop.guardar("servicioSocialExcel", "no", informacionPeriodo.getAbsolutePath());
-                                prop.guardar("servicioSocialExcelTerminado", "no", informacionPeriodo.getAbsolutePath());
+                                prop.guardar("SocialExcelTerminado", "no", informacionPeriodo.getAbsolutePath());
                                 prop.guardar("servicioSocialActivo", "si", informacionPeriodo.getAbsolutePath());
-                                
+
                                 prop.guardar("serviciosEscolaresExcel", "no", informacionPeriodo.getAbsolutePath());
-                                prop.guardar("serviciosEscolaresExcelTerminado", "no", informacionPeriodo.getAbsolutePath());
+                                prop.guardar("EscolaresExcelTerminado", "no", informacionPeriodo.getAbsolutePath());
                                 prop.guardar("serviciosEscolaresActivo", "si", informacionPeriodo.getAbsolutePath());
-                                
+
                                 prop.guardar("residenciasProfesionalesExcel", "no", informacionPeriodo.getAbsolutePath());
-                                prop.guardar("residenciasProfesionalesExcelTerminado", "no", informacionPeriodo.getAbsolutePath());
+                                prop.guardar("ResidenciasExcelTerminado", "no", informacionPeriodo.getAbsolutePath());
                                 prop.guardar("residenciaProfesionalActivo", "si", informacionPeriodo.getAbsolutePath());
                                 //CREAMOS LOS PROPIETIES PARA CADA CARRERA, PRACTICAMENTE SON FLAGS QUE INDICAN SI YA ESTAN LLENADAS LAS ENCUESTAS
                                 File informacionCarrera = null;
                                 for (int i = 0; i < tam; i++) {
                                     String aux = nombreCarpeta + "/" + carreras.get(i).getNombre();
                                     System.out.println(aux);
-                                    
+
                                     informacionCarrera = new File(aux, "PeriodoCarrera.properties");
                                     informacionCarrera.createNewFile();
                                     //llenamos los propieties
@@ -1260,42 +935,42 @@ public class PERIODO extends javax.swing.JFrame {
                                     prop.guardar("procesosTerminadosCentro", "no", informacionCarrera.getAbsolutePath());
                                     prop.guardar("comparacionCentro", "sincomparacion", informacionCarrera.getAbsolutePath());
                                     prop.guardar("activoCentro", "si", informacionCarrera.getAbsolutePath());
-                                    
+
                                     prop.guardar("iniciadoCoordinacion", "no", informacionCarrera.getAbsolutePath());
                                     prop.guardar("encuestasLlenadasCoordinacion", "0", informacionCarrera.getAbsolutePath());
                                     prop.guardar("recomendacionesCapturadasCoordinacion", "no", informacionCarrera.getAbsolutePath());
                                     prop.guardar("procesosTerminadosCoordinacion", "no", informacionCarrera.getAbsolutePath());
                                     prop.guardar("comparacionCoordinacion", "sincomparacion", informacionCarrera.getAbsolutePath());
                                     prop.guardar("activoCoordinacion", "si", informacionCarrera.getAbsolutePath());
-                                    
+
                                     prop.guardar("iniciadoFinancieros", "no", informacionCarrera.getAbsolutePath());
                                     prop.guardar("encuestasLlenadasFinancieros", "0", informacionCarrera.getAbsolutePath());
                                     prop.guardar("recomendacionesCapturadasFinancieros", "no", informacionCarrera.getAbsolutePath());
                                     prop.guardar("procesosTerminadosFinancieros", "no", informacionCarrera.getAbsolutePath());
                                     prop.guardar("comparacionFinancieros", "sincomparacion", informacionCarrera.getAbsolutePath());
                                     prop.guardar("activoFinancieros", "si", informacionCarrera.getAbsolutePath());
-                                    
+
                                     prop.guardar("iniciadoComputo", "no", informacionCarrera.getAbsolutePath());
                                     prop.guardar("encuestasLlenadasComputo", "0", informacionCarrera.getAbsolutePath());
                                     prop.guardar("recomendacionesCapturadasComputo", "no", informacionCarrera.getAbsolutePath());
                                     prop.guardar("procesosTerminadosComputo", "no", informacionCarrera.getAbsolutePath());
                                     prop.guardar("comparacionComputo", "sincomparacion", informacionCarrera.getAbsolutePath());
                                     prop.guardar("activoComputo", "si", informacionCarrera.getAbsolutePath());
-                                    
+
                                     prop.guardar("iniciadoSocial", "no", informacionCarrera.getAbsolutePath());
                                     prop.guardar("encuestasLlenadasSocial", "0", informacionCarrera.getAbsolutePath());
                                     prop.guardar("recomendacionesCapturadasSocial", "no", informacionCarrera.getAbsolutePath());
                                     prop.guardar("procesosTerminadosSocial", "no", informacionCarrera.getAbsolutePath());
                                     prop.guardar("comparacionSocial", "sincomparacion", informacionCarrera.getAbsolutePath());
                                     prop.guardar("activoSocial", "si", informacionCarrera.getAbsolutePath());
-                                    
+
                                     prop.guardar("iniciadoEscolares", "no", informacionCarrera.getAbsolutePath());
                                     prop.guardar("encuestasLlenadasEscolares", "0", informacionCarrera.getAbsolutePath());
                                     prop.guardar("recomendacionesCapturadasEscolares", "no", informacionCarrera.getAbsolutePath());
                                     prop.guardar("procesosTerminadosEscolares", "no", informacionCarrera.getAbsolutePath());
                                     prop.guardar("comparacionEscolares", "sincomparacion", informacionCarrera.getAbsolutePath());
                                     prop.guardar("activoEscolares", "si", informacionCarrera.getAbsolutePath());
-                                    
+
                                     prop.guardar("iniciadoResidencias", "no", informacionCarrera.getAbsolutePath());
                                     prop.guardar("encuestasLlenadasResidencias", "0", informacionCarrera.getAbsolutePath());
                                     prop.guardar("recomendacionesCapturadasResidencias", "no", informacionCarrera.getAbsolutePath());
@@ -1307,6 +982,7 @@ public class PERIODO extends javax.swing.JFrame {
                                 //guardar configuracion de que se inicio un nuevo registro de encuestas
                                 prop.guardar("actual", "si", ruta);
                                 prop.guardar("archivoAnterior", prop.acceder("archivoActual", ruta), ruta);
+                                prop.guardar("archivoAnterior", prop.acceder("archivoActual", ruta), informacionPeriodo.getAbsolutePath());
                                 prop.guardar("archivoActual", auxiliarNombre, ruta);
                                 //encuestas, generar cada una en las carpetas de carrera para almacenar los resultados de encuestas
 
@@ -1363,26 +1039,29 @@ public class PERIODO extends javax.swing.JFrame {
                 } else {
                     //el periodo excede el rango
                     System.out.println("El periodo de fechas es mayor a 6 meses y no es posible.");
+                    JOptionPane.showMessageDialog(null, "El periodo no puede ser mayor a 6 meses.");
                 }
             } else {
                 //La fecha FIN es mayor a la fecha INICIO
                 System.out.println("Las fechas estan invertidas");
+                JOptionPane.showMessageDialog(null, "Hubo un error en las fechas.");
             }
 
         } else {
             //no seleccionaste fechhas
             System.out.println("No se han seleccionado fechas");
+            JOptionPane.showMessageDialog(null, "Es necesario seleccionar una fecha de inicio y de fin.");
         }
     }//GEN-LAST:event_jLabel19MouseClicked
 
     private void jLabel19MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel19MouseEntered
         // TODO add your handling code here:
-        jPanel9.setBackground(new Color(67, 80, 88 ));
+        jPanel9.setBackground(new Color(67, 80, 88));
     }//GEN-LAST:event_jLabel19MouseEntered
 
     private void jLabel19MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel19MouseExited
         // TODO add your handling code here:
-        jPanel9.setBackground(new Color(27, 57, 106 ));
+        jPanel9.setBackground(new Color(27, 57, 106));
     }//GEN-LAST:event_jLabel19MouseExited
 
     private void jPanel5MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MousePressed
@@ -1412,7 +1091,6 @@ public class PERIODO extends javax.swing.JFrame {
         pArchivo.delete();
     }
 
-   
     /**
      * @param args the command line arguments
      */
@@ -1433,11 +1111,8 @@ public class PERIODO extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnEliminar;
-    private javax.swing.JButton btnGenera;
     private rojeru_san.componentes.RSDateChooser chooserFecha1;
     private rojeru_san.componentes.RSDateChooser chooserFecha2;
-    private javax.swing.JButton continuar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1449,7 +1124,6 @@ public class PERIODO extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -1468,7 +1142,6 @@ public class PERIODO extends javax.swing.JFrame {
     private javax.swing.JLabel lblFin;
     private javax.swing.JLabel lblInicio;
     private javax.swing.JLabel lblSelecciona;
-    private javax.swing.JButton nueva;
     // End of variables declaration//GEN-END:variables
-    
+
 }

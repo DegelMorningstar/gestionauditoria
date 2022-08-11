@@ -6,6 +6,7 @@
 package Vista;
 
 import java.awt.Color;
+import java.io.File;
 import java.io.IOException;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -25,6 +26,7 @@ public class REPORTES extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         ImageIcon iconoT = new ImageIcon("src/Archivos/favicon.png");
         this.setIconImage(iconoT.getImage());
+        listarPeriodos();
     }
 
     /**
@@ -260,6 +262,9 @@ public class REPORTES extends javax.swing.JFrame {
         jLabel14.setText("GENERAR REPORTE");
         jLabel14.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel14.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel14MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jLabel14MouseEntered(evt);
             }
@@ -418,6 +423,19 @@ public class REPORTES extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public void listarPeriodos(){
+        File dir = new File("src/Documentos/Periodos");
+        String[] ficheros = dir.list();
+        if (ficheros == null) {
+            System.out.println("No hay ficheros en el directorio especificado");
+        } else {
+            for (int x = 0; x < ficheros.length; x++) {
+                jComboBox1.addItem(ficheros[x]);
+                System.out.println(ficheros[x]);
+            }
+        }
+    }
+    
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
         // TODO add your handling code here:
         try {
@@ -574,6 +592,14 @@ public class REPORTES extends javax.swing.JFrame {
         this.setLocation(x - xmouse, y - ymouse);
 
     }//GEN-LAST:event_jPanel4MouseDragged
+
+    private void jLabel14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel14MouseClicked
+        // TODO add your handling code here:
+        System.out.println(jComboBox1.getSelectedItem().toString());
+        verReportes obj = new verReportes(jComboBox1.getSelectedItem().toString());
+        obj.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jLabel14MouseClicked
 
     /**
      * @param args the command line arguments

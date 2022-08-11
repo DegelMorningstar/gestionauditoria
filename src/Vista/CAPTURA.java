@@ -1,5 +1,6 @@
 package Vista;
 
+import Modelo.Carrera;
 import controlador.Propiedades;
 import controlador.XmlActions;
 import java.awt.Color;
@@ -9,6 +10,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -16,8 +19,6 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import rojerusan.RSNotifyAnimated;
 
 public class CAPTURA extends javax.swing.JFrame {
-    
-    
 
     int xmouse, ymouse;
     int val = 0;
@@ -27,6 +28,8 @@ public class CAPTURA extends javax.swing.JFrame {
     boolean banderaEliminar = false;
     File periodo;
     XmlActions xml = new XmlActions();
+    List<Carrera> carreras = new ArrayList();
+    int tam = 0;
 
     public CAPTURA() {
         ImageIcon iconoT = new ImageIcon("src/Archivos/favicon.png");
@@ -109,6 +112,13 @@ public class CAPTURA extends javax.swing.JFrame {
         jLabel39 = new javax.swing.JLabel();
         jLabel40 = new javax.swing.JLabel();
         jLabel41 = new javax.swing.JLabel();
+        eliminarCC = new javax.swing.JLabel();
+        eliminarCI = new javax.swing.JLabel();
+        eliminarComputo = new javax.swing.JLabel();
+        eliminarRF = new javax.swing.JLabel();
+        eliminarSS = new javax.swing.JLabel();
+        eliminarRP = new javax.swing.JLabel();
+        eliminarSE = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -326,10 +336,16 @@ public class CAPTURA extends javax.swing.JFrame {
         jPanel2.add(jCheckBox10, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 360, -1, -1));
 
         jLabel11.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/delete.png"))); // NOI18N
-        jLabel11.setText("ELIMINAR AVANCE");
-        jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 600, -1, -1));
+        jLabel11.setForeground(new java.awt.Color(0, 204, 0));
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/listo.png"))); // NOI18N
+        jLabel11.setText("FINALIZAR AUDITORIA");
+        jLabel11.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel11.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel11MouseClicked(evt);
+            }
+        });
+        jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 540, -1, -1));
 
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/listo.png"))); // NOI18N
         jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 210, -1, -1));
@@ -354,6 +370,7 @@ public class CAPTURA extends javax.swing.JFrame {
 
         jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/home.png"))); // NOI18N
         jLabel19.setText("VOLVER AL MENU");
+        jLabel19.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel19.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel19MouseClicked(evt);
@@ -368,6 +385,7 @@ public class CAPTURA extends javax.swing.JFrame {
         jLabel20.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
         jLabel20.setForeground(new java.awt.Color(255, 255, 255));
         jLabel20.setText("VER RESPUESTAS");
+        jLabel20.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel20.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel20MouseClicked(evt);
@@ -390,7 +408,7 @@ public class CAPTURA extends javax.swing.JFrame {
         jLabel21.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
         jLabel21.setForeground(new java.awt.Color(255, 255, 255));
         jLabel21.setText("VER RESPUESTAS");
-        jLabel21.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jLabel21.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel21.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel21MouseClicked(evt);
@@ -413,6 +431,7 @@ public class CAPTURA extends javax.swing.JFrame {
         jLabel22.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
         jLabel22.setForeground(new java.awt.Color(255, 255, 255));
         jLabel22.setText("VER RESPUESTAS");
+        jLabel22.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel22.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel22MouseClicked(evt);
@@ -435,6 +454,7 @@ public class CAPTURA extends javax.swing.JFrame {
         jLabel23.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
         jLabel23.setForeground(new java.awt.Color(255, 255, 255));
         jLabel23.setText("VER RESPUESTAS");
+        jLabel23.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel23.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel23MouseClicked(evt);
@@ -457,6 +477,7 @@ public class CAPTURA extends javax.swing.JFrame {
         jLabel24.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
         jLabel24.setForeground(new java.awt.Color(255, 255, 255));
         jLabel24.setText("VER RESPUESTAS");
+        jLabel24.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel24.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel24MouseClicked(evt);
@@ -479,6 +500,7 @@ public class CAPTURA extends javax.swing.JFrame {
         jLabel25.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
         jLabel25.setForeground(new java.awt.Color(255, 255, 255));
         jLabel25.setText("VER RESPUESTAS");
+        jLabel25.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel25.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel25MouseClicked(evt);
@@ -501,6 +523,7 @@ public class CAPTURA extends javax.swing.JFrame {
         jLabel26.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
         jLabel26.setForeground(new java.awt.Color(255, 255, 255));
         jLabel26.setText("VER RESPUESTAS");
+        jLabel26.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel26.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel26MouseClicked(evt);
@@ -518,14 +541,16 @@ public class CAPTURA extends javax.swing.JFrame {
 
         jLabel27.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/edit.png"))); // NOI18N
         jLabel27.setText("EDITAR SERVICIOS");
+        jLabel27.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel27.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel27MouseClicked(evt);
             }
         });
-        jPanel2.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 600, -1, -1));
+        jPanel2.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 590, -1, -1));
 
         jLabel28.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/delete.png"))); // NOI18N
+        jLabel28.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel28.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel28MouseClicked(evt);
@@ -534,6 +559,7 @@ public class CAPTURA extends javax.swing.JFrame {
         jPanel2.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, -1, -1));
 
         jLabel29.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/delete.png"))); // NOI18N
+        jLabel29.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel29.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel29MouseClicked(evt);
@@ -542,6 +568,7 @@ public class CAPTURA extends javax.swing.JFrame {
         jPanel2.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, -1, -1));
 
         jLabel30.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/delete.png"))); // NOI18N
+        jLabel30.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel30.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel30MouseClicked(evt);
@@ -550,6 +577,7 @@ public class CAPTURA extends javax.swing.JFrame {
         jPanel2.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 280, -1, -1));
 
         jLabel31.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/delete.png"))); // NOI18N
+        jLabel31.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel31.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel31MouseClicked(evt);
@@ -558,6 +586,7 @@ public class CAPTURA extends javax.swing.JFrame {
         jPanel2.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, -1, -1));
 
         jLabel32.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/delete.png"))); // NOI18N
+        jLabel32.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel32.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel32MouseClicked(evt);
@@ -566,6 +595,7 @@ public class CAPTURA extends javax.swing.JFrame {
         jPanel2.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 480, -1, -1));
 
         jLabel33.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/delete.png"))); // NOI18N
+        jLabel33.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel33.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel33MouseClicked(evt);
@@ -574,6 +604,7 @@ public class CAPTURA extends javax.swing.JFrame {
         jPanel2.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 350, -1, -1));
 
         jLabel34.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/delete.png"))); // NOI18N
+        jLabel34.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel34.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel34MouseClicked(evt);
@@ -582,6 +613,7 @@ public class CAPTURA extends javax.swing.JFrame {
         jPanel2.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 420, -1, -1));
 
         jLabel35.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/edit.png"))); // NOI18N
+        jLabel35.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel35.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel35MouseClicked(evt);
@@ -590,6 +622,7 @@ public class CAPTURA extends javax.swing.JFrame {
         jPanel2.add(jLabel35, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 220, -1, -1));
 
         jLabel36.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/edit.png"))); // NOI18N
+        jLabel36.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel36.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel36MouseClicked(evt);
@@ -598,6 +631,7 @@ public class CAPTURA extends javax.swing.JFrame {
         jPanel2.add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 150, -1, -1));
 
         jLabel37.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/edit.png"))); // NOI18N
+        jLabel37.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel37.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel37MouseClicked(evt);
@@ -606,6 +640,7 @@ public class CAPTURA extends javax.swing.JFrame {
         jPanel2.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 90, -1, -1));
 
         jLabel38.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/edit.png"))); // NOI18N
+        jLabel38.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel38.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel38MouseClicked(evt);
@@ -614,6 +649,7 @@ public class CAPTURA extends javax.swing.JFrame {
         jPanel2.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 290, -1, -1));
 
         jLabel39.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/edit.png"))); // NOI18N
+        jLabel39.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel39.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel39MouseClicked(evt);
@@ -622,6 +658,7 @@ public class CAPTURA extends javax.swing.JFrame {
         jPanel2.add(jLabel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 360, -1, -1));
 
         jLabel40.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/edit.png"))); // NOI18N
+        jLabel40.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel40.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel40MouseClicked(evt);
@@ -630,12 +667,76 @@ public class CAPTURA extends javax.swing.JFrame {
         jPanel2.add(jLabel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 490, -1, -1));
 
         jLabel41.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/edit.png"))); // NOI18N
+        jLabel41.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel41.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel41MouseClicked(evt);
             }
         });
         jPanel2.add(jLabel41, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 430, -1, -1));
+
+        eliminarCC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/eliminar.png"))); // NOI18N
+        eliminarCC.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        eliminarCC.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                eliminarCCMouseClicked(evt);
+            }
+        });
+        jPanel2.add(eliminarCC, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 150, -1, -1));
+
+        eliminarCI.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/eliminar.png"))); // NOI18N
+        eliminarCI.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        eliminarCI.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                eliminarCIMouseClicked(evt);
+            }
+        });
+        jPanel2.add(eliminarCI, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 90, -1, -1));
+
+        eliminarComputo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/eliminar.png"))); // NOI18N
+        eliminarComputo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        eliminarComputo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                eliminarComputoMouseClicked(evt);
+            }
+        });
+        jPanel2.add(eliminarComputo, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 280, -1, -1));
+
+        eliminarRF.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/eliminar.png"))); // NOI18N
+        eliminarRF.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        eliminarRF.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                eliminarRFMouseClicked(evt);
+            }
+        });
+        jPanel2.add(eliminarRF, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 220, -1, -1));
+
+        eliminarSS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/eliminar.png"))); // NOI18N
+        eliminarSS.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        eliminarSS.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                eliminarSSMouseClicked(evt);
+            }
+        });
+        jPanel2.add(eliminarSS, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 360, -1, -1));
+
+        eliminarRP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/eliminar.png"))); // NOI18N
+        eliminarRP.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        eliminarRP.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                eliminarRPMouseClicked(evt);
+            }
+        });
+        jPanel2.add(eliminarRP, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 490, -1, -1));
+
+        eliminarSE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/eliminar.png"))); // NOI18N
+        eliminarSE.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        eliminarSE.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                eliminarSEMouseClicked(evt);
+            }
+        });
+        jPanel2.add(eliminarSE, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 430, -1, -1));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 900, 640));
 
@@ -664,6 +765,14 @@ public class CAPTURA extends javax.swing.JFrame {
         jLabel24.setVisible(false);
         jPanel10.setVisible(false);
         jLabel25.setVisible(false);
+        jLabel11.setVisible(false);
+        eliminarCI.setVisible(false);
+        eliminarCC.setVisible(false);
+        eliminarComputo.setVisible(false);
+        eliminarSS.setVisible(false);
+        eliminarSE.setVisible(false);
+        eliminarRF.setVisible(false);
+        eliminarRP.setVisible(false);
     }
 
     private void cargarCapturas() {
@@ -885,17 +994,11 @@ public class CAPTURA extends javax.swing.JFrame {
             }
             //
             if (banderaReporte) {
-                //btnReporte.setDisable(false);
-                //btnFinalizar.setDisable(false);
+                jLabel11.setVisible(true);
             }
-            procesoFinal();
         } else {
             JOptionPane.showMessageDialog(null, "Hubo un error relacionado con el periodo, al parecer no existe.");
         }
-    }
-
-    private void procesoFinal() {
-
     }
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
         // TODO add your handling code here:
@@ -1055,32 +1158,32 @@ public class CAPTURA extends javax.swing.JFrame {
 
     private void jLabel20MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel20MouseClicked
         //coordinacion de carreras
-        showAnswers("coordinacionDeCarrerasExcel.xlsx", "COORDINACION DE CARRERAS","Coordinacion");
+        showAnswers("coordinacionDeCarrerasExcel.xlsx", "COORDINACION DE CARRERAS", "Coordinacion");
     }//GEN-LAST:event_jLabel20MouseClicked
 
     private void jLabel23MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel23MouseClicked
         //recursos financieros
-        showAnswers("recursosFinancierosExcel.xlsx", "RECURSOS FINANCIEROS","Financieros");
+        showAnswers("recursosFinancierosExcel.xlsx", "RECURSOS FINANCIEROS", "Financieros");
     }//GEN-LAST:event_jLabel23MouseClicked
 
     private void jLabel22MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel22MouseClicked
         // de computo
-        showAnswers("computoExcel.xlsx", "DE COMPUTO","Computo");
+        showAnswers("computoExcel.xlsx", "DE COMPUTO", "Computo");
     }//GEN-LAST:event_jLabel22MouseClicked
 
     private void jLabel26MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel26MouseClicked
         //servicio social
-        showAnswers("servicioSocialExcel.xlsx", "SERVICIO SOCIAL","Social");
+        showAnswers("servicioSocialExcel.xlsx", "SERVICIO SOCIAL", "Social");
     }//GEN-LAST:event_jLabel26MouseClicked
 
     private void jLabel24MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel24MouseClicked
         // servicios escolares
-        showAnswers("serviciosEscolaresExcel.xlsx", "SERVICIOS ESCOLARES","Escolares");
+        showAnswers("serviciosEscolaresExcel.xlsx", "SERVICIOS ESCOLARES", "Escolares");
     }//GEN-LAST:event_jLabel24MouseClicked
 
     private void jLabel25MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel25MouseClicked
         // residencia
-        showAnswers("residenciasProfesionalesExcel.xlsx", "RESIDENCIAS PROFESIONALES","Residencias");
+        showAnswers("residenciasProfesionalesExcel.xlsx", "RESIDENCIAS PROFESIONALES", "Residencias");
     }//GEN-LAST:event_jLabel25MouseClicked
 
     private void jLabel19MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel19MouseClicked
@@ -1189,7 +1292,7 @@ public class CAPTURA extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jLabel32MouseClicked
 
-    private void editPreguntas(String area){
+    private void editPreguntas(String area) {
         opcPregunta obj = new opcPregunta(area);
         obj.setVisible(true);
         this.dispose();
@@ -1246,73 +1349,243 @@ public class CAPTURA extends javax.swing.JFrame {
 
     private void jLabel21MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel21MouseEntered
         // TODO add your handling code here:
-        jPanel4.setBackground(new Color(67,80,80));
+        jPanel4.setBackground(new Color(67, 80, 80));
     }//GEN-LAST:event_jLabel21MouseEntered
 
     private void jLabel21MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel21MouseExited
         // TODO add your handling code here:
-        jPanel4.setBackground(new Color(27,57,106));
+        jPanel4.setBackground(new Color(27, 57, 106));
     }//GEN-LAST:event_jLabel21MouseExited
 
     private void jLabel20MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel20MouseEntered
         // TODO add your handling code here:
-        jPanel3.setBackground(new Color(67,80,80));
+        jPanel3.setBackground(new Color(67, 80, 80));
     }//GEN-LAST:event_jLabel20MouseEntered
 
     private void jLabel20MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel20MouseExited
         // TODO add your handling code here:
-        jPanel3.setBackground(new Color(27,57,106));
+        jPanel3.setBackground(new Color(27, 57, 106));
     }//GEN-LAST:event_jLabel20MouseExited
 
     private void jLabel23MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel23MouseEntered
         // TODO add your handling code here:
-        jPanel8.setBackground(new Color(67,80,80));
+        jPanel8.setBackground(new Color(67, 80, 80));
     }//GEN-LAST:event_jLabel23MouseEntered
 
     private void jLabel23MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel23MouseExited
         // TODO add your handling code here:
-        jPanel8.setBackground(new Color(27,57,106));
+        jPanel8.setBackground(new Color(27, 57, 106));
     }//GEN-LAST:event_jLabel23MouseExited
 
     private void jLabel22MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel22MouseEntered
         // TODO add your handling code here:
-        jPanel7.setBackground(new Color(67,80,80));
+        jPanel7.setBackground(new Color(67, 80, 80));
     }//GEN-LAST:event_jLabel22MouseEntered
 
     private void jLabel22MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel22MouseExited
         // TODO add your handling code here:
-        jPanel7.setBackground(new Color(27,57,106));
+        jPanel7.setBackground(new Color(27, 57, 106));
     }//GEN-LAST:event_jLabel22MouseExited
 
     private void jLabel26MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel26MouseEntered
         // TODO add your handling code here:
-        jPanel11.setBackground(new Color(67,80,80));
+        jPanel11.setBackground(new Color(67, 80, 80));
     }//GEN-LAST:event_jLabel26MouseEntered
 
     private void jLabel26MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel26MouseExited
         // TODO add your handling code here:
-        jPanel11.setBackground(new Color(27,57,106));
+        jPanel11.setBackground(new Color(27, 57, 106));
     }//GEN-LAST:event_jLabel26MouseExited
 
     private void jLabel24MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel24MouseEntered
         // TODO add your handling code here:
-        jPanel9.setBackground(new Color(67,80,80));
+        jPanel9.setBackground(new Color(67, 80, 80));
     }//GEN-LAST:event_jLabel24MouseEntered
 
     private void jLabel24MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel24MouseExited
         // TODO add your handling code here:
-        jPanel9.setBackground(new Color(27,57,106));
+        jPanel9.setBackground(new Color(27, 57, 106));
     }//GEN-LAST:event_jLabel24MouseExited
 
     private void jLabel25MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel25MouseEntered
         // TODO add your handling code here:
-        jPanel10.setBackground(new Color(67,80,80));
+        jPanel10.setBackground(new Color(67, 80, 80));
     }//GEN-LAST:event_jLabel25MouseEntered
 
     private void jLabel25MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel25MouseExited
         // TODO add your handling code here:
-        jPanel10.setBackground(new Color(27,57,106));
+        jPanel10.setBackground(new Color(27, 57, 106));
     }//GEN-LAST:event_jLabel25MouseExited
+
+    private void eliminarCIMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eliminarCIMouseClicked
+        // TODO add your handling code here:
+        eliminarAvanceServicio("Centro");
+    }//GEN-LAST:event_eliminarCIMouseClicked
+
+    private void eliminarCCMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eliminarCCMouseClicked
+        // TODO add your handling code here:
+        eliminarAvanceServicio("Coordinacion");
+    }//GEN-LAST:event_eliminarCCMouseClicked
+
+    private void eliminarRFMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eliminarRFMouseClicked
+        // TODO add your handling code here:
+        eliminarAvanceServicio("Financieros");
+    }//GEN-LAST:event_eliminarRFMouseClicked
+
+    private void eliminarComputoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eliminarComputoMouseClicked
+        // TODO add your handling code here:
+        eliminarAvanceServicio("Computo");
+    }//GEN-LAST:event_eliminarComputoMouseClicked
+
+    private void eliminarSSMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eliminarSSMouseClicked
+        // TODO add your handling code here:
+        eliminarAvanceServicio("Social");
+    }//GEN-LAST:event_eliminarSSMouseClicked
+
+    private void eliminarSEMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eliminarSEMouseClicked
+        // TODO add your handling code here:
+        eliminarAvanceServicio("Escolares");
+    }//GEN-LAST:event_eliminarSEMouseClicked
+
+    private void eliminarRPMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eliminarRPMouseClicked
+        // TODO add your handling code here:
+        eliminarAvanceServicio("Residencias");
+    }//GEN-LAST:event_eliminarRPMouseClicked
+
+    private void jLabel11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel11MouseClicked
+        // TODO add your handling code here:
+         int resp = JOptionPane.showConfirmDialog(null, "Una vez finalizada la auditoria no se podran realizar mas cambios.\n"
+                        + "¿Deseas finalizar la auditoria?", "Finalizar Auditoria", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+                if (resp == 0) {
+                    if(prop.guardar("actual", "no", ruta + "config.properties")){
+                        MENU objMenu = new MENU();
+                        objMenu.setVisible(true);
+                        this.dispose();
+                    }
+                }
+    }//GEN-LAST:event_jLabel11MouseClicked
+
+    private void eliminarAvanceServicio(String clave) {
+        int resp = JOptionPane.showConfirmDialog(null, "Se eliminaran las respuestas seleccionadas asi como las comparaciones y recomendaciones.\n"
+                + "¿Deseas eliminar el avance?", "Eliminar avance", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        if (resp == 0) {
+            carreras = xml.loadCarrerasDataFromFile(new File("src/Documentos/carreras.xml"));
+            tam = carreras.size();
+            prop.guardar(clave+"ExcelTerminado","no", periodo.getAbsolutePath());
+            for (int i = 0; i < tam; i++) {
+                String rutaPeriodoCarrera = ruta + "Periodos/" + carpeta + "/" + carreras.get(i).getNombre() + "/PeriodoCarrera.properties";
+                prop.guardar("encuestasLlenadas" + clave, "0", rutaPeriodoCarrera);
+                prop.guardar("procesosTerminados" + clave, "no", rutaPeriodoCarrera);
+                prop.guardar("iniciado" + clave, "no", rutaPeriodoCarrera);
+                prop.guardar("recomendacionesCapturadas" + clave, "no", rutaPeriodoCarrera);
+                prop.guardar("comparacion" + clave, "sincomparacion", rutaPeriodoCarrera);
+                File archivoEliminar;
+                File archivoCrear;
+                switch (clave) {
+                    case "Centro":
+                        archivoEliminar = new File(ruta + "Periodos/" + carpeta + "/" + carreras.get(i).getNombre() + "/centroInformacionEncuestas.xml");
+                        if (archivoEliminar.delete()) {
+                            archivoCrear = new File(ruta + "Periodos/" + carpeta + "/" + carreras.get(i).getNombre() + "/centroInformacionEncuestas.xml");
+                            try {
+                                if (archivoCrear.createNewFile()) {
+                                    System.out.println("archivo creado con exito despues del borrado");
+                                    jLabel14.setVisible(false);
+                                }
+                            } catch (IOException ex) {
+                                System.out.println(ex);
+                            }
+                        }
+                        break;
+                    case "Coordinacion":
+                        archivoEliminar = new File(ruta + "Periodos/" + carpeta + "/" + carreras.get(i).getNombre() + "/coordinacionCarrerasEncuestas.xml");
+                        if (archivoEliminar.delete()) {
+                            archivoCrear = new File(ruta + "Periodos/" + carpeta + "/" + carreras.get(i).getNombre() + "/coordinacionCarrerasEncuestas.xml");
+                            try {
+                                if (archivoCrear.createNewFile()) {
+                                    System.out.println("archivo creado con exito despues del borrado");
+                                    jLabel13.setVisible(false);
+                                }
+                            } catch (IOException ex) {
+                                System.out.println(ex);
+                            }
+                        }
+                        break;
+                    case "Financieros":
+                        archivoEliminar = new File(ruta + "Periodos/" + carpeta + "/" + carreras.get(i).getNombre() + "/recursosFinancierosEncuestas.xml");
+                        if (archivoEliminar.delete()) {
+                            archivoCrear = new File(ruta + "Periodos/" + carpeta + "/" + carreras.get(i).getNombre() + "/recursosFinancierosEncuestas.xml");
+                            try {
+                                if (archivoCrear.createNewFile()) {
+                                    System.out.println("archivo creado con exito despues del borrado");
+                                    jLabel12.setVisible(false);
+                                }
+                            } catch (IOException ex) {
+                                System.out.println(ex);
+                            }
+                        }
+                        break;
+                    case "Computo":
+                        archivoEliminar = new File(ruta + "Periodos/" + carpeta + "/" + carreras.get(i).getNombre() + "/centroComputoEncuestas.xml");
+                        if (archivoEliminar.delete()) {
+                            archivoCrear = new File(ruta + "Periodos/" + carpeta + "/" + carreras.get(i).getNombre() + "/centroComputoEncuestas.xml");
+                            try {
+                                if (archivoCrear.createNewFile()) {
+                                    System.out.println("archivo creado con exito despues del borrado");
+                                    jLabel15.setVisible(false);
+                                }
+                            } catch (IOException ex) {
+                                System.out.println(ex);
+                            }
+                        }
+                        break;
+                    case "Social":
+                        archivoEliminar = new File(ruta + "Periodos/" + carpeta + "/" + carreras.get(i).getNombre() + "/servicioSocialEncuestas.xml");
+                        if (archivoEliminar.delete()) {
+                            archivoCrear = new File(ruta + "Periodos/" + carpeta + "/" + carreras.get(i).getNombre() + "/servicioSocialEncuestas.xml");
+                            try {
+                                if (archivoCrear.createNewFile()) {
+                                    System.out.println("archivo creado con exito despues del borrado");
+                                    jLabel16.setVisible(false);
+                                }
+                            } catch (IOException ex) {
+                                System.out.println(ex);
+                            }
+                        }
+                        break;
+                    case "Escolares":
+                        archivoEliminar = new File(ruta + "Periodos/" + carpeta + "/" + carreras.get(i).getNombre() + "/serviciosEscolaresEncuestas.xml");
+                        if (archivoEliminar.delete()) {
+                            archivoCrear = new File(ruta + "Periodos/" + carpeta + "/" + carreras.get(i).getNombre() + "/serviciosEscolaresEncuestas.xml");
+                            try {
+                                if (archivoCrear.createNewFile()) {
+                                    System.out.println("archivo creado con exito despues del borrado");
+                                    jLabel18.setVisible(false);
+                                }
+                            } catch (IOException ex) {
+                                System.out.println(ex);
+                            }
+                        }
+                        break;
+                    case "Residencias":
+                        archivoEliminar = new File(ruta + "Periodos/" + carpeta + "/" + carreras.get(i).getNombre() + "/residenciasProfesionalesEncuestas.xml");
+                        if (archivoEliminar.delete()) {
+                            archivoCrear = new File(ruta + "Periodos/" + carpeta + "/" + carreras.get(i).getNombre() + "/residenciasProfesionalesEncuestas.xml");
+                            try {
+                                if (archivoCrear.createNewFile()) {
+                                    System.out.println("archivo creado con exito despues del borrado");
+                                    jLabel17.setVisible(false);
+                                }
+                            } catch (IOException ex) {
+                                System.out.println(ex);
+                            }
+                        }
+                        break;
+
+                }
+            }
+            jLabel11.setVisible(false);
+        }
+    }
 
     /**
      * @param args the command line arguments
@@ -1350,6 +1623,13 @@ public class CAPTURA extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel eliminarCC;
+    private javax.swing.JLabel eliminarCI;
+    private javax.swing.JLabel eliminarComputo;
+    private javax.swing.JLabel eliminarRF;
+    private javax.swing.JLabel eliminarRP;
+    private javax.swing.JLabel eliminarSE;
+    private javax.swing.JLabel eliminarSS;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBox jCheckBox10;
     private javax.swing.JCheckBox jCheckBox2;

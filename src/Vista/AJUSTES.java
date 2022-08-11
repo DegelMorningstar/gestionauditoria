@@ -275,7 +275,7 @@ public class AJUSTES extends javax.swing.JFrame {
 
         jLabel16.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(0, 53, 153));
-        jLabel16.setText("R.D:");
+        jLabel16.setText("R.S:");
 
         txtRevision.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
 

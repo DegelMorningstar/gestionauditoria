@@ -51,7 +51,6 @@ public class OpcServicio extends javax.swing.JFrame {
 
         jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jCheckBox1 = new javax.swing.JCheckBox();
@@ -61,7 +60,6 @@ public class OpcServicio extends javax.swing.JFrame {
         jCheckBox8 = new javax.swing.JCheckBox();
         jCheckBox9 = new javax.swing.JCheckBox();
         jCheckBox10 = new javax.swing.JCheckBox();
-        jButton2 = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
@@ -88,8 +86,6 @@ public class OpcServicio extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/info1.png"))); // NOI18N
-
         jLabel7.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(240, 240, 240));
         jLabel7.setText("CONTROL DE SERVICIOS");
@@ -102,13 +98,11 @@ public class OpcServicio extends javax.swing.JFrame {
                 .addComponent(jLabel2)
                 .addGap(200, 200, 200)
                 .addComponent(jLabel7)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel3))
+                .addContainerGap(256, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 66, Short.MAX_VALUE)
-            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 66, Short.MAX_VALUE)
             .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
@@ -149,14 +143,6 @@ public class OpcServicio extends javax.swing.JFrame {
         jCheckBox10.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jCheckBox10.setText("SERVICIO SOCIAL");
         jPanel2.add(jCheckBox10, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 300, 240, -1));
-
-        jButton2.setText("GUARDAR");
-        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton2MouseClicked(evt);
-            }
-        });
-        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 410, -1, -1));
 
         jPanel5.setBackground(new java.awt.Color(248, 248, 255));
 
@@ -260,49 +246,6 @@ public class OpcServicio extends javax.swing.JFrame {
             jCheckBox8.setSelected(true);
         }
     }
-    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
-        // TODO add your handling code here:
-        boolean mensaje = false;
-        if(jCheckBox2.isSelected()){
-            mensaje = prop.guardar("centroInformacionActivo", "si", periodo.getAbsolutePath());
-        }else{
-            mensaje = prop.guardar("centroInformacionActivo", "no", periodo.getAbsolutePath());
-        }
-        if(jCheckBox1.isSelected()){
-            mensaje = prop.guardar("coordinacionCarrerasActivo", "si", periodo.getAbsolutePath());
-        }else{
-            mensaje = prop.guardar("coordinacionCarrerasActivo", "no", periodo.getAbsolutePath());
-        }
-        if(jCheckBox4.isSelected()){
-            mensaje = prop.guardar("recursosFinancierosActivo", "si", periodo.getAbsolutePath());
-        }else{
-            mensaje = prop.guardar("recursosFinancierosActivo", "no", periodo.getAbsolutePath());
-        }
-        if(jCheckBox3.isSelected()){
-            mensaje = prop.guardar("computoActivo", "si", periodo.getAbsolutePath());
-        }else{
-            mensaje = prop.guardar("computoActivo", "no", periodo.getAbsolutePath());
-        }
-        if(jCheckBox10.isSelected()){
-            mensaje = prop.guardar("servicioSocialActivo", "si", periodo.getAbsolutePath());
-        }else{
-            mensaje = prop.guardar("servicioSocialActivo", "no", periodo.getAbsolutePath());
-        }
-        if(jCheckBox9.isSelected()){
-            mensaje = prop.guardar("serviciosEscolaresActivo", "si", periodo.getAbsolutePath());
-        }else{
-            mensaje = prop.guardar("serviciosEscolaresActivo", "no", periodo.getAbsolutePath());
-        }
-        if(jCheckBox8.isSelected()){
-            mensaje = prop.guardar("residenciaProfesionalActivo", "si", periodo.getAbsolutePath());
-        }else{
-            mensaje = prop.guardar("residenciaProfesionalActivo", "no", periodo.getAbsolutePath());
-        }
-        if(mensaje){
-            JOptionPane.showMessageDialog(null, "Se ha guardado con exito.");
-        }
-    }//GEN-LAST:event_jButton2MouseClicked
-
     private void jPanel3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MousePressed
         // TODO add your handling code here:
         xmouse = evt.getX();
@@ -413,7 +356,6 @@ public class OpcServicio extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton2;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBox jCheckBox10;
     private javax.swing.JCheckBox jCheckBox2;
@@ -422,7 +364,6 @@ public class OpcServicio extends javax.swing.JFrame {
     private javax.swing.JCheckBox jCheckBox8;
     private javax.swing.JCheckBox jCheckBox9;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel2;

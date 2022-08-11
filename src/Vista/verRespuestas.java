@@ -4,6 +4,7 @@ import Modelo.Carrera;
 import Modelo.Encuesta;
 import Modelo.Pregunta;
 import Modelo.Respuesta;
+import controlador.GeneradorReporte;
 import controlador.LectorExcel;
 import controlador.Propiedades;
 import controlador.RandomValues;
@@ -17,6 +18,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.scene.control.TextField;
 import javax.swing.ImageIcon;
+import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import rojerusan.RSNotifyAnimated;
@@ -25,6 +27,9 @@ public class verRespuestas extends javax.swing.JFrame {
 
     //variables moer ventana
     int xmouse, ymouse;
+
+    public static verCapturas frameVerCapturas;
+    public static opcRecomendaciones frameRecomendaciones;
 
     private boolean banderafiltrado = false;
     private String carpeta = "";
@@ -39,6 +44,7 @@ public class verRespuestas extends javax.swing.JFrame {
 
     int tam = 0, tamPreguntas = 0;
     String rutaXml = "src/Documentos/";
+    String rutaAux;
     //String rutaDocs = "src/gestionauditoria/archivos/documentos/";
     String rutaCarreras = "src/Documentos/carreras.xml";
     String rutaMuestra = "src/Documentos/muestra.properties";
@@ -60,8 +66,44 @@ public class verRespuestas extends javax.swing.JFrame {
         this.setTitle(area);
         jLabel1.setText(area);
 
-        File rutaArchivoExcel = new File(name);
-        cellData = Lector.getExcel(rutaArchivoExcel);
+        /*llenar excel*/
+        JOptionPane pane = new JOptionPane("Recuperando encuestas, espere unos segundos.", JOptionPane.INFORMATION_MESSAGE);
+        JDialog dialog = pane.createDialog(null, "Accediendo y leyendo el excel, espere unos segundos.");
+        dialog.setModal(false);
+
+        Thread t = new Thread(new Runnable() {
+            public void run() {
+
+                Thread t = new Thread(new Runnable() {
+                    public void run() {
+                        dialog.setVisible(true);
+                    }
+                });
+                t.start();
+
+                File rutaArchivoExcel = new File(name);
+                cellData = Lector.getExcel(rutaArchivoExcel);
+                if (cellData.size() > 0) {
+                    new rojerusan.RSNotifyAnimated("COMPLETADO", "Se ha cargado el excel de " + area + " satisfactoriamente.", 7,
+                            RSNotifyAnimated.PositionNotify.BottomRight,
+                            RSNotifyAnimated.AnimationNotify.BottomUp,
+                            RSNotifyAnimated.TypeNotify.SUCCESS).setVisible(true);
+                } else {
+                    new rojerusan.RSNotifyAnimated("ERROR!", "No se pudo cargar el excel de " + area + "\n "
+                            + "Esto puede deberse a diferentes motivos\n"
+                            + "1.-El excel cargado no corresponde al servicio\n"
+                            + "2.-El excel esta dañado", 7,
+                            RSNotifyAnimated.PositionNotify.BottomRight,
+                            RSNotifyAnimated.AnimationNotify.BottomUp,
+                            RSNotifyAnimated.TypeNotify.ERROR).setVisible(true);
+                }
+
+                dialog.setVisible(false);
+
+            }
+        });
+        t.start();
+        /*fin excel*/
 
         llenarTabla();
 
@@ -94,7 +136,6 @@ public class verRespuestas extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -307,8 +348,6 @@ public class verRespuestas extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/info1.png"))); // NOI18N
-
         jLabel1.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("AREA");
@@ -321,13 +360,11 @@ public class verRespuestas extends javax.swing.JFrame {
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addGap(356, 356, 356)
-                .addComponent(jLabel3))
+                .addGap(406, 406, 406))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 66, Short.MAX_VALUE)
-            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 66, Short.MAX_VALUE)
             .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
@@ -425,9 +462,10 @@ public class verRespuestas extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, "Aun no has registrado la muestra para esta carrera, por favor ve a la generacion de muestra.");
                 }
             } else {
-                verCapturas obj = new verCapturas(area,carrera,clave);
-                obj.setVisible(true);
-                this.dispose();
+                if (frameVerCapturas == null) {
+                    frameVerCapturas = new verCapturas(area, carrera, clave);
+                    frameVerCapturas.setVisible(true);
+                }
             }
 
         } else {
@@ -473,9 +511,13 @@ public class verRespuestas extends javax.swing.JFrame {
             String iniciado = prop.acceder("iniciado" + clave, rutaPeriodoCarrera);
             if (!iniciado.equals("no")) {
                 //necesita area, titulo pantalla, carrera
-                opcRecomendaciones obj = new opcRecomendaciones(clave, area, carrera);
+                /*opcRecomendaciones obj = new opcRecomendaciones(clave, area, carrera);
                 obj.setVisible(true);
-                this.dispose();
+                this.dispose();*/
+                if (frameRecomendaciones == null) {
+                    frameRecomendaciones = new opcRecomendaciones(clave, area, carrera);
+                    frameRecomendaciones.setVisible(true);
+                }
             } else {
                 JOptionPane.showMessageDialog(null, "Aun no has registrado la muestra para esta carrera.");
             }
@@ -506,23 +548,26 @@ public class verRespuestas extends javax.swing.JFrame {
                 bandera = false;
             }
         }
-        if(bandera){
-            if(prop.guardar(clave+"ExcelTerminado","si", rutaXml+"Periodos/"+carpeta+ "/Periodo.properties")){
-                new rojerusan.RSNotifyAnimated("COMPLETADO", "Se han finalizado completamente el servicio de "+area, 7,
+        if (bandera) {
+            if (prop.guardar(clave + "ExcelTerminado", "si", rutaXml + "Periodos/" + carpeta + "/Periodo.properties")) {
+                new rojerusan.RSNotifyAnimated("COMPLETADO", "Se han finalizado completamente el servicio de " + area, 7,
                         RSNotifyAnimated.PositionNotify.BottomRight,
                         RSNotifyAnimated.AnimationNotify.BottomUp,
                         RSNotifyAnimated.TypeNotify.SUCCESS).setVisible(true);
-            }else{
-                new rojerusan.RSNotifyAnimated("ERROR!", "Ocurrio un error al finalizar el servicio " + area+"\n No se pudo guardar.", 7,
+                CAPTURA obj = new CAPTURA();
+                obj.setVisible(true);
+                this.dispose();
+            } else {
+                new rojerusan.RSNotifyAnimated("ERROR!", "Ocurrio un error al finalizar el servicio " + area + "\n No se pudo guardar.", 7,
                         RSNotifyAnimated.PositionNotify.BottomRight,
                         RSNotifyAnimated.AnimationNotify.BottomUp,
                         RSNotifyAnimated.TypeNotify.ERROR).setVisible(true);
             }
-        }else{
+        } else {
             JOptionPane.showMessageDialog(null, "Aun no has finalizado la captura de todas las carreras.\n"
                     + "Finaliza cada una de ellas para finalizar el proceso.");
         }
-        System.out.println(clave+"ExcelTerminado");
+        System.out.println(clave + "ExcelTerminado");
     }//GEN-LAST:event_jLabel13MouseClicked
 
     private void jLabel13MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel13MouseEntered
@@ -540,15 +585,16 @@ public class verRespuestas extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jPanel12MouseEntered
     private boolean guardarRespuestas(String carrera, Float muestra) {
-        rutaXml = ruta + "Periodos/" + carpeta + "/" + carrera.trim() + "/" + archivo + "Encuestas.xml";
-        System.out.println("rutaXML: " + rutaXml);
+        rutaAux="";
+        rutaAux = ruta + "Periodos/" + carpeta + "/" + carrera.trim() + "/" + archivo + "Encuestas.xml";
+        System.out.println("rutaXML: " + rutaAux);
 
         String rutaPreguntas = ruta + archivo + ".xml";
         preguntas = xml.loadPreguntasDataFromFile(new File(rutaPreguntas));
         tamPreguntas = preguntas.size();
 
         if (persistirRespuestas(muestra)) {
-            if (xml.saveEncuestasDataToFile(new File(rutaXml), encuestas)) {
+            if (xml.saveEncuestasDataToFile(new File(rutaAux), encuestas)) {
                 new rojerusan.RSNotifyAnimated("COMPLETADO", "Se han guardado las respuestas correspondientes a " + carrera, 7,
                         RSNotifyAnimated.PositionNotify.BottomRight,
                         RSNotifyAnimated.AnimationNotify.BottomUp,
@@ -647,26 +693,30 @@ public class verRespuestas extends javax.swing.JFrame {
     }
 
     private void getStatus(String carrera) {
-        String rutaPeriodoCarrera = ruta + "/Periodos/" + carpeta + "/" + carrera + "/PeriodoCarrera.properties";
-        String iniciado = prop.acceder("iniciado" + clave, rutaPeriodoCarrera);
+        System.out.println("carrera seleccionada "+carrera);
         if (!carrera.isEmpty()) {
+            String rutaPeriodoCarrera = ruta + "/Periodos/" + carpeta + "/" + carrera + "/PeriodoCarrera.properties";
+            System.out.println("rutaperiodocarrera "+rutaPeriodoCarrera);
+            String iniciado = prop.acceder("iniciado" + clave, rutaPeriodoCarrera);
+            System.out.println("iniciado "+iniciado);
             String terminado = prop.acceder("procesosTerminados" + clave, rutaXml + "Periodos/" + carpeta + "/" + carrera + "/PeriodoCarrera.properties");
+            System.out.println("terminado "+terminado);
             if (terminado.equalsIgnoreCase("si")) {
                 jLabel4.setText("EL SERVICIO HA SIDO FINALIZADO");
                 jLabel9.setText("VER RESPUESTAS");
             } else {
-                if(iniciado.equalsIgnoreCase("no")){
+                if (iniciado.equalsIgnoreCase("no")) {
                     jLabel9.setText("APLICAR MUESTRA");
-                }else{
+                } else {
                     jLabel9.setText("VER RESPUESTAS");
                 }
                 jLabel4.setText("EL SERVICIO ESTA EN PROCESO DE CAPTURA");
             }
-        }else{
+        } else {
             jLabel4.setText("SELECCIONA UNA CARRERA");
             jLabel9.setText("APLICAR MUESTRA");
         }
-        
+
     }
 
     public static void main(String args[]) {
@@ -708,7 +758,6 @@ public class verRespuestas extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;

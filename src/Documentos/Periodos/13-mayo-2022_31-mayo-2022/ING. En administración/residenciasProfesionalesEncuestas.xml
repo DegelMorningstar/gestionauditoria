@@ -1,10 +1,127 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <encuestas>
     <encuesta>
-        <comentario>1.- </comentario>
+        <comentario> </comentario>
         <respuestas>
             <noPregunta>0</noPregunta>
+            <respuesta>5</respuesta>
+        </respuestas>
+        <respuestas>
+            <noPregunta>1</noPregunta>
+            <respuesta>5</respuesta>
+        </respuestas>
+        <respuestas>
+            <noPregunta>2</noPregunta>
+            <respuesta>5</respuesta>
+        </respuestas>
+        <respuestas>
+            <noPregunta>3</noPregunta>
+            <respuesta>5</respuesta>
+        </respuestas>
+        <respuestas>
+            <noPregunta>4</noPregunta>
+            <respuesta>5</respuesta>
+        </respuestas>
+        <respuestas>
+            <noPregunta>5</noPregunta>
+            <respuesta>5</respuesta>
+        </respuestas>
+        <respuestas>
+            <noPregunta>6</noPregunta>
+            <respuesta>5</respuesta>
+        </respuestas>
+        <respuestas>
+            <noPregunta>7</noPregunta>
+            <respuesta>5</respuesta>
+        </respuestas>
+        <respuestas>
+            <noPregunta>8</noPregunta>
+            <respuesta>5</respuesta>
+        </respuestas>
+    </encuesta>
+    <encuesta>
+        <comentario> </comentario>
+        <respuestas>
+            <noPregunta>0</noPregunta>
+            <respuesta>4</respuesta>
+        </respuestas>
+        <respuestas>
+            <noPregunta>1</noPregunta>
             <respuesta>3</respuesta>
+        </respuestas>
+        <respuestas>
+            <noPregunta>2</noPregunta>
+            <respuesta>5</respuesta>
+        </respuestas>
+        <respuestas>
+            <noPregunta>3</noPregunta>
+            <respuesta>5</respuesta>
+        </respuestas>
+        <respuestas>
+            <noPregunta>4</noPregunta>
+            <respuesta>5</respuesta>
+        </respuestas>
+        <respuestas>
+            <noPregunta>5</noPregunta>
+            <respuesta>5</respuesta>
+        </respuestas>
+        <respuestas>
+            <noPregunta>6</noPregunta>
+            <respuesta>4</respuesta>
+        </respuestas>
+        <respuestas>
+            <noPregunta>7</noPregunta>
+            <respuesta>5</respuesta>
+        </respuestas>
+        <respuestas>
+            <noPregunta>8</noPregunta>
+            <respuesta>4</respuesta>
+        </respuestas>
+    </encuesta>
+    <encuesta>
+        <comentario> </comentario>
+        <respuestas>
+            <noPregunta>0</noPregunta>
+            <respuesta>5</respuesta>
+        </respuestas>
+        <respuestas>
+            <noPregunta>1</noPregunta>
+            <respuesta>5</respuesta>
+        </respuestas>
+        <respuestas>
+            <noPregunta>2</noPregunta>
+            <respuesta>5</respuesta>
+        </respuestas>
+        <respuestas>
+            <noPregunta>3</noPregunta>
+            <respuesta>5</respuesta>
+        </respuestas>
+        <respuestas>
+            <noPregunta>4</noPregunta>
+            <respuesta>5</respuesta>
+        </respuestas>
+        <respuestas>
+            <noPregunta>5</noPregunta>
+            <respuesta>5</respuesta>
+        </respuestas>
+        <respuestas>
+            <noPregunta>6</noPregunta>
+            <respuesta>5</respuesta>
+        </respuestas>
+        <respuestas>
+            <noPregunta>7</noPregunta>
+            <respuesta>5</respuesta>
+        </respuestas>
+        <respuestas>
+            <noPregunta>8</noPregunta>
+            <respuesta>4</respuesta>
+        </respuestas>
+    </encuesta>
+    <encuesta>
+        <comentario> </comentario>
+        <respuestas>
+            <noPregunta>0</noPregunta>
+            <respuesta>4</respuesta>
         </respuestas>
         <respuestas>
             <noPregunta>1</noPregunta>
@@ -28,6 +145,45 @@
         </respuestas>
         <respuestas>
             <noPregunta>6</noPregunta>
+            <respuesta>5</respuesta>
+        </respuestas>
+        <respuestas>
+            <noPregunta>7</noPregunta>
+            <respuesta>5</respuesta>
+        </respuestas>
+        <respuestas>
+            <noPregunta>8</noPregunta>
+            <respuesta>5</respuesta>
+        </respuestas>
+    </encuesta>
+    <encuesta>
+        <comentario> </comentario>
+        <respuestas>
+            <noPregunta>0</noPregunta>
+            <respuesta>5</respuesta>
+        </respuestas>
+        <respuestas>
+            <noPregunta>1</noPregunta>
+            <respuesta>4</respuesta>
+        </respuestas>
+        <respuestas>
+            <noPregunta>2</noPregunta>
+            <respuesta>5</respuesta>
+        </respuestas>
+        <respuestas>
+            <noPregunta>3</noPregunta>
+            <respuesta>4</respuesta>
+        </respuestas>
+        <respuestas>
+            <noPregunta>4</noPregunta>
+            <respuesta>5</respuesta>
+        </respuestas>
+        <respuestas>
+            <noPregunta>5</noPregunta>
+            <respuesta>5</respuesta>
+        </respuestas>
+        <respuestas>
+            <noPregunta>6</noPregunta>
             <respuesta>3</respuesta>
         </respuestas>
         <respuestas>
@@ -40,30 +196,30 @@
         </respuestas>
     </encuesta>
     <encuesta>
-        <comentario>2.- </comentario>
+        <comentario> </comentario>
         <respuestas>
             <noPregunta>0</noPregunta>
-            <respuesta>3</respuesta>
+            <respuesta>5</respuesta>
         </respuestas>
         <respuestas>
             <noPregunta>1</noPregunta>
-            <respuesta>3</respuesta>
+            <respuesta>5</respuesta>
         </respuestas>
         <respuestas>
             <noPregunta>2</noPregunta>
-            <respuesta>3</respuesta>
+            <respuesta>5</respuesta>
         </respuestas>
         <respuestas>
             <noPregunta>3</noPregunta>
-            <respuesta>3</respuesta>
+            <respuesta>5</respuesta>
         </respuestas>
         <respuestas>
             <noPregunta>4</noPregunta>
-            <respuesta>3</respuesta>
+            <respuesta>5</respuesta>
         </respuestas>
         <respuestas>
             <noPregunta>5</noPregunta>
-            <respuesta>3</respuesta>
+            <respuesta>5</respuesta>
         </respuestas>
         <respuestas>
             <noPregunta>6</noPregunta>
@@ -71,22 +227,22 @@
         </respuestas>
         <respuestas>
             <noPregunta>7</noPregunta>
-            <respuesta>2</respuesta>
+            <respuesta>4</respuesta>
         </respuestas>
         <respuestas>
             <noPregunta>8</noPregunta>
-            <respuesta>3</respuesta>
+            <respuesta>5</respuesta>
         </respuestas>
     </encuesta>
     <encuesta>
-        <comentario>3.- </comentario>
+        <comentario>Información necesaria con mi asesora, así como me esclarece dudas y esta pendiente de mis dudas </comentario>
         <respuestas>
             <noPregunta>0</noPregunta>
             <respuesta>4</respuesta>
         </respuestas>
         <respuestas>
             <noPregunta>1</noPregunta>
-            <respuesta>4</respuesta>
+            <respuesta>3</respuesta>
         </respuestas>
         <respuestas>
             <noPregunta>2</noPregunta>
@@ -98,27 +254,27 @@
         </respuestas>
         <respuestas>
             <noPregunta>4</noPregunta>
-            <respuesta>4</respuesta>
+            <respuesta>5</respuesta>
         </respuestas>
         <respuestas>
             <noPregunta>5</noPregunta>
-            <respuesta>4</respuesta>
+            <respuesta>5</respuesta>
         </respuestas>
         <respuestas>
             <noPregunta>6</noPregunta>
-            <respuesta>4</respuesta>
+            <respuesta>3</respuesta>
         </respuestas>
         <respuestas>
             <noPregunta>7</noPregunta>
-            <respuesta>4</respuesta>
+            <respuesta>5</respuesta>
         </respuestas>
         <respuestas>
             <noPregunta>8</noPregunta>
-            <respuesta>4</respuesta>
+            <respuesta>5</respuesta>
         </respuestas>
     </encuesta>
     <encuesta>
-        <comentario>4.- </comentario>
+        <comentario> </comentario>
         <respuestas>
             <noPregunta>0</noPregunta>
             <respuesta>2</respuesta>
@@ -157,10 +313,10 @@
         </respuestas>
     </encuesta>
     <encuesta>
-        <comentario>5.- </comentario>
+        <comentario> </comentario>
         <respuestas>
             <noPregunta>0</noPregunta>
-            <respuesta>4</respuesta>
+            <respuesta>1</respuesta>
         </respuestas>
         <respuestas>
             <noPregunta>1</noPregunta>
@@ -172,46 +328,7 @@
         </respuestas>
         <respuestas>
             <noPregunta>3</noPregunta>
-            <respuesta>4</respuesta>
-        </respuestas>
-        <respuestas>
-            <noPregunta>4</noPregunta>
-            <respuesta>4</respuesta>
-        </respuestas>
-        <respuestas>
-            <noPregunta>5</noPregunta>
-            <respuesta>4</respuesta>
-        </respuestas>
-        <respuestas>
-            <noPregunta>6</noPregunta>
-            <respuesta>4</respuesta>
-        </respuestas>
-        <respuestas>
-            <noPregunta>7</noPregunta>
-            <respuesta>4</respuesta>
-        </respuestas>
-        <respuestas>
-            <noPregunta>8</noPregunta>
-            <respuesta>4</respuesta>
-        </respuestas>
-    </encuesta>
-    <encuesta>
-        <comentario>6.- </comentario>
-        <respuestas>
-            <noPregunta>0</noPregunta>
             <respuesta>3</respuesta>
-        </respuestas>
-        <respuestas>
-            <noPregunta>1</noPregunta>
-            <respuesta>3</respuesta>
-        </respuestas>
-        <respuestas>
-            <noPregunta>2</noPregunta>
-            <respuesta>3</respuesta>
-        </respuestas>
-        <respuestas>
-            <noPregunta>3</noPregunta>
-            <respuesta>4</respuesta>
         </respuestas>
         <respuestas>
             <noPregunta>4</noPregunta>
@@ -227,7 +344,7 @@
         </respuestas>
         <respuestas>
             <noPregunta>7</noPregunta>
-            <respuesta>4</respuesta>
+            <respuesta>5</respuesta>
         </respuestas>
         <respuestas>
             <noPregunta>8</noPregunta>
@@ -235,7 +352,7 @@
         </respuestas>
     </encuesta>
     <encuesta>
-        <comentario>7.- </comentario>
+        <comentario> </comentario>
         <respuestas>
             <noPregunta>0</noPregunta>
             <respuesta>4</respuesta>
@@ -246,136 +363,19 @@
         </respuestas>
         <respuestas>
             <noPregunta>2</noPregunta>
-            <respuesta>5</respuesta>
-        </respuestas>
-        <respuestas>
-            <noPregunta>3</noPregunta>
-            <respuesta>5</respuesta>
-        </respuestas>
-        <respuestas>
-            <noPregunta>4</noPregunta>
-            <respuesta>5</respuesta>
-        </respuestas>
-        <respuestas>
-            <noPregunta>5</noPregunta>
-            <respuesta>5</respuesta>
-        </respuestas>
-        <respuestas>
-            <noPregunta>6</noPregunta>
-            <respuesta>5</respuesta>
-        </respuestas>
-        <respuestas>
-            <noPregunta>7</noPregunta>
-            <respuesta>5</respuesta>
-        </respuestas>
-        <respuestas>
-            <noPregunta>8</noPregunta>
-            <respuesta>5</respuesta>
-        </respuestas>
-    </encuesta>
-    <encuesta>
-        <comentario>8.- </comentario>
-        <respuestas>
-            <noPregunta>0</noPregunta>
-            <respuesta>5</respuesta>
-        </respuestas>
-        <respuestas>
-            <noPregunta>1</noPregunta>
-            <respuesta>5</respuesta>
-        </respuestas>
-        <respuestas>
-            <noPregunta>2</noPregunta>
-            <respuesta>5</respuesta>
-        </respuestas>
-        <respuestas>
-            <noPregunta>3</noPregunta>
-            <respuesta>5</respuesta>
-        </respuestas>
-        <respuestas>
-            <noPregunta>4</noPregunta>
-            <respuesta>5</respuesta>
-        </respuestas>
-        <respuestas>
-            <noPregunta>5</noPregunta>
-            <respuesta>5</respuesta>
-        </respuestas>
-        <respuestas>
-            <noPregunta>6</noPregunta>
-            <respuesta>5</respuesta>
-        </respuestas>
-        <respuestas>
-            <noPregunta>7</noPregunta>
-            <respuesta>5</respuesta>
-        </respuestas>
-        <respuestas>
-            <noPregunta>8</noPregunta>
-            <respuesta>5</respuesta>
-        </respuestas>
-    </encuesta>
-    <encuesta>
-        <comentario>9.- </comentario>
-        <respuestas>
-            <noPregunta>0</noPregunta>
-            <respuesta>5</respuesta>
-        </respuestas>
-        <respuestas>
-            <noPregunta>1</noPregunta>
-            <respuesta>4</respuesta>
-        </respuestas>
-        <respuestas>
-            <noPregunta>2</noPregunta>
-            <respuesta>5</respuesta>
-        </respuestas>
-        <respuestas>
-            <noPregunta>3</noPregunta>
-            <respuesta>4</respuesta>
-        </respuestas>
-        <respuestas>
-            <noPregunta>4</noPregunta>
-            <respuesta>5</respuesta>
-        </respuestas>
-        <respuestas>
-            <noPregunta>5</noPregunta>
-            <respuesta>5</respuesta>
-        </respuestas>
-        <respuestas>
-            <noPregunta>6</noPregunta>
             <respuesta>3</respuesta>
         </respuestas>
         <respuestas>
-            <noPregunta>7</noPregunta>
-            <respuesta>5</respuesta>
-        </respuestas>
-        <respuestas>
-            <noPregunta>8</noPregunta>
-            <respuesta>5</respuesta>
-        </respuestas>
-    </encuesta>
-    <encuesta>
-        <comentario>10.- </comentario>
-        <respuestas>
-            <noPregunta>0</noPregunta>
-            <respuesta>5</respuesta>
-        </respuestas>
-        <respuestas>
-            <noPregunta>1</noPregunta>
-            <respuesta>5</respuesta>
-        </respuestas>
-        <respuestas>
-            <noPregunta>2</noPregunta>
-            <respuesta>5</respuesta>
-        </respuestas>
-        <respuestas>
             <noPregunta>3</noPregunta>
-            <respuesta>5</respuesta>
+            <respuesta>3</respuesta>
         </respuestas>
         <respuestas>
             <noPregunta>4</noPregunta>
-            <respuesta>5</respuesta>
+            <respuesta>4</respuesta>
         </respuestas>
         <respuestas>
             <noPregunta>5</noPregunta>
-            <respuesta>5</respuesta>
+            <respuesta>3</respuesta>
         </respuestas>
         <respuestas>
             <noPregunta>6</noPregunta>
@@ -387,8 +387,8 @@
         </respuestas>
         <respuestas>
             <noPregunta>8</noPregunta>
-            <respuesta>5</respuesta>
+            <respuesta>4</respuesta>
         </respuestas>
     </encuesta>
-    <recomendacion></recomendacion>
+    <recomendacion>a</recomendacion>
 </encuestas>

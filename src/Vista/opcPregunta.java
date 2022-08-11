@@ -61,22 +61,15 @@ public class opcPregunta extends javax.swing.JFrame {
 
         jPanel3 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jTextField1 = new javax.swing.JTextField();
         jTextField2 = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
         jTextField3 = new javax.swing.JTextField();
-        jButton5 = new javax.swing.JButton();
         jPanel9 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jPanel11 = new javax.swing.JPanel();
@@ -107,8 +100,6 @@ public class opcPregunta extends javax.swing.JFrame {
             }
         });
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/info1.png"))); // NOI18N
-
         jLabel7.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(240, 240, 240));
         jLabel7.setText("PREGUNTAS");
@@ -121,13 +112,11 @@ public class opcPregunta extends javax.swing.JFrame {
                 .addComponent(jLabel4)
                 .addGap(444, 444, 444)
                 .addComponent(jLabel7)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel5))
+                .addContainerGap(486, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 66, Short.MAX_VALUE)
-            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 66, Short.MAX_VALUE)
             .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
@@ -194,38 +183,6 @@ public class opcPregunta extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(27, 57, 80));
         jLabel2.setText("RESPONSABLE DEL AREA");
-
-        jLabel3.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(27, 57, 80));
-        jLabel3.setText("NUMERO DE ENCUESTAS");
-
-        jButton2.setText("AGREGAR");
-        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton2MouseClicked(evt);
-            }
-        });
-
-        jButton3.setText("EDITAR");
-        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton3MouseClicked(evt);
-            }
-        });
-
-        jButton4.setText("GUARDAR");
-        jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton4MouseClicked(evt);
-            }
-        });
-
-        jButton5.setText("ELIMINAR");
-        jButton5.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton5MouseClicked(evt);
-            }
-        });
 
         jPanel9.setBackground(new java.awt.Color(27, 57, 106));
         jPanel9.setPreferredSize(new java.awt.Dimension(120, 50));
@@ -342,20 +299,10 @@ public class opcPregunta extends javax.swing.JFrame {
                         .addContainerGap()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, 323, Short.MAX_VALUE)
-                            .addComponent(jTextField2)
-                            .addComponent(jTextField1)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(46, 46, 46)
-                                .addComponent(jLabel3)))))
+                            .addComponent(jTextField2))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton5)
-                    .addComponent(jButton4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 248, Short.MAX_VALUE)
+                .addGap(34, 389, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -372,7 +319,7 @@ public class opcPregunta extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 497, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 507, Short.MAX_VALUE)
                 .addGap(17, 17, 17)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -387,19 +334,7 @@ public class opcPregunta extends javax.swing.JFrame {
                 .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel3)
-                .addGap(18, 18, 18)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(129, 129, 129)
-                .addComponent(jButton2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton4)
-                .addGap(0, 69, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -415,132 +350,11 @@ public class opcPregunta extends javax.swing.JFrame {
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(1, 1, 1)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 650, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
-        // TODO add your handling code here:
-        DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
-        String nuevoValor = (String) JOptionPane.showInputDialog(null, "Ingresa la nueva pregunta", "Nueva pregunta", JOptionPane.QUESTION_MESSAGE, null, null, "");
-        if (nuevoValor != null) {
-            modelo.addRow(new Object[]{nuevoValor});
-        }
-    }//GEN-LAST:event_jButton2MouseClicked
-
-    private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
-        // TODO add your handling code here:
-        DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
-        int columna = jTable1.getSelectedColumn();
-        int renglon = jTable1.getSelectedRow();
-
-        String valor = (String) modelo.getValueAt(renglon, columna);
-        String nuevoValor = (String) JOptionPane.showInputDialog(null, "Escriba aquí la nueva pregunta", "Editar pregunta", JOptionPane.QUESTION_MESSAGE, null, null, valor);
-        if (nuevoValor != null) {
-            jTable1.setValueAt(nuevoValor, jTable1.getSelectedRow(), jTable1.getSelectedColumn());
-        }
-    }//GEN-LAST:event_jButton3MouseClicked
-
-    private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseClicked
-        // TODO add your handling code here:
-        DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
-        int seleccion = jTable1.getSelectedRow();
-        modelo.removeRow(seleccion);
-    }//GEN-LAST:event_jButton5MouseClicked
-
-    private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
-        // TODO add your handling code here:
-        if (!jTextField3.getText().equals("") && !jTextField1.equals("")) {
-            if (jTextField1.getText().matches("^[0-9]+$") && Integer.parseInt(jTextField1.getText()) > 0) {
-                if (existeResponsable2) {
-                    if (!jTextField2.getText().equals("")) {
-                        int resp = JOptionPane.showConfirmDialog(null, "¿Deseas guardar los cambios?", "GUARDAR", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-                        if (resp == 0) {
-                            List<Pregunta> listaPreguntas = new ArrayList();
-                            for (int i = 0; i < jTable1.getRowCount(); i++) {
-                                //String valor = String.valueOf(jTable1.getValueAt(i, 0));
-                                Pregunta c = new Pregunta();
-                                c.setNumero(String.valueOf(jTable1.getValueAt(i, 0)));
-                                c.setPreg(String.valueOf(jTable1.getValueAt(i, 1)));
-                                listaPreguntas.add(c);
-                            }
-                            boolean mensaje = false;
-                            mensaje = prop.guardar("responsable" + area + "1", jTextField3.getText().trim(), ruta);
-                            mensaje = prop.guardar("responsable" + area + "2", jTextField2.getText().trim(), ruta);
-                            mensaje = prop.guardar("noEncuestas" + area, jTextField1.getText().trim(), ruta);
-                            if (mensaje) {
-                                rutaXml += prop.acceder("archivo" + area, ruta) + ".xml";
-                                if (xml.savePreguntasDataToFile(new File(rutaXml), listaPreguntas)) {
-                                    new rojerusan.RSNotifyAnimated("EXITO!", "Las preguntas registradas y almacenadas sin ningun error.", 7,
-                                            RSNotifyAnimated.PositionNotify.BottomRight,
-                                            RSNotifyAnimated.AnimationNotify.BottomUp,
-                                            RSNotifyAnimated.TypeNotify.SUCCESS).setVisible(true);
-                                } else {
-                                    new rojerusan.RSNotifyAnimated("ERROR!", "Algo salio mal al almacenar las preguntas.", 7,
-                                            RSNotifyAnimated.PositionNotify.BottomRight,
-                                            RSNotifyAnimated.AnimationNotify.BottomUp,
-                                            RSNotifyAnimated.TypeNotify.ERROR).setVisible(true);
-                                }
-                            } else {
-                                new rojerusan.RSNotifyAnimated("ERROR!", "Algo salio mal al almacenar las preguntas.", 7,
-                                        RSNotifyAnimated.PositionNotify.BottomRight,
-                                        RSNotifyAnimated.AnimationNotify.BottomUp,
-                                        RSNotifyAnimated.TypeNotify.ERROR).setVisible(true);
-                            }
-
-                        }
-
-                    } else {
-                        JOptionPane.showMessageDialog(null, "No dejes campos vacios");
-                    }
-
-                } else {
-                    int resp = JOptionPane.showConfirmDialog(null, "¿Deseas guardar los cambios?", "GUARDAR", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-                    if (resp == 0) {
-                        List<Pregunta> listaPreguntas = new ArrayList();
-                        for (int i = 0; i < jTable1.getRowCount(); i++) {
-                            //String valor = String.valueOf(jTable1.getValueAt(i, 0));
-                            Pregunta c = new Pregunta();
-                            c.setNumero(String.valueOf(jTable1.getValueAt(i, 0)));
-                            c.setPreg(String.valueOf(jTable1.getValueAt(i, 1)));
-                            listaPreguntas.add(c);
-                        }
-                        boolean mensaje = false;
-                        mensaje = prop.guardar("responsable" + area + "1", jTextField3.getText().trim(), ruta);
-                        mensaje = prop.guardar("noEncuestas" + area, jTextField1.getText().trim(), ruta);
-                        if (mensaje) {
-                            rutaXml += prop.acceder("archivo" + area, ruta) + ".xml";
-                            if (xml.savePreguntasDataToFile(new File(rutaXml), listaPreguntas)) {
-                                new rojerusan.RSNotifyAnimated("EXITO!", "Las preguntas registradas y almacenadas sin ningun error.", 7,
-                                        RSNotifyAnimated.PositionNotify.BottomRight,
-                                        RSNotifyAnimated.AnimationNotify.BottomUp,
-                                        RSNotifyAnimated.TypeNotify.SUCCESS).setVisible(true);
-                            } else {
-                                new rojerusan.RSNotifyAnimated("ERROR!", "Algo salio mal al almacenar las preguntas.", 7,
-                                        RSNotifyAnimated.PositionNotify.BottomRight,
-                                        RSNotifyAnimated.AnimationNotify.BottomUp,
-                                        RSNotifyAnimated.TypeNotify.ERROR).setVisible(true);
-                            }
-                        } else {
-                            new rojerusan.RSNotifyAnimated("ERROR!", "Algo salio mal al almacenar las preguntas.", 7,
-                                    RSNotifyAnimated.PositionNotify.BottomRight,
-                                    RSNotifyAnimated.AnimationNotify.BottomUp,
-                                    RSNotifyAnimated.TypeNotify.ERROR).setVisible(true);
-                        }
-
-                    }
-
-                }
-
-            } else {
-                JOptionPane.showMessageDialog(null, "El numero de encuestas no es valido.");
-            }
-        } else {
-            JOptionPane.showMessageDialog(null, "No dejes campos vacios");
-        }
-    }//GEN-LAST:event_jButton4MouseClicked
 
     private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
         int resp = JOptionPane.showConfirmDialog(null, "¿Deseas salir?\nSe perderan todos los cambios sin guardar.", "Aviso", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
@@ -627,8 +441,7 @@ public class opcPregunta extends javax.swing.JFrame {
 
     private void jLabel13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel13MouseClicked
         // TODO add your handling code here:
-        if (!jTextField3.getText().equals("") && !jTextField1.equals("")) {
-            if (jTextField1.getText().matches("^[0-9]+$") && Integer.parseInt(jTextField1.getText()) > 0) {
+        if (!jTextField3.getText().equals("")) {
                 if (existeResponsable2) {
                     if (!jTextField2.getText().equals("")) {
                         int resp = JOptionPane.showConfirmDialog(null, "¿Deseas guardar los cambios?", "GUARDAR", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
@@ -644,7 +457,6 @@ public class opcPregunta extends javax.swing.JFrame {
                             boolean mensaje = false;
                             mensaje = prop.guardar("responsable" + area + "1", jTextField3.getText().trim(), ruta);
                             mensaje = prop.guardar("responsable" + area + "2", jTextField2.getText().trim(), ruta);
-                            mensaje = prop.guardar("noEncuestas" + area, jTextField1.getText().trim(), ruta);
                             if (mensaje) {
                                 rutaXml += prop.acceder("archivo" + area, ruta) + ".xml";
                                 if (xml.savePreguntasDataToFile(new File(rutaXml), listaPreguntas)) {
@@ -684,7 +496,6 @@ public class opcPregunta extends javax.swing.JFrame {
                         }
                         boolean mensaje = false;
                         mensaje = prop.guardar("responsable" + area + "1", jTextField3.getText().trim(), ruta);
-                        mensaje = prop.guardar("noEncuestas" + area, jTextField1.getText().trim(), ruta);
                         if (mensaje) {
                             rutaXml += prop.acceder("archivo" + area, ruta) + ".xml";
                             if (xml.savePreguntasDataToFile(new File(rutaXml), listaPreguntas)) {
@@ -708,10 +519,6 @@ public class opcPregunta extends javax.swing.JFrame {
                     }
 
                 }
-
-            } else {
-                JOptionPane.showMessageDialog(null, "El numero de encuestas no es valido.");
-            }
         } else {
             JOptionPane.showMessageDialog(null, "No dejes campos vacios");
         }
@@ -729,7 +536,6 @@ public class opcPregunta extends javax.swing.JFrame {
 
     public void llenadoCampos() {
         jTextField3.setText(prop.acceder("responsable" + area + "1", ruta));
-        jTextField1.setText(prop.acceder("noEncuestas" + area, ruta));
         if (prop.acceder("noresponsables" + area, ruta).equalsIgnoreCase("1")) {
             jTextField2.setVisible(false);
         } else {
@@ -795,17 +601,11 @@ public class opcPregunta extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
@@ -816,7 +616,6 @@ public class opcPregunta extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     // End of variables declaration//GEN-END:variables

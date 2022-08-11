@@ -35,11 +35,11 @@ public class verCapturas extends javax.swing.JFrame {
     XmlActions xml = new XmlActions();
 
     public verCapturas(String servicio, String carrera, String area) {
+        
         this.servicio = servicio;
         this.carrera = carrera;
         this.area = area;
         initComponents();
-        this.setLocationRelativeTo(null);
         jLabel1.setText(servicio + " / " + carrera);
         ImageIcon iconoT = new ImageIcon("src/Archivos/favicon.png");
         this.setIconImage(iconoT.getImage());
@@ -92,7 +92,6 @@ public class verCapturas extends javax.swing.JFrame {
 
         jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -123,9 +122,6 @@ public class verCapturas extends javax.swing.JFrame {
             }
         });
         jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 66));
-
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/info1.png"))); // NOI18N
-        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 0, -1, 66));
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -219,9 +215,7 @@ public class verCapturas extends javax.swing.JFrame {
         }
     }
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
-        // TODO add your handling code here:
-        CAPTURA obj = new CAPTURA();
-        obj.setVisible(true);
+        verRespuestas.frameVerCapturas = null;
         this.dispose();
     }//GEN-LAST:event_jLabel2MouseClicked
 
@@ -276,7 +270,6 @@ public class verCapturas extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;

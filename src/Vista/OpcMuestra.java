@@ -67,7 +67,6 @@ public class OpcMuestra extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
@@ -77,7 +76,6 @@ public class OpcMuestra extends javax.swing.JFrame {
         jTextField1 = new javax.swing.JTextField();
         jTextField2 = new javax.swing.JTextField();
         jTextField3 = new javax.swing.JTextField();
-        jButton4 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
@@ -88,7 +86,6 @@ public class OpcMuestra extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(800, 470));
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(800, 470));
 
         jPanel1.setBackground(new java.awt.Color(248, 248, 255));
         jPanel1.setMinimumSize(new java.awt.Dimension(800, 470));
@@ -115,20 +112,16 @@ public class OpcMuestra extends javax.swing.JFrame {
             }
         });
 
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/info1.png"))); // NOI18N
-
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addComponent(jLabel6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 700, Short.MAX_VALUE)
-                .addComponent(jLabel7))
+                .addContainerGap(750, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(8, 8, 8)
                 .addComponent(jLabel6)
@@ -185,14 +178,6 @@ public class OpcMuestra extends javax.swing.JFrame {
 
         jTextField3.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         jPanel1.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 320, 210, -1));
-
-        jButton4.setText("guardar");
-        jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton4MouseClicked(evt);
-            }
-        });
-        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 380, 90, 30));
 
         jPanel4.setBackground(new java.awt.Color(27, 57, 106));
         jPanel4.setPreferredSize(new java.awt.Dimension(120, 50));
@@ -331,36 +316,6 @@ public class OpcMuestra extends javax.swing.JFrame {
             jTextField1.setText("");
         }
     }//GEN-LAST:event_jTextField1KeyReleased
-
-    private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
-        // TODO add your handling code here:
-        if (flag && !jTextField1.getText().toString().equalsIgnoreCase("")) {
-            if (!jTextField2.getText().toString().equalsIgnoreCase("")
-                    && !jTextField3.getText().toString().equalsIgnoreCase("")
-                    && !jComboBox1.getSelectedItem().toString().equalsIgnoreCase("Carreras del ITZ")) {
-                int resp = JOptionPane.showConfirmDialog(null, "¿Deseas guardar los cambios?", "Ajustes Generales del Documento", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-                if (resp == 0) {
-                    boolean mensaje = false;
-                    mensaje = prop.guardar("alumnos" + jComboBox1.getSelectedItem().toString().trim(), jTextField1.getText().trim(), ruta);
-                    mensaje = prop.guardar("base" + jComboBox1.getSelectedItem().toString().trim(), jTextField2.getText().trim(), ruta);
-                    mensaje = prop.guardar("muestra" + jComboBox1.getSelectedItem().toString().trim(), jTextField3.getText().trim(), ruta);
-                    if (mensaje) {
-                        JOptionPane.showMessageDialog(null, "Se ha guardado con exito!.", "Generacion de Muestra.", JOptionPane.INFORMATION_MESSAGE);
-                        flag = false;
-                        setEmptyInterface();
-                    } else {
-                        JOptionPane.showMessageDialog(null, "ERROR: No se han guardado los cambios.", "Generacion de Muestra.", JOptionPane.ERROR_MESSAGE);
-                    }
-                } else {
-                    JOptionPane.showMessageDialog(null, "No se han guardado los cambios.", "Generacion de Muestra.", JOptionPane.WARNING_MESSAGE);
-                }
-            } else {
-                JOptionPane.showMessageDialog(null, "Algun campo esta vacio.", "ERROR!", JOptionPane.WARNING_MESSAGE);
-            }
-        } else {
-            JOptionPane.showMessageDialog(null, "No puedes dejar el total de alumnos en blanco.");
-        }
-    }//GEN-LAST:event_jButton4MouseClicked
 
     private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
         // TODO add your handling code here:
@@ -544,7 +499,6 @@ public class OpcMuestra extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton4;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -554,7 +508,6 @@ public class OpcMuestra extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

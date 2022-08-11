@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<preguntas>
+    <pregunta>
+        <numero>1</numero>
+        <preg>El Departamento de Gestión Tecnológica y Vinculación me proporcionan información del banco de proyectos de Residencias Profesionales.</preg>
+    </pregunta>
+    <pregunta>
+        <numero>2</numero>
+        <preg>La División de Estudios Profesionales me da la información de las opciones para realizar los anteproyectos de Residencias Profesionales.</preg>
+    </pregunta>
+    <pregunta>
+        <numero>3</numero>
+        <preg>El Coordinador de carrera me da información para desarrollo de anteproyectos de Residencias Profesionales.</preg>
+    </pregunta>
+    <pregunta>
+        <numero>4</numero>
+        <preg>La División de Estudios me proporciona información acerca de los periodos para la recepción de anteproyectos de Residencias Profesionales.</preg>
+    </pregunta>
+    <pregunta>
+        <numero>5</numero>
+        <preg>El Docente asignado para revisar mi anteproyecto de residencias dictamina en el periodo establecido.</preg>
+    </pregunta>
+    <pregunta>
+        <numero>6</numero>
+        <preg>Mi asesor interno me proporciona asesoría para el desarrollo de mi proyecto Residencias Profesionales.</preg>
+    </pregunta>
+    <pregunta>
+        <numero>7</numero>
+        <preg>El Departamento de Gestión Tecnológica y Vinculación me entrega en tiempo las cartas de presentación y agredecimiento para la empresa.</preg>
+    </pregunta>
+    <pregunta>
+        <numero>8</numero>
+        <preg>Mi asesor interno revisa mis informes parciales de Residencias Profecionales y me orienta para realizar las correciones y cambios.</preg>
+    </pregunta>
+    <pregunta>
+        <numero>9</numero>
+        <preg>Mi asesor interno me da a conocer la calificación durante el periodo establecido.</preg>
+    </pregunta>
+</preguntas>
